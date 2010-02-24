@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AREA SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/area.dtd"> 
+<!-- Generated at Mon Feb 22 10:26:47 AST 2010 -->
+
+<AREA name="HH_123" display="HH_123">
+	<INSTANCEOF ref="brahms.base.Building" />
+	<PARTOF ref="HeadHall" />
+</AREA>

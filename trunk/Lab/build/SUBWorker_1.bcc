@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
+<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+
+<AGENT name="SUBWorker_1" serializable="false" display="SUBWorker_1" location="SUB">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="SUBWorker_1.Name" display="Name" scope="public" type="string"/>
+		<ATTRIBUTE name="SUBWorker_1.Selling_Items" display="Selling_Items" scope="public" type="boolean"/>
+		<ATTRIBUTE name="SUBWorker_1.Emp_Id" display="Emp_Id" scope="public" type="int"/>
+		<ATTRIBUTE name="SUBWorker_1.Working" display="Working" scope="public" type="boolean"/>
+		<ATTRIBUTE name="SUBWorker_1.Re_stocking" display="Re_stocking" scope="public" type="boolean"/>
+	</ATTRIBUTES>
+</AGENT>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE GROUP SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/group.dtd"> 
+<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+
+<GROUP name="Student" display="Student">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Student.name" display="name" scope="public" type="string"/>
+	</ATTRIBUTES>
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="UniversityClock" lObjType="Object" attRef="MyClock.time" evalOp="eq" value="1" valueType="int"/>
+		</BELIEF>
+	</BELIEFS>
+	<ACTIVITIES>
+		<MOVE_ACT name="Student.goToGym" descriptor="goToGym()" display="goToGym" location="LBGym" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Student.goToClass3" descriptor="goToClass3()" display="goToClass3" location="ITC317" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Student.goHome" descriptor="goHome()" display="goHome" location="Fredericton" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Student.goToClass1" descriptor="goToClass1()" display="goToClass1" location="Classroom_ITC315" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Student.goToClass" descriptor="goToClass()" display="goToClass" location="HeadHall" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Student.goToClass2" descriptor="goToClass2()" display="goToClass2" location="HH201" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Student.goToSUB" descriptor="goToSUB()" display="goToSUB" location="SUB" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Student.goToLibrary" descriptor="goToLibrary()" display="goToLibrary" location="EngLibrary" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+	</ACTIVITIES>
+</GROUP>

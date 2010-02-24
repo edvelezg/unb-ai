@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
+<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+
+<AGENT name="GymWorker_1" serializable="false" display="GymWorker_1" location="LBGym">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="GymWorker_1.Name" display="Name" scope="public" type="string"/>
+		<ATTRIBUTE name="GymWorker_1.Rent_equipment" display="Rent_equipment" scope="public" type="boolean"/>
+		<ATTRIBUTE name="GymWorker_1.Train" display="Train" scope="public" type="boolean"/>
+		<ATTRIBUTE name="GymWorker_1.Emp_Id" display="Emp_Id" scope="public" type="int"/>
+		<ATTRIBUTE name="GymWorker_1.Working" display="Working" scope="public" type="boolean"/>
+	</ATTRIBUTES>
+</AGENT>

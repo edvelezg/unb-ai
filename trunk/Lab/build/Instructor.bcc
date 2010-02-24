@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE GROUP SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/group.dtd"> 
+<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+
+<GROUP name="Instructor" display="Instructor">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Instructor.name" display="name" scope="public" type="string"/>
+		<ATTRIBUTE name="Instructor.teach" display="teach" scope="public" type="boolean"/>
+	</ATTRIBUTES>
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="UniversityClock" lObjType="Object" attRef="MyClock.time" evalOp="eq" value="40" valueType="int"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Instructor.teach" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+	</BELIEFS>
+	<ACTIVITIES>
+		<PRIM_ACT name="Instructor.teach" descriptor="teach()" display="teach" maxDuration="3000">
+		</PRIM_ACT>
+	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="Instructor.wf_teach" display="wf_teach" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teach"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="teach()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
+	<THOUGHTFRAMES>
+		<THOUGHTFRAME name="Instructor.tf_beginTeaching" display="tf_beginTeaching">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teach"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="120"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<TF_DO>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teach"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</TF_DO>
+		</THOUGHTFRAME>
+	</THOUGHTFRAMES>
+</GROUP>

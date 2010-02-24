@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
+<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+
+<CLASS name="MyClock" serializable="false" display="MyClock">
+	<EXTENDS ref="brahms.base.BaseClass" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="MyClock.time" display="time" scope="public" type="int"/>
+	</ATTRIBUTES>
+	<ACTIVITIES>
+		<BRDC_ACT name="MyClock.announceTime" descriptor="announceTime()" display="announceTime" maxDuration="1" toSubAreas="true" when="end">
+			<TOAREAS>
+				<TOAREAREF ref="UNB" />
+			</TOAREAS>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="MyClock.time"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</BRDC_ACT>
+		<PRIM_ACT name="MyClock.waitAMin" descriptor="waitAMin()" display="waitAMin" maxDuration="59">
+		</PRIM_ACT>
+	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="MyClock.wf_waitAMin" display="wf_waitAMin" wftype="2" repeat="true">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="lteq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="600"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="waitAMin()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION operator="plus">
+								<OPERAND type="OA" objType="current" objRef="current" attRef="MyClock.time"/>
+								<OPERAND type="V" valueType="int" value="1"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<ACTIVITYREF ref="announceTime()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
+</CLASS>
