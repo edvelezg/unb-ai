@@ -1,0 +1,3 @@
+areadef Classroom extends Building {
+
+}

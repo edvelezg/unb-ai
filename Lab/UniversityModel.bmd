@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE PROJECT SYSTEM "file:////Applications/Brahms/AgentEnvironment/IDE/composer/dtds/ideproject.dtd">
+<PROJECT
+	name="UniversityModel"
+	package=""
+	release="176"
+	modelFile="/Users/Naix/Desktop/t1ap0_LAB02/source/UniversityModel.b" 
+  vmcfg="/Applications/Brahms/AgentEnvironment/config/vm.cfg"
+  srcdir="/Users/Naix/Desktop/t1ap0_LAB02/source"
+  builddir="/Users/Naix/Desktop/t1ap0_LAB02/build"
+  barname="UniversityModel.bar"
+  bardir="/Users/Naix/Desktop/t1ap0_LAB02/lib"
+  generatebar="false"
+  idedir="/Users/Naix/Desktop/t1ap0_LAB02/ide_UniversityModel">
+  
+  <MODELS>
+    <MODEL type="agentmodel" file="agentmodel.xml"/>
+    <MODEL type="objectmodel" file="objectmodel.xml"/>
+    <MODEL type="conceptualobjectmodel" file="conceptualobjectmodel.xml"/>
+    <MODEL type="geographymodel" file="geographymodel.xml"/>
+    <MODEL type="activitymodel" file="activitymodel.xml"/>
+  </MODELS>
+  
+  <SOURCE_FOLDERS>
+    <SOURCE_FOLDER name="/Users/Naix/Desktop/t1ap0_LAB02/source"/>
+  </SOURCE_FOLDERS>
+  
+  <LIBRARY_FOLDERS>
+    <LIBRARY_FOLDER name="/Applications/Brahms/AgentEnvironment/bin/../Models/lib"/>
+  </LIBRARY_FOLDERS>
+  
+  <SOURCE_FILES>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Librarian_1.b" modified="1266883150000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Classroom_ITC315___EngLibrary.b" modified="1265483741000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_9.b" modified="1266877270000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HeadHall.b" modified="1264564634000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/UniversityGeography.b" modified="1264564634000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_5.b" modified="1266874419000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Bank.b" modified="1265482261000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Campus.b" modified="1264564506000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/ITC317___HeadHall.b" modified="1266693655000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/kentOffice.b" modified="1266875109000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/aubanelOffice.b" modified="1266875109000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Instructor_2.b" modified="1266878031000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_8.b" modified="1266876902000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/UNB___HeadHall.b" modified="1266767739000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HeadHall___LBGym.b" modified="1265483317000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_4.b" modified="1266882837000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/UniversityModel.b" modified="1264539758000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/UniversityClock.b" modified="1264564706000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_3.b" modified="1266877288000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/GymWorker_1.b" modified="1266883200000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/ulieruOffice___HeadHall.b" modified="1266874657000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_6.b" modified="1266874419000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/ulieruOffice.b" modified="1266875109000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_7.b" modified="1266882571000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Classroom.b" modified="1265482129000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HH201___SUB.b" modified="1266874898000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student.b" modified="1266877853000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/LBGym.b" modified="1265482261000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Fredericton___UNB.b" modified="1266700027000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_1.b" modified="1266850429000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Fredericton.b" modified="1264564634000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_10.b" modified="1266882874000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HH201___aubanelOffice.b" modified="1266874993000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HeadHall___Bank.b" modified="1265483272000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HH201___LBGym.b" modified="1266874921000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HeadHall___Classroom_ITC315.b" modified="1265483843000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HH201.b" modified="1266847684000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Fredericton___ulieruOffice.b" modified="1266875090000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/ITC317.b" modified="1266693591000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Instructor_3.b" modified="1266878041000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Instructor.b" modified="1266877805000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/kentOffice___HeadHall.b" modified="1266874643000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/aubanelOffice___HeadHall.b" modified="1266874670000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/SUBWorker_1.b" modified="1266883182000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/SUB.b" modified="1265482261000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Classroom_ITC315.b" modified="1265482261000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/UNB.b" modified="1264564634000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HeadHall___EngLibrary.b" modified="1265483827000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/EngLibrary.b" modified="1265482261000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/HeadHall___SUB.b" modified="1265483298000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Instructor_1.b" modified="1266878021000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/MyClock.b" modified="1266696634000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/t1ap0_LAB02/source/Student_2.b" modified="1266882571000"/>
+  </SOURCE_FILES>
+  
+  <OPEN_FILES>
+  </OPEN_FILES>
+  
+</PROJECT>

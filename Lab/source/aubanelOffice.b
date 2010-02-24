@@ -1,0 +1,3 @@
+area aubanelOffice instanceof Building {
+
+}

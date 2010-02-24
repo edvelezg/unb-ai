@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AREADEF SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/areadef.dtd"> 
+<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+
+<AREADEF name="Classroom" display="Classroom">
+	<EXTENDS ref="brahms.base.Building" />
+</AREADEF>
