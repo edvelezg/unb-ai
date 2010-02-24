@@ -30,11 +30,12 @@ group Instructor {
 	
 	thoughtframes:
 	thoughtframe tf_beginTeaching {
-			repeat: false; 
- 			when((current.teach = false) and (UniversityClock.time = 120)) 
- 			do { 
-						conclude((current.teach = true), bc:100); 
-				 } 
+		repeat: false; 
+		when((current.teach = false) and (UniversityClock.time = 120)) 
+				do 
+				{
+					conclude((current.teach = true), bc:100); 
+				}
 		}	
 
 }
