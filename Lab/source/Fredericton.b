@@ -1,3 +1,3 @@
-area Fredericton instanceof City partof UniversityGeography {
+area Fredericton instanceof City {
 
 }

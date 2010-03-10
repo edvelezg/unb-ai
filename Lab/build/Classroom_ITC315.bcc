@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AREA SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/area.dtd"> 
-<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+<!-- Generated at Fri Mar 05 16:30:19 AST 2010 -->
 
 <AREA name="Classroom_ITC315" display="Classroom_ITC315">
-	<INSTANCEOF ref="Classroom" />
+	<INSTANCEOF ref="Room" />
 	<PARTOF ref="HeadHall" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Classroom_ITC315.projector" display="projector" scope="public" type="boolean"/>
+	</ATTRIBUTES>
+	<FACTS>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="Classroom_ITC315.projector" evalOp="eq" value="true" valueType="boolean"/>
+		</FACT>
+	</FACTS>
 </AREA>

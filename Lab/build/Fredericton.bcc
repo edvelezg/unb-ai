@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AREA SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/area.dtd"> 
-<!-- Generated at Mon Feb 22 19:54:37 AST 2010 -->
+<!-- Generated at Fri Mar 05 16:30:19 AST 2010 -->
 
 <AREA name="Fredericton" display="Fredericton">
 	<INSTANCEOF ref="brahms.base.City" />
-	<PARTOF ref="UniversityGeography" />
 </AREA>
