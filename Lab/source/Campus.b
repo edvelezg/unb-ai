@@ -1,0 +1,3 @@
+areadef Campus extends BaseAreaDef {
+
+}

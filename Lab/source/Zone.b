@@ -1,0 +1,3 @@
+areadef Zone extends BaseAreaDef {
+
+}

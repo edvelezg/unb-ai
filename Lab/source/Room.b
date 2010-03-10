@@ -1,0 +1,3 @@
+areadef Room extends BaseAreaDef {
+
+}
