@@ -1,3 +1,3 @@
-area EngLibrary instanceof Classroom partof HeadHall {
+area EngLibrary instanceof Room partof HeadHall {
 
 }

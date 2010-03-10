@@ -1,5 +1,5 @@
 path HeadHall___LBGym {
 	area1: HeadHall;
 	area2: LBGym;
-	distance: 600;
+	distance: 300;
 }
