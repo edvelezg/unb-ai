@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
+<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+
+<AGENT name="Thief" serializable="false" display="Thief" location="OffCampus">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Thief.class1Time" display="class1Time" scope="public" type="int"/>
+		<ATTRIBUTE name="Thief.classesStarted" display="classesStarted" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Thief.inClass" display="inClass" scope="public" type="boolean"/>
+	</ATTRIBUTES>
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Thief.class1Time" evalOp="eq" value="2" valueType="int"/>
+		</BELIEF>
+	</BELIEFS>
+	<ACTIVITIES>
+		<MOVE_ACT name="Thief.goToGym" descriptor="goToGym()" display="goToGym" location="LBGym" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Thief.goToClass" descriptor="goToClass()" display="goToClass" location="Classroom_ITC315" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<PRIM_ACT name="Thief.steal" descriptor="steal()" display="steal" maxDuration="600">
+		</PRIM_ACT>
+		<PRIM_ACT name="Thief.wait" descriptor="wait()" display="wait" random="true" minDuration="1200" maxDuration="1800">
+		</PRIM_ACT>
+		<MOVE_ACT name="Thief.goToHeadHall" descriptor="goToHeadHall()" display="goToHeadHall" location="HeadHall" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="Thief.wf_stealAndHide" display="wf_stealAndHide" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="1"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.tenMinUnits"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Thief.class1Time"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="goToClass()">
+				</ACTIVITYREF>
+				<ACTIVITYREF ref="steal()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Area" objRef="Classroom_ITC315" attRef="Classroom_ITC315.projector"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<ACTIVITYREF ref="goToGym()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Thief.wf_goToCampus" display="wf_goToCampus" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="1"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="goToHeadHall()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
+</AGENT>

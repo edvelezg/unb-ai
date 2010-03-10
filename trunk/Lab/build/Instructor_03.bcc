@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
+<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+
+<AGENT name="Instructor_03" serializable="false" display="Instructor_03" location="OffCampus">
+	<MEMBEROF ref="Instructor" />
+	<BELIEFS>
+		<BELIEF>
+			<OAO lObjRef="current" lObjType="Current" attRef="Instructor.myOfficeLoc" equalOp="eq" rObjRef="Instructor3_Office" rObjType="Area"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Instructor.leaveCampusTime" evalOp="eq" value="9" valueType="int"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Instructor.teachingTime" evalOp="eq" value="7" valueType="int"/>
+		</BELIEF>
+	</BELIEFS>
+</AGENT>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE GROUP SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/group.dtd"> 
+<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+
+<GROUP name="Instructor" display="Instructor">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Instructor.myOfficeLoc" display="myOfficeLoc" scope="public" type="Room" typeDetail="AreaDef"/>
+		<ATTRIBUTE name="Instructor.waitingInClass" display="waitingInClass" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Instructor.teachingTime" display="teachingTime" scope="public" type="int"/>
+		<ATTRIBUTE name="Instructor.teaching" display="teaching" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Instructor.leaveCampusTime" display="leaveCampusTime" scope="public" type="int"/>
+	</ATTRIBUTES>
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Instructor.waitingInClass" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Instructor.teaching" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+	</BELIEFS>
+	<ACTIVITIES>
+		<MOVE_ACT name="Instructor.leaveCampus" descriptor="leaveCampus()" display="leaveCampus" location="OffCampus" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<MOVE_ACT name="Instructor.goToClass" descriptor="goToClass()" display="goToClass" location="Classroom_ITC315" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<PRIM_ACT name="Instructor.waitAfterClass" descriptor="waitAfterClass()" display="waitAfterClass" random="true" minDuration="300" maxDuration="600">
+		</PRIM_ACT>
+		<COMP_ACT name="Instructor.teach" descriptor="teach()" display="teach" endCondition="nowork">
+			<ACTIVITIES>
+				<PRIM_ACT name="Instructor.teach$teach" descriptor="teach()" display="teach" maxDuration="3000">
+				</PRIM_ACT>
+				<COMM_ACT name="Instructor.teach$answerQuestion" descriptor="answerQuestion(LStudent;)" display="answerQuestion" maxDuration="30" when="end">
+					<PARAMETERS>
+						<PARAMETER name="student" type="Student" typeDetail="Group" />
+					</PARAMETERS>
+					<WITH>
+						<WITHREF ref="student" />
+					</WITH>
+					<ABOUT>
+						<SEND contentType="condition">
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="O" objType="variable" objRef="?"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</SEND>
+					</ABOUT>
+				</COMM_ACT>
+			</ACTIVITIES>
+			<WORKFRAMES>
+				<WORKFRAME name="Instructor.teach.wf_teach" display="wf_teach" wftype="1">
+					<DETECTABLES>
+						<DETECTABLE name="noticeProjectorMissing" when="whenever" action="impasse">
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="concept" objTypeDetail="Area" objRef="Classroom_ITC315" attRef="Classroom_ITC315.projector"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="V" valueType="boolean" value="true"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</DETECTABLE>
+						<DETECTABLE name="noticeQuestionStdnt01" when="whenever" action="impasse">
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Student_01" attRef="Student.haveQuestion"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="V" valueType="boolean" value="true"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</DETECTABLE>
+					</DETECTABLES>
+					<WHEN>
+						<PRECONDITION modifier="knownval">
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="V" valueType="boolean" value="false"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</PRECONDITION>
+						<PRECONDITION modifier="knownval">
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teachingTime"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</PRECONDITION>
+					</WHEN>
+					<WF_DO>
+						<CONSEQUENCE>
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="V" valueType="boolean" value="true"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</CONSEQUENCE>
+						<ACTIVITYREF ref="teach()">
+						</ACTIVITYREF>
+					</WF_DO>
+				</WORKFRAME>
+				<WORKFRAME name="Instructor.teach.wf_answerQuestion" display="wf_answerQuestion" wftype="1">
+					<VARIABLES>
+						<VARIABLE name="studentToAnswer" display="studentToAnswer" quantification="forone" type="Student" typeDetail="Group"/>
+					</VARIABLES>
+					<WHEN>
+						<PRECONDITION modifier="knownval">
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="V" valueType="boolean" value="true"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</PRECONDITION>
+						<PRECONDITION modifier="knownval">
+							<CONDITION>
+								<VALUECOMPARISON relation="eq">
+									<EXPRESSION>
+										<OPERAND type="OA" objType="variable" objRef="studentToAnswer" attRef="Student.haveQuestion"/>
+									</EXPRESSION>
+									<EXPRESSION>
+										<OPERAND type="V" valueType="boolean" value="true"/>
+									</EXPRESSION>
+								</VALUECOMPARISON>
+							</CONDITION>
+						</PRECONDITION>
+					</WHEN>
+					<WF_DO>
+						<ACTIVITYREF ref="answerQuestion(LStudent;)">
+							<PARAMVALS>
+								<PARAMVAL value="studentToAnswer" valueType="Variable"/>
+							</PARAMVALS>
+						</ACTIVITYREF>
+					</WF_DO>
+				</WORKFRAME>
+			</WORKFRAMES>
+		</COMP_ACT>
+		<MOVE_ACT name="Instructor.goToOffice" descriptor="goToOffice(LRoom;)" display="goToOffice" location="officeLoc" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+			<PARAMETERS>
+				<PARAMETER name="officeLoc" type="Room" typeDetail="AreaDef" />
+			</PARAMETERS>
+		</MOVE_ACT>
+		<PRIM_ACT name="Instructor.wait" descriptor="wait()" display="wait" random="true" minDuration="600" maxDuration="1200">
+		</PRIM_ACT>
+		<MOVE_ACT name="Instructor.goToHeadHall" descriptor="goToHeadHall()" display="goToHeadHall" location="HeadHall" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="Instructor.wf_goToClass" display="wf_goToClass" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION operator="minus">
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teachingTime"/>
+								<OPERAND type="V" valueType="int" value="1"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.tenMinUnits"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="5"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="goToClass()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.waitingInClass"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Instructor.wf_teachClass" display="wf_teachClass" wftype="1">
+			<VARIABLES>
+				<VARIABLE name="officeLoc" display="officeLoc" quantification="forone" type="Room" typeDetail="AreaDef"/>
+			</VARIABLES>
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="officeLoc"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.myOfficeLoc"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teachingTime"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="teach()">
+				</ACTIVITYREF>
+				<ACTIVITYREF ref="waitAfterClass()">
+				</ACTIVITYREF>
+				<ACTIVITYREF ref="goToOffice(LRoom;)">
+					<PARAMVALS>
+						<PARAMVAL value="officeLoc" valueType="Variable"/>
+					</PARAMVALS>
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.waitingInClass"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Instructor.wf_leaveCampus" display="wf_leaveCampus" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.leaveCampusTime"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="leaveCampus()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Instructor.wf_goToCampus" display="wf_goToCampus" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="1"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="wait()">
+				</ACTIVITYREF>
+				<ACTIVITYREF ref="goToHeadHall()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Instructor.wf_goToOffice" display="wf_goToOffice" wftype="1" repeat="true">
+			<VARIABLES>
+				<VARIABLE name="officeLoc" display="officeLoc" quantification="forone" type="Room" typeDetail="AreaDef"/>
+			</VARIABLES>
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="officeLoc"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.myOfficeLoc"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="uneq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.myOfficeLoc"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="lt">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.leaveCampusTime"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.waitingInClass"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="goToOffice(LRoom;)">
+					<PARAMVALS>
+						<PARAMVAL value="officeLoc" valueType="Variable"/>
+					</PARAMVALS>
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
+</GROUP>

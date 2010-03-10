@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AREA SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/area.dtd"> 
+<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+
+<AREA name="LBGym" display="LBGym">
+	<INSTANCEOF ref="brahms.base.Building" />
+	<PARTOF ref="UNB" />
+</AREA>

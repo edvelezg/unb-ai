@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
+<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+
+<AGENT name="Librarian_01" serializable="false" display="Librarian_01" location="EngLibrary">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Librarian_01.Name" display="Name" scope="public" type="symbol"/>
+		<ATTRIBUTE name="Librarian_01.Address" display="Address" scope="public" type="symbol"/>
+	</ATTRIBUTES>
+</AGENT>

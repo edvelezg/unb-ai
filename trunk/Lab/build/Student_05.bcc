@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
+<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+
+<AGENT name="Student_05" serializable="false" display="Student_05" location="OffCampus">
+	<MEMBEROF ref="Student" />
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Student.morningActivity" evalOp="eq" value="study" valueType="symbol"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Student.afternoonActivity" evalOp="eq" value="eat" valueType="symbol"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Student.afterClassActivity" evalOp="eq" value="exercise" valueType="symbol"/>
+		</BELIEF>
+	</BELIEFS>
+</AGENT>
