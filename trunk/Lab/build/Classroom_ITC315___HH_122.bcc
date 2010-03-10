@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?> 
-<!DOCTYPE PATH SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/path.dtd"> 
-<!-- Generated at Mon Feb 22 10:26:47 AST 2010 -->
-
-<PATH name="Classroom_ITC315___HH_122" display="Classroom_ITC315___HH_122" distance="70">
-	<AREAREF ref="Classroom_ITC315" />
-	<AREAREF ref="HH_122" />
-</PATH>

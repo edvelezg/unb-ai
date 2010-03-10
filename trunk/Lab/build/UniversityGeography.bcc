@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?> 
-<!DOCTYPE AREA SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/area.dtd"> 
-<!-- Generated at Fri Mar 05 16:30:19 AST 2010 -->
-
-<AREA name="UniversityGeography" display="UniversityGeography">
-	<INSTANCEOF ref="brahms.base.World" />
-</AREA>
