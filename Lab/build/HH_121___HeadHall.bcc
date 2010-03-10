@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?> 
-<!DOCTYPE PATH SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/path.dtd"> 
-<!-- Generated at Mon Feb 22 10:21:36 AST 2010 -->
-
-<PATH name="HH_121___HeadHall" display="HH_121___HeadHall" distance="45">
-	<AREAREF ref="HH_121" />
-	<AREAREF ref="HeadHall" />
-</PATH>

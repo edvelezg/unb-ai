@@ -1,3 +1,0 @@
-area UniversityGeography instanceof World {
-
-}
