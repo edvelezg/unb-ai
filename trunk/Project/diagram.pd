@@ -1,0 +1,782 @@
+<?xml version="1.0"?>
+
+<jacob version="3.0">
+
+<object type="PrometheusProject" id="0">
+    <field name="projectData">
+	<object type="ProjectData" id="1">
+	    <field name="name">default</field>
+	    <field name="fileNameLastSavedAs">diagram.pd</field>
+	    <field name="filePathLastSavedIn">/Users/Naix</field>
+	    <field name="applicationVersion">3.3b_internal</field>
+	</object>
+    </field>
+    <field name="diagramSettings"><list>
+	<object type="DiagramSettings" id="2">
+	    <field name="diagramId">
+		<object type="DiagramId" id="3">
+		    <field name="stringId">Analysis Overview</field>
+		</object>
+	    </field>
+	    <field name="entitySettings"><list>
+		<object type="DiagramEntitySetting" id="4">
+		    <field name="entity">
+			<object type="Message" id="5">
+			    <base type="Interaction">
+				<base type="Entity">
+				    <field name="name">Call</field>
+				    <field name="uniqueId">15</field>
+				    <field name="connectTo"><list>
+					<object type="Agent" id="6">
+					    <base type="Entity">
+						<field name="name">House User</field>
+						<field name="uniqueId">2</field>
+						<field name="connectTo"><list>
+						    <object type="Message" id="7">
+							<base type="Interaction">
+							    <base type="Entity">
+								<field name="name">911Call</field>
+								<field name="uniqueId">16</field>
+								<field name="connectTo"><list>
+								    <object type="Agent" id="8">
+									<base type="Entity">
+									    <field name="name">911 Response System</field>
+									    <field name="description"></field>
+									    <field name="uniqueId">3</field>
+									    <field name="connectTo"><list>
+										<object type="Message" id="9">
+										    <base type="Interaction">
+											<base type="Entity">
+											    <field name="name">CallTeam</field>
+											    <field name="uniqueId">20</field>
+											    <field name="connectTo"><list>
+												<object type="Agent" id="10">
+												    <base type="Entity">
+													<field name="name">Team 2</field>
+													<field name="description"></field>
+													<field name="uniqueId">19</field>
+													<field name="connectTo"><list>
+													    <object type="Action" id="11">
+														<base type="Interaction">
+														    <base type="Entity">
+															<field name="name">MoveToHouse</field>
+															<field name="uniqueId">21</field>
+														    </base>
+
+														</base>
+
+													    </object>
+													    </list>
+													</field>
+												    </base>
+
+												    <field name="lifetime"></field>
+												    <field name="initialisation"></field>
+												    <field name="demise"></field>
+												</object>
+
+												<object type="Agent" id="12">
+												    <base type="Entity">
+													<field name="name">Team 3</field>
+													<field name="description"></field>
+													<field name="uniqueId">17</field>
+												    </base>
+
+												    <field name="lifetime"></field>
+												    <field name="initialisation"></field>
+												    <field name="demise"></field>
+												</object>
+
+												<object type="Agent" id="13">
+												    <base type="Entity">
+													<field name="name">Team 1</field>
+													<field name="description"></field>
+													<field name="uniqueId">18</field>
+												    </base>
+
+												    <field name="lifetime"></field>
+												    <field name="initialisation"></field>
+												    <field name="demise"></field>
+												</object>
+												</list>
+											    </field>
+											</base>
+
+										    </base>
+
+										</object>
+
+										<object type="Action" id="14">
+										    <base type="Interaction">
+											<base type="Entity">
+											    <field name="name">FindClosestTeam</field>
+											    <field name="uniqueId">22</field>
+											</base>
+
+										    </base>
+
+										</object>
+
+										<object type="Message" id="15">
+										    <base type="Interaction">
+											<base type="Entity">
+											    <field name="name">Aknowledge</field>
+											    <field name="description"></field>
+											    <field name="uniqueId">23</field>
+											    <field name="connectTo"><list>
+												<object type="Agent" id="16">
+												    <base type="Entity">
+													<field name="name">Security Company</field>
+													<field name="uniqueId">5</field>
+													<field name="connectTo"><list>
+													    <object ref="5"/>
+
+													    <object ref="7"/>
+													    </list>
+													</field>
+												    </base>
+
+												</object>
+
+												<object ref="6"/>
+												</list>
+											    </field>
+											</base>
+
+										    </base>
+
+										    <field name="purpose"></field>
+										    <field name="informationCarried"></field>
+										    <field name="externalPath"></field>
+										    <field name="postedWhen"></field>
+										</object>
+
+										<object type="Action" id="17">
+										    <base type="Interaction">
+											<base type="Entity">
+											    <field name="name">LogCall</field>
+											    <field name="uniqueId">24</field>
+											</base>
+
+										    </base>
+
+										</object>
+										</list>
+									    </field>
+									</base>
+
+									<field name="lifetime"></field>
+									<field name="initialisation"></field>
+									<field name="demise"></field>
+								    </object>
+								    </list>
+								</field>
+							    </base>
+
+							</base>
+
+						    </object>
+						    </list>
+						</field>
+					    </base>
+
+					</object>
+					</list>
+				    </field>
+				</base>
+
+			    </base>
+
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="18">
+			    <field name="x">604</field>
+			    <field name="y">183</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="19">
+		    <field name="entity">
+			<object type="Agent" id="20">
+			    <base type="Entity">
+				<field name="uniqueId">4</field>
+			    </base>
+
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="21">
+			    <field name="x">39</field>
+			    <field name="y">251</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="22">
+		    <field name="entity">
+			<object ref="10"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="23">
+			    <field name="x">851</field>
+			    <field name="y">417</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="24">
+		    <field name="entity">
+			<object type="Agent" id="25">
+			    <base type="Entity">
+				<field name="name">Motion Sensor 3</field>
+				<field name="description"></field>
+				<field name="uniqueId">8</field>
+				<field name="connectTo"><list>
+				    <object type="Message" id="26">
+					<base type="Interaction">
+					    <base type="Entity">
+						<field name="name">Detectable</field>
+						<field name="uniqueId">10</field>
+						<field name="connectTo"><list>
+						    <object type="Agent" id="27">
+							<base type="Entity">
+							    <field name="name">House Security</field>
+							    <field name="description"></field>
+							    <field name="uniqueId">1</field>
+							    <field name="connectTo"><list>
+								<object type="Message" id="28">
+								    <base type="Interaction">
+									<base type="Entity">
+									    <field name="name">Inform</field>
+									    <field name="uniqueId">11</field>
+									    <field name="connectTo"><list>
+										<object ref="16"/>
+
+										<object ref="6"/>
+										</list>
+									    </field>
+									</base>
+
+								    </base>
+
+								</object>
+								</list>
+							    </field>
+							</base>
+
+							<field name="lifetime"></field>
+							<field name="initialisation"></field>
+							<field name="demise"></field>
+						    </object>
+						    </list>
+						</field>
+					    </base>
+
+					</base>
+
+				    </object>
+
+				    <object type="Action" id="29">
+					<base type="Interaction">
+					    <base type="Entity">
+						<field name="name">DetectMotion</field>
+						<field name="description"></field>
+						<field name="uniqueId">14</field>
+					    </base>
+
+					</base>
+
+					<field name="parameters"></field>
+					<field name="durationDescription"></field>
+					<field name="failureNotificationDescription"></field>
+					<field name="partialChange"></field>
+					<field name="sideEffects"></field>
+				    </object>
+				    </list>
+				</field>
+			    </base>
+
+			    <field name="lifetime"></field>
+			    <field name="initialisation"></field>
+			    <field name="demise"></field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="30">
+			    <field name="x">25</field>
+			    <field name="y">167</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="31">
+		    <field name="entity">
+			<object ref="15"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="32">
+			    <field name="x">474</field>
+			    <field name="y">386</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="33">
+		    <field name="entity">
+			<object ref="28"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="34">
+			    <field name="x">580</field>
+			    <field name="y">100</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="35">
+		    <field name="entity">
+			<object ref="7"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="36">
+			    <field name="x">727</field>
+			    <field name="y">387</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="37">
+		    <field name="entity">
+			<object ref="13"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="38">
+			    <field name="x">842</field>
+			    <field name="y">540</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="39">
+		    <field name="entity">
+			<object ref="8"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="40">
+			    <field name="x">550</field>
+			    <field name="y">475</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="41">
+		    <field name="entity">
+			<object type="Agent" id="42">
+			    <base type="Entity">
+				<field name="name">Motion Sensor 2</field>
+				<field name="description"></field>
+				<field name="uniqueId">7</field>
+				<field name="connectTo"><list>
+				    <object ref="26"/>
+				    </list>
+				</field>
+			    </base>
+
+			    <field name="lifetime"></field>
+			    <field name="initialisation"></field>
+			    <field name="demise"></field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="43">
+			    <field name="x">23</field>
+			    <field name="y">110</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="44">
+		    <field name="entity">
+			<object type="Action" id="45">
+			    <base type="Interaction">
+				<base type="Entity">
+				    <field name="uniqueId">12</field>
+				</base>
+
+			    </base>
+
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="46">
+			    <field name="x">424</field>
+			    <field name="y">249</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="47">
+		    <field name="entity">
+			<object ref="14"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="48">
+			    <field name="x">419</field>
+			    <field name="y">531</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="49">
+		    <field name="entity">
+			<object ref="12"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="50">
+			    <field name="x">842</field>
+			    <field name="y">476</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="51">
+		    <field name="entity">
+			<object ref="6"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="52">
+			    <field name="x">681</field>
+			    <field name="y">187</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="53">
+		    <field name="entity">
+			<object type="Percept" id="54">
+			    <base type="Interaction">
+				<base type="Entity">
+				    <field name="uniqueId">13</field>
+				    <field name="connectTo"><list>
+					<object ref="25"/>
+					</list>
+				    </field>
+				</base>
+
+			    </base>
+
+			    <field name="externalPath"></field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="55">
+			    <field name="x">72</field>
+			    <field name="y">253</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="56">
+		    <field name="entity">
+			<object type="Agent" id="57">
+			    <base type="Entity">
+				<field name="name">Motion Sensor 1</field>
+				<field name="description"></field>
+				<field name="uniqueId">9</field>
+				<field name="connectTo"><list>
+				    <object ref="26"/>
+				    </list>
+				</field>
+			    </base>
+
+			    <field name="lifetime"></field>
+			    <field name="initialisation"></field>
+			    <field name="demise"></field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="58">
+			    <field name="x">29</field>
+			    <field name="y">55</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="59">
+		    <field name="entity">
+			<object ref="11"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="60">
+			    <field name="x">957</field>
+			    <field name="y">420</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="61">
+		    <field name="entity">
+			<object type="Message" id="62">
+			    <base type="Interaction">
+				<base type="Entity">
+				    <field name="uniqueId">6</field>
+				    <field name="connectTo"><list>
+					<object ref="42"/>
+
+					<object ref="57"/>
+
+					<object ref="25"/>
+					</list>
+				    </field>
+				</base>
+
+			    </base>
+
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="63">
+			    <field name="x">157</field>
+			    <field name="y">248</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="64">
+		    <field name="entity">
+			<object ref="27"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="65">
+			    <field name="x">356</field>
+			    <field name="y">104</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="66">
+		    <field name="entity">
+			<object ref="9"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="67">
+			    <field name="x">761</field>
+			    <field name="y">471</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="68">
+		    <field name="entity">
+			<object ref="29"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="69">
+			    <field name="x">37</field>
+			    <field name="y">240</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="70">
+		    <field name="entity">
+			<object ref="17"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="71">
+			    <field name="x">590</field>
+			    <field name="y">540</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="72">
+		    <field name="entity">
+			<object ref="26"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="73">
+			    <field name="x">230</field>
+			    <field name="y">100</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="74">
+		    <field name="entity">
+			<object ref="16"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="75">
+			    <field name="x">423</field>
+			    <field name="y">188</field>
+			</object>
+		    </field>
+		</object>
+		</list>
+	    </field>
+	</object>
+	</list>
+    </field>
+    <field name="model">
+	<object type="PrometheusModelData" id="76">
+	    <field name="projectData">
+		<object ref="1"/>
+	    </field>
+	    <field name="actions"><list>
+		<object ref="29"/>
+
+		<object ref="11"/>
+
+		<object ref="14"/>
+
+		<object ref="17"/>
+		</list>
+	    </field>
+	    <field name="agents"><list>
+		<object ref="27"/>
+
+		<object ref="6"/>
+
+		<object ref="8"/>
+
+		<object ref="16"/>
+
+		<object ref="42"/>
+
+		<object ref="25"/>
+
+		<object ref="57"/>
+
+		<object ref="12"/>
+
+		<object ref="13"/>
+
+		<object ref="10"/>
+		</list>
+	    </field>
+	    <field name="messages"><list>
+		<object ref="26"/>
+
+		<object ref="28"/>
+
+		<object ref="5"/>
+
+		<object ref="7"/>
+
+		<object ref="9"/>
+
+		<object ref="15"/>
+		</list>
+	    </field>
+	    <field name="systemOverviewDiagramData">
+		<object type="SystemOverviewDiagramData" id="77">
+		</object>
+	    </field>
+	    <field name="rolesDiagramData">
+		<object type="RolesDiagramData" id="78">
+		</object>
+	    </field>
+	    <field name="analysisOverviewDiagramData">
+		<object type="AnalysisOverviewDiagramData" id="79">
+		    <field name="entities"><list>
+			<object ref="27"/>
+
+			<object ref="6"/>
+
+			<object ref="8"/>
+
+			<object ref="16"/>
+
+			<object ref="42"/>
+
+			<object ref="25"/>
+
+			<object ref="57"/>
+
+			<object ref="26"/>
+
+			<object ref="28"/>
+
+			<object ref="29"/>
+
+			<object ref="5"/>
+
+			<object ref="7"/>
+
+			<object ref="12"/>
+
+			<object ref="13"/>
+
+			<object ref="10"/>
+
+			<object ref="9"/>
+
+			<object ref="11"/>
+
+			<object ref="14"/>
+
+			<object ref="15"/>
+
+			<object ref="17"/>
+			</list>
+		    </field>
+		</object>
+	    </field>
+	    <field name="scenariosDiagramData">
+		<object type="ScenariosDiagramData" id="80">
+		</object>
+	    </field>
+	    <field name="goalOverviewDiagramData">
+		<object type="GoalOverviewDiagramData" id="81">
+		</object>
+	    </field>
+	    <field name="dataCouplingDiagramData">
+		<object type="DataCouplingDiagramData" id="82">
+		</object>
+	    </field>
+	    <field name="agentRoleCouplingDiagramData">
+		<object type="AgentRoleCouplingDiagramData" id="83">
+		</object>
+	    </field>
+	    <field name="agentOverviewDiagramData">
+		<object type="AgentOverviewDiagramData" id="84">
+		</object>
+	    </field>
+	    <field name="capabilityOverviewDiagramData">
+		<object type="CapabilityOverviewDiagramData" id="85">
+		</object>
+	    </field>
+	    <field name="deletedEntitiesForCodeGen"><list>
+		<object type="Entity" id="86">
+		    <field name="name">I'm an agent :)</field>
+		</object>
+
+		<object type="Entity" id="87">
+		    <field name="name">blah</field>
+		</object>
+
+		<object type="Entity" id="88">
+		    <field name="name">detectMotion</field>
+		</object>
+
+		<object type="Entity" id="89">
+		    <field name="name">CurrentSecond</field>
+		</object>
+
+		<object type="Entity" id="90">
+		    <field name="name">Clock</field>
+		</object>
+
+		<object type="Entity" id="91">
+		    <field name="name">Second</field>
+		</object>
+		</list>
+	    </field>
+	</object>
+    </field>
+</object>
+
+</jacob>
