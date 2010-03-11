@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE GROUP SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/group.dtd"> 
-<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+<!-- Generated at Thu Mar 11 09:57:43 AST 2010 -->
 
 <GROUP name="Instructor" display="Instructor">
 	<MEMBEROF ref="brahms.base.BaseGroup" />
@@ -9,6 +9,7 @@
 		<ATTRIBUTE name="Instructor.waitingInClass" display="waitingInClass" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Instructor.teachingTime" display="teachingTime" scope="public" type="int"/>
 		<ATTRIBUTE name="Instructor.teaching" display="teaching" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Instructor.seenProjector" display="seenProjector" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Instructor.leaveCampusTime" display="leaveCampusTime" scope="public" type="int"/>
 	</ATTRIBUTES>
 	<BELIEFS>
@@ -30,40 +31,18 @@
 			<ACTIVITIES>
 				<PRIM_ACT name="Instructor.teach$teach" descriptor="teach()" display="teach" maxDuration="3000">
 				</PRIM_ACT>
-				<COMM_ACT name="Instructor.teach$answerQuestion" descriptor="answerQuestion(LStudent;)" display="answerQuestion" maxDuration="30" when="end">
-					<PARAMETERS>
-						<PARAMETER name="student" type="Student" typeDetail="Group" />
-					</PARAMETERS>
-					<WITH>
-						<WITHREF ref="student" />
-					</WITH>
-					<ABOUT>
-						<SEND contentType="condition">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="O" objType="variable" objRef="?"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</SEND>
-					</ABOUT>
-				</COMM_ACT>
 			</ACTIVITIES>
 			<WORKFRAMES>
 				<WORKFRAME name="Instructor.teach.wf_teach" display="wf_teach" wftype="1">
 					<DETECTABLES>
-						<DETECTABLE name="noticeProjectorMissing" when="whenever" action="impasse">
+						<DETECTABLE name="noticeProjectorMissing" when="whenever">
 							<CONDITION>
 								<VALUECOMPARISON relation="eq">
 									<EXPRESSION>
 										<OPERAND type="OA" objType="concept" objTypeDetail="Area" objRef="Classroom_ITC315" attRef="Classroom_ITC315.projector"/>
 									</EXPRESSION>
 									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="true"/>
+										<OPERAND type="V" valueType="boolean" value="false"/>
 									</EXPRESSION>
 								</VALUECOMPARISON>
 							</CONDITION>
@@ -169,6 +148,28 @@
 				<PARAMETER name="officeLoc" type="Room" typeDetail="AreaDef" />
 			</PARAMETERS>
 		</MOVE_ACT>
+		<COMM_ACT name="Instructor.answerQuestion" descriptor="answerQuestion(LStudent;)" display="answerQuestion" maxDuration="30" when="end">
+			<PARAMETERS>
+				<PARAMETER name="student" type="Student" typeDetail="Group" />
+			</PARAMETERS>
+			<WITH>
+				<WITHREF ref="student" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
 		<PRIM_ACT name="Instructor.wait" descriptor="wait()" display="wait" random="true" minDuration="600" maxDuration="1200">
 		</PRIM_ACT>
 		<MOVE_ACT name="Instructor.goToHeadHall" descriptor="goToHeadHall()" display="goToHeadHall" location="HeadHall" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">

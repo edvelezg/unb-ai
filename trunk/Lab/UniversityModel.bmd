@@ -4,14 +4,14 @@
 	name="UniversityModel"
 	package=""
 	release="176"
-	modelFile="/Users/Naix/Desktop/lab03/source/UniversityModel.b" 
+	modelFile="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UniversityModel.b" 
   vmcfg="/Applications/Brahms/AgentEnvironment/config/vm.cfg"
-  srcdir="/Users/Naix/Desktop/lab03/source"
-  builddir="/Users/Naix/Desktop/lab03/build"
+  srcdir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source"
+  builddir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/build"
   barname="UniversityModel.bar"
-  bardir="/Users/Naix/Desktop/lab03/lib"
+  bardir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/lib"
   generatebar="false"
-  idedir="/Users/Naix/Desktop/lab03/ide_UniversityModel">
+  idedir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/ide_UniversityModel">
   
   <MODELS>
     <MODEL type="agentmodel" file="agentmodel.xml"/>
@@ -22,7 +22,7 @@
   </MODELS>
   
   <SOURCE_FOLDERS>
-    <SOURCE_FOLDER name="/Users/Naix/Desktop/lab03/source"/>
+    <SOURCE_FOLDER name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source"/>
   </SOURCE_FOLDERS>
   
   <LIBRARY_FOLDERS>
@@ -30,63 +30,66 @@
   </LIBRARY_FOLDERS>
   
   <SOURCE_FILES>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/UniversityGeography.b" modified="1264564634000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_06.b" modified="1267052402000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/LBGym___Bank.b" modified="1265313944000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall___Bank.b" modified="1265313902000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/LBGym.b" modified="1265313298000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall___EngLibrary.b" modified="1265313994000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student.b" modified="1267073726000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_09.b" modified="1267052386000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/UNB.b" modified="1264564634000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Fredericton.b" modified="1264687242000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Classroom_ITC315.b" modified="1267569272000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/UniversityClock.b" modified="1264564706000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall.b" modified="1265313728000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor1_Office.b" modified="1266333136000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/SUB___Bank.b" modified="1265313930000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_07.b" modified="1267052414000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Campus.b" modified="1264564506000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor.b" modified="1268264186000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Zone.b" modified="1265896352000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_08.b" modified="1267052420000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor3_Office.b" modified="1266333136000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor_01.b" modified="1267066808000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_02.b" modified="1267052294000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor_03.b" modified="1267066832000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/MyClock.b" modified="1267054250000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall___GradHouse.b" modified="1265313832000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/SUBWorker_01.b" modified="1267052872000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_04.b" modified="1267052342000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/EngLibrary.b" modified="1265313728000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Room.b" modified="1265313604000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall___LBGym.b" modified="1265313896000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor2_Office.b" modified="1266333136000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor_02.b" modified="1267066818000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Thief.b" modified="1267821317000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_03.b" modified="1267052314000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall___Classroom_ITC315.b" modified="1265313984000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall___SUB.b" modified="1265313886000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Librarian_01.b" modified="1267052846000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Bank.b" modified="1265313298000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/GymWorker_01.b" modified="1267052816000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/UniversityModel.b" modified="1264539758000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_01.b" modified="1267052234000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor2_Office___HeadHall.b" modified="1266333062000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/SUB.b" modified="1265313298000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/SUB___LBGym.b" modified="1265313922000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/OffCampus.b" modified="1267045428000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_10.b" modified="1267048922000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Instructor3_Office___HeadHall.b" modified="1266333056000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/HeadHall___Instructor1_Office.b" modified="1266333010000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/Student_05.b" modified="1267052348000"/>
-    <SOURCE_FILE name="/Users/Naix/Desktop/lab03/source/OffCampus___HeadHall.b" modified="1267045416000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/OffCampus.b" modified="1267045428000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_03.b" modified="1267052314000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___Instructor1_Office.b" modified="1266333010000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UNB.b" modified="1264564634000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SUB___Bank.b" modified="1265313930000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___SUB.b" modified="1265313886000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___LBGym.b" modified="1265313896000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor3_Office.b" modified="1266333136000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_08.b" modified="1267052420000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor3_Office___HeadHall.b" modified="1266333056000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Bank.b" modified="1265313298000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SUBWorker_01.b" modified="1267052872000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_02.b" modified="1267052294000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor2_Office___HeadHall.b" modified="1266333062000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor1_Office.b" modified="1266333136000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_01.b" modified="1267052234000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Campus.b" modified="1264564506000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Classroom_ITC315.b" modified="1267569272000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___GradHouse.b" modified="1265313832000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_09.b" modified="1267052386000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___Bank.b" modified="1265313902000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SUB___LBGym.b" modified="1265313922000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor2_Office.b" modified="1266333136000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/PoliceBuilding.b" modified="1268268900000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_10.b" modified="1267048922000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Librarian_01.b" modified="1267052846000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/MyClock.b" modified="1267054250000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/GymWorker_01.b" modified="1267052816000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/OffCampus___HeadHall.b" modified="1267045416000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___Classroom_ITC315.b" modified="1265313984000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/LBGym.b" modified="1265313298000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student.b" modified="1267073726000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor.b" modified="1268315080000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UniversityClock.b" modified="1264564706000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___EngLibrary.b" modified="1265313994000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SUB.b" modified="1268268931000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/CampusPolice.b" modified="1268269979000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_01.b" modified="1268315849000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Fredericton.b" modified="1264687242000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_07.b" modified="1267052414000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_06.b" modified="1267052402000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Zone.b" modified="1265896352000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Room.b" modified="1265313604000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Thief.b" modified="1267821317000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/LBGym___Bank.b" modified="1265313944000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_04.b" modified="1267052342000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_02.b" modified="1267066818000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UniversityModel.b" modified="1264539758000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/EngLibrary.b" modified="1265313728000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall.b" modified="1265313728000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_05.b" modified="1267052348000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_03.b" modified="1267066832000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UniversityGeography.b" modified="1264564634000"/>
   </SOURCE_FILES>
   
   <OPEN_FILES>
-    <OPEN_FILE name="/Users/Naix/Desktop/lab03/source/Thief.b" modified="1267821317000"/>
-    <OPEN_FILE name="/Users/Naix/Desktop/lab03/source/Instructor.b" modified="1268264186000"/>
-    <OPEN_FILE name="/Users/Naix/Desktop/lab03/source/Classroom_ITC315.b" modified="1267569272000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor.b" modified="1268315080000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_01.b" modified="1268315849000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student.b" modified="1267073726000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/CampusPolice.b" modified="1268269979000"/>
   </OPEN_FILES>
   
 </PROJECT>

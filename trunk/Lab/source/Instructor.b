@@ -22,29 +22,20 @@ group Instructor {
 		
 
   activities:
-
+		communicate answerQuestion(Student student) {
+			max_duration: 30; 
+			with: student;
+			about:
+				send(current.teaching); // teaching is an attribute... that is true or false
+			when: end;
+		}
+		 
 		composite_activity teach() { //instructor's activity to teach
 			activities:
 				primitive_activity teach()	{ // it "teaches" for 50 minutes
 					random: false;
 					max_duration: 3000; // 50 minutes
 				}
-				
-				communicate answerQuestion(Student student) { //TODO: What does this code do?
-					max_duration: 30; 
-					with: student;
-					about:
-						send(current.teaching); // teaching is an attribute... that is true or false
-					when: end;
-				} 
-								
-				communicate callCampusPolice(Student student) {
-					max_duration: 30; 
-					with: student;
-					about:
-						send(current.teaching); // teaching is an attribute... that is true or false
-					when: end;
-				} 
 			
 			workframes:
 				workframe wf_teach { // the instructor can be teaching
@@ -60,7 +51,7 @@ group Instructor {
 							when(whenever)
 							detect((Classroom_ITC315.projector = false), dc:100) // check the belief of a student.
 							//TODO: couldn't one generalize this for all the students
-							then impasse;
+							then continue;
 						}
 					when(
 						(current.teaching = false) and
@@ -80,18 +71,6 @@ group Instructor {
 						(studentToAnswer.haveQuestion = true))
 					do {
 						answerQuestion(studentToAnswer);
-					}
-				}
-				
-				workframe wf_callCampusPolice {
-					repeat: false;
-					variables:
-						forone(Student) studentToAnswer; // (Student) studentToAnswer...
-					when(
-						(current.teaching = true) and
-						(Classroom_ITC315.projector = false))
-					do {
-						callCampusPolice(studentToAnswer);
 					}
 				}
 		}
