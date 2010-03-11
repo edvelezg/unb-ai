@@ -1,3 +1,3 @@
-area SUB instanceof Building partof UNB {
+area SUB instanceof Building {
 
 }

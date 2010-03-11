@@ -1,0 +1,31 @@
+//FIXME: Assignment: Starting from your latest assignment code or the sample code here, enrich the current Brahms model to capture the following scenario: 
+
+//CHANGED: There is a Culprit who comes from off campus early in the day and takes the Projector from the first classroom
+ 	// (before any other agent has arrived to class). 
+//FIXME: A Security Camera in the room captures the event by remembering the description of the agent (the Culprit was wearing a red suit, and this can uniquely identify the Culprit). 
+
+//FIXME: When the Instructor agent that teaches the first class comes into the classroom, it will notice that the Projector is missing. 
+
+//FIXME: Once it returns to its office, it will contact Campus Police. (There is one diligent Campus Police agent that is always at the Campus Police building.) 
+
+//FIXME: The Campus Police agent will review the Security Camera from its office and will then have the description of the Culprit. 
+
+//FIXME: It will then share this information with the three Instructor agents before the second class begins. 
+
+//FIXME: The Instructor who teaches the second class will tell the Student agents the description of the Culprit. 
+
+//FIXME: After class, when these agents go to either the SUB, the Gym, or the Library, they will be on the lookout for the Culprit. 
+
+//FIXME: If they see the Culprit in a particular location, they should remember that location. 
+
+//FIXME: When the third class begins, the final Instructor agent will ask the Students if they saw the Culprit. 
+
+//FIXME: Those Student agents that saw the Culprit will offer to answer the question, but only one of the 
+	// Student agents will be chosen by the Instructor to answer the question. 
+
+//FIXME: Based on the information received from the Student, after returning from class, the Instructor will contact the Campus Police
+ // with the location of the Culprit. 
+
+//FIXME: The Campus Police must then move to this location before the end of the day. 
+
+//FIXME: For this simulation, the Culprit will hide in the Gym once it has taken the Projector and will remain at this location for the remainder of the day. 
