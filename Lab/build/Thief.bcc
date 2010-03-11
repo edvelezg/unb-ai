@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
-<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+<!-- Generated at Thu Mar 11 09:57:43 AST 2010 -->
 
 <AGENT name="Thief" serializable="false" display="Thief" location="OffCampus">
 	<MEMBEROF ref="brahms.base.BaseGroup" />

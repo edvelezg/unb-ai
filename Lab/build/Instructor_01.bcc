@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
-<!-- Generated at Wed Mar 10 19:34:48 AST 2010 -->
+<!-- Generated at Thu Mar 11 09:57:44 AST 2010 -->
 
 <AGENT name="Instructor_01" serializable="false" display="Instructor_01" location="OffCampus">
 	<MEMBEROF ref="Instructor" />
@@ -15,4 +15,129 @@
 			<OAV lObjRef="current" lObjType="Current" attRef="Instructor.teachingTime" evalOp="eq" value="2" valueType="int"/>
 		</BELIEF>
 	</BELIEFS>
+	<ACTIVITIES>
+		<COMM_ACT name="Instructor_01.callCampusPolice" descriptor="callCampusPolice()" display="callCampusPolice" maxDuration="30" when="end">
+			<WITH>
+				<WITHREF ref="CampusPolice" objType="Agent" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
+	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="Instructor_01.wf_teach" display="wf_teach" wftype="1">
+			<DETECTABLES>
+				<DETECTABLE name="noticeProjectorMissing" when="whenever">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Area" objRef="Classroom_ITC315" attRef="Classroom_ITC315.projector"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+				<DETECTABLE name="noticeQuestionStdnt01" when="whenever" action="impasse">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Student_01" attRef="Student.haveQuestion"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+			</DETECTABLES>
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teachingTime"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<ACTIVITYREF ref="teach()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Instructor_01.wf_callCampusPolice" display="wf_callCampusPolice" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Area" objRef="Classroom_ITC315" attRef="Classroom_ITC315.projector"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="callCampusPolice()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
 </AGENT>
