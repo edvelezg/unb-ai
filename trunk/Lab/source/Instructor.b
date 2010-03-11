@@ -6,7 +6,7 @@ group Instructor {
 		public int teachingTime; // time to teach
 		public boolean waitingInClass;
 		public boolean teaching;
-
+		public boolean seenProjector;
 
   relations:
 		// empty
@@ -37,6 +37,14 @@ group Instructor {
 						send(current.teaching); // teaching is an attribute... that is true or false
 					when: end;
 				} 
+								
+				communicate callCampusPolice(Student student) {
+					max_duration: 30; 
+					with: student;
+					about:
+						send(current.teaching); // teaching is an attribute... that is true or false
+					when: end;
+				} 
 			
 			workframes:
 				workframe wf_teach { // the instructor can be teaching
@@ -48,7 +56,7 @@ group Instructor {
 							//TODO: couldn't one generalize this for all the students
 							then impasse;
 						}
-						detectable noticeProjectorMissing { // if a student asks a question
+						detectable noticeProjectorMissing { //TODO: This detectable should go only Instructor 1 I think... can I override the frame for this
 							when(whenever)
 							detect((Classroom_ITC315.projector = false), dc:100) // check the belief of a student.
 							//TODO: couldn't one generalize this for all the students
@@ -62,7 +70,7 @@ group Instructor {
 						teach();
 					}
 				}
-				// How does it know  to jump to this workframe.
+				//TODO: How does it know  to jump to this workframe.
 				workframe wf_answerQuestion {
 					repeat: false;
 					variables:
@@ -72,6 +80,18 @@ group Instructor {
 						(studentToAnswer.haveQuestion = true))
 					do {
 						answerQuestion(studentToAnswer);
+					}
+				}
+				
+				workframe wf_callCampusPolice {
+					repeat: false;
+					variables:
+						forone(Student) studentToAnswer; // (Student) studentToAnswer...
+					when(
+						(current.teaching = true) and
+						(Classroom_ITC315.projector = false))
+					do {
+						callCampusPolice(studentToAnswer);
 					}
 				}
 		}
