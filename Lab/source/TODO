@@ -1,12 +1,12 @@
 //CHANGED: There is a Culprit who comes from off campus early in the day and takes the Projector from the first classroom
  	// (before any other agent has arrived to class). 
-//FIXME: A Security Camera in the room captures the event by remembering the description of the agent (the Culprit was wearing a red suit, and this can uniquely identify the Culprit). 
+//CHANGED: A Security Camera in the room captures the event by remembering the description of the agent (the Culprit was wearing a red suit, and this can uniquely identify the Culprit). 
 
 //CHANGED: When the Instructor agent that teaches the first class comes into the classroom, it will notice that the Projector is missing. 
 
 //CHANGED: Once it returns to its office, it will contact Campus Police. (There is one diligent Campus Police agent that is always at the Campus Police building.) 
 
-//FIXME: The Campus Police agent will review the Security Camera from its office and will then have the description of the Culprit. 
+//CHANGED: The Campus Police agent will review the Security Camera from its office and will then have the description of the Culprit. 
 
 //FIXME: It will then share this information with the three Instructor agents before the second class begins. 
 
@@ -26,4 +26,4 @@
 
 //FIXME: The Campus Police must then move to this location before the end of the day. 
 
-//FIXME: For this simulation, the Culprit will hide in the Gym once it has taken the Projector and will remain at this location for the remainder of the day. 
+//CHANGED: For this simulation, the Culprit will hide in the Gym once it has taken the Projector and will remain at this location for the remainder of the day. 

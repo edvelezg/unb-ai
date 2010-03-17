@@ -10,7 +10,15 @@ class SecurityCamera {
 	
 			
 	activities:
-
+	
+		communicate sendSuitColor() { // Answer question that is asked by a student
+			max_duration: 30; 
+			with: CampusPolice; // communication established police agent
+			about:
+				send(current.suitColor); // sends the instructor's current value of teaching
+			when: end;
+		}
+	
 		primitive_activity sense() {
 			random: false;
 			max_duration: 36000; // the whole 10 hours
@@ -60,9 +68,26 @@ class SecurityCamera {
 						detect((UniversityClock.time = 11), dc:100)
 						then abort;
 				}
+				detectable isBeingChecked {
+						when(whenever)
+						detect((CampusPolice.checkingCamera = true), dc:100)
+						then abort;
+				}
+				
 			when()
 			do {
 				sense();
 			}
 		}
+		
+		workframe wf_sendSuitColor {
+			repeat: false;
+			when(
+			(CampusPolice.checkingCamera = true)
+			)
+			do {
+				sendSuitColor();
+			}
+		}
+
 }	
