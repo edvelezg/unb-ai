@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
-<!-- Generated at Thu Mar 11 09:57:44 AST 2010 -->
+<!-- Generated at Tue Mar 16 23:29:50 ADT 2010 -->
 
 <AGENT name="Instructor_01" serializable="false" display="Instructor_01" location="OffCampus">
 	<MEMBEROF ref="Instructor" />
@@ -25,10 +25,10 @@
 					<CONDITION>
 						<VALUECOMPARISON relation="eq">
 							<EXPRESSION>
-								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.seenProjector"/>
 							</EXPRESSION>
 							<EXPRESSION>
-								<OPERAND type="O" objType="variable" objRef="?"/>
+								<OPERAND type="V" valueType="boolean" value="false"/>
 							</EXPRESSION>
 						</VALUECOMPARISON>
 					</CONDITION>
@@ -113,18 +113,6 @@
 					<CONDITION>
 						<VALUECOMPARISON relation="eq">
 							<EXPRESSION>
-								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.teaching"/>
-							</EXPRESSION>
-							<EXPRESSION>
-								<OPERAND type="V" valueType="boolean" value="true"/>
-							</EXPRESSION>
-						</VALUECOMPARISON>
-					</CONDITION>
-				</PRECONDITION>
-				<PRECONDITION modifier="knownval">
-					<CONDITION>
-						<VALUECOMPARISON relation="eq">
-							<EXPRESSION>
 								<OPERAND type="OA" objType="concept" objTypeDetail="Area" objRef="Classroom_ITC315" attRef="Classroom_ITC315.projector"/>
 							</EXPRESSION>
 							<EXPRESSION>
@@ -135,6 +123,18 @@
 				</PRECONDITION>
 			</WHEN>
 			<WF_DO>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Instructor.seenProjector"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
 				<ACTIVITYREF ref="callCampusPolice()">
 				</ACTIVITYREF>
 			</WF_DO>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE OBJECT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/object.dtd"> 
-<!-- Generated at Thu Mar 11 09:57:44 AST 2010 -->
+<!-- Generated at Tue Mar 16 23:29:50 ADT 2010 -->
 
 <OBJECT name="UniversityClock" serializable="false" display="UniversityClock">
 	<INSTANCEOF ref="MyClock" />

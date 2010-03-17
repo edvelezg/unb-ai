@@ -4,10 +4,10 @@ group Instructor {
 		public Room myOfficeLoc; // The instructor's room
 		public int leaveCampusTime; // the instructor's time to leave the campus
 		public int teachingTime; // time to teach
-		public boolean waitingInClass;
+		public boolean waitingInClass; // whether the instructor is currently waiting in class
 		public boolean teaching;
-		public boolean seenProjector;
-
+		public boolean seenProjector; // whether the instructor has seen the projector
+		
   relations:
 		// empty
 
@@ -22,17 +22,17 @@ group Instructor {
 		
 
   activities:
-		communicate answerQuestion(Student student) {
+		communicate answerQuestion(Student student) { // Answer question that is asked by a student
 			max_duration: 30; 
-			with: student;
+			with: student; // communication established with student agent
 			about:
-				send(current.teaching); // teaching is an attribute... that is true or false
+				send(current.teaching); // sends the instructor's current value of teaching
 			when: end;
 		}
 		 
 		composite_activity teach() { //instructor's activity to teach
 			activities:
-				primitive_activity teach()	{ // it "teaches" for 50 minutes
+				primitive_activity teach()	{ // he/she "teaches" for 50 minutes
 					random: false;
 					max_duration: 3000; // 50 minutes
 				}
@@ -43,13 +43,13 @@ group Instructor {
 					detectables:
 						detectable noticeQuestionStdnt01 { // if a student asks a question
 							when(whenever)
-							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
 							//TODO: couldn't one generalize this for all the students
+							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
 							then impasse;
 						}
 						detectable noticeProjectorMissing { //TODO: This detectable should go only Instructor 1 I think... can I override the frame for this
 							when(whenever)
-							detect((Classroom_ITC315.projector = false), dc:100) // check the belief of a student.
+							detect((Classroom_ITC315.projector = false), dc:100) // check if the projector is missing.
 							//TODO: couldn't one generalize this for all the students
 							then continue;
 						}
@@ -61,11 +61,10 @@ group Instructor {
 						teach();
 					}
 				}
-				//TODO: How does it know  to jump to this workframe.
-				workframe wf_answerQuestion {
+				workframe wf_answerQuestion { // or he can be answering a question
 					repeat: false;
 					variables:
-						forone(Student) studentToAnswer; // (Student) studentToAnswer...
+						forone(Student) studentToAnswer; // referring to one agent of the student group
 					when(
 						(current.teaching = true) and
 						(studentToAnswer.haveQuestion = true))

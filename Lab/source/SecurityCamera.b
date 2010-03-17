@@ -1,53 +1,68 @@
 class SecurityCamera {
-
-	attributes:
-		public symbol suitColor;
 	
+	attributes:
+		public int senseTime;
+		public symbol suitColor;
+		
 	initial_facts:
-		(current.suitColor = none);
-				
+		(current.senseTime = unknown);
+		(current.suitColor = unknown);
+	
+			
 	activities:
 
-		primitive_activity waitTenMinutes() {
-					random: false;
-					max_duration: 599; // 10 minutes
-		}
-	
-		broadcast announceTime() {
-					random: false;
-					max_duration: 1;
-					to: UNB;
-					about: 
-						send(current.tenMinUnits),
-						send(current.time);
-					when: end;	 
-		}
-			
-			
-	workframes:
-
-		workframe wf_waitOneHour {
-				repeat: true;
-				when(
-					(current.tenMinUnits = 5) and
-					(current.time <= 10))
-				do {
-					waitTenMinutes();
-					conclude((current.tenMinUnits = 0), bc:100, fc:100);
-					conclude((current.time = current.time + 1), bc:100, fc:100);
-					announceTime();
-				}
+		primitive_activity sense() {
+			random: false;
+			max_duration: 36000; // the whole 10 hours
 		}
 		
-		workframe wf_waitTenMinutes {
-				repeat: true;
-				when(
-					(current.tenMinUnits < 5) and
-					(current.time <= 10))
-				do {
-					waitTenMinutes();
-					conclude((current.tenMinUnits = current.tenMinUnits + 1), bc:100, fc:100);
-					announceTime();
+		primitive_activity record() {
+			random: false;
+			max_duration: 500;
+		}
+
+				
+	workframes:
+
+		workframe wf_sense1 {
+			repeat: false;
+			priority: 2;
+			detectables:
+				detectable senseThief {
+						when(whenever)
+						detect((Thief.location = current.location), dc:100)
+						then abort;
 				}
+			when()
+			do {
+				sense();
+			}
+		}
+	
+		workframe wf_recordEvent {
+			repeat: false;
+			priority: 1;
+			when(
+				(Thief.location = current.location))
+			do {
+				record();
+				conclude((current.senseTime = MyClock.time), fc:100);
+				conclude((current.suitColor = Thief.suitColor), fc:100);
+			}
+		}
+
+		workframe wf_sense2 {
+			repeat: false;
+			priority: 0;
+			detectables:
+				detectable timeIsUp {
+						when(whenever)
+						detect((UniversityClock.time = 11), dc:100)
+						then abort;
+				}
+			when()
+			do {
+				sense();
+			}
 		}
 }	
