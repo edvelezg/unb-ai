@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
-<!-- Generated at Thu Mar 11 09:57:44 AST 2010 -->
+<!-- Generated at Tue Mar 16 23:29:50 ADT 2010 -->
 
 <CLASS name="MyClock" serializable="false" display="MyClock">
 	<EXTENDS ref="brahms.base.BaseClass" />

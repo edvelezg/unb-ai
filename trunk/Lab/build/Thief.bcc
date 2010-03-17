@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
-<!-- Generated at Thu Mar 11 09:57:43 AST 2010 -->
+<!-- Generated at Tue Mar 16 23:29:50 ADT 2010 -->
 
 <AGENT name="Thief" serializable="false" display="Thief" location="OffCampus">
 	<MEMBEROF ref="brahms.base.BaseGroup" />
 	<ATTRIBUTES>
-		<ATTRIBUTE name="Thief.class1Time" display="class1Time" scope="public" type="int"/>
-		<ATTRIBUTE name="Thief.classesStarted" display="classesStarted" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Thief.inClass" display="inClass" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Thief.suitColor" display="suitColor" scope="public" type="symbol"/>
+		<ATTRIBUTE name="Thief.stealTime" display="stealTime" scope="public" type="int"/>
 	</ATTRIBUTES>
 	<BELIEFS>
 		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Thief.class1Time" evalOp="eq" value="2" valueType="int"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="Thief.stealTime" evalOp="eq" value="2" valueType="int"/>
 		</BELIEF>
 	</BELIEFS>
+	<FACTS>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="Thief.suitColor" evalOp="eq" value="red" valueType="symbol"/>
+		</FACT>
+	</FACTS>
 	<ACTIVITIES>
 		<MOVE_ACT name="Thief.goToGym" descriptor="goToGym()" display="goToGym" location="LBGym" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
 		</MOVE_ACT>
 		<MOVE_ACT name="Thief.goToClass" descriptor="goToClass()" display="goToClass" location="Classroom_ITC315" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
 		</MOVE_ACT>
-		<PRIM_ACT name="Thief.steal" descriptor="steal()" display="steal" maxDuration="600">
-		</PRIM_ACT>
+		<GET_ACT name="Thief.steal" descriptor="steal()" display="steal" maxDuration="600" when="end">
+			<ITEMS>
+				<ITEMREF ref="Projector" type="Object"/>
+			</ITEMS>
+		</GET_ACT>
 		<PRIM_ACT name="Thief.wait" descriptor="wait()" display="wait" random="true" minDuration="1200" maxDuration="1800">
 		</PRIM_ACT>
 		<MOVE_ACT name="Thief.goToHeadHall" descriptor="goToHeadHall()" display="goToHeadHall" location="HeadHall" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
@@ -48,7 +55,7 @@
 								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.tenMinUnits"/>
 							</EXPRESSION>
 							<EXPRESSION>
-								<OPERAND type="OA" objType="current" objRef="current" attRef="Thief.class1Time"/>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Thief.stealTime"/>
 							</EXPRESSION>
 						</VALUECOMPARISON>
 					</CONDITION>

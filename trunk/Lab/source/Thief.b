@@ -1,27 +1,27 @@
 agent Thief {
 	location: OffCampus;
   attributes:
-		public int class1Time;
-		public boolean inClass;
-		public boolean classesStarted;		
-		
+		public symbol suitColor;
+		public int stealTime;
+			
   relations:
 		// empty
 		
 	initial_beliefs:
-		(current.class1Time = 2);
+		(current.stealTime = 2);
 
   initial_facts:
-		// empty
+		(current.suitColor = red);
 
 				
   activities:
 		
-		primitive_activity steal() {
+		get steal() {
 			random: false;
 			max_duration: 600; // 10 minutes
+			items: Projector;	
 		}
-
+		
 		primitive_activity wait() {
 			random: true;
 			min_duration: 1200; // 20 minutes
@@ -57,7 +57,7 @@ agent Thief {
 			repeat: false;
 			when(
 				(UniversityClock.time = 1) and
-				(UniversityClock.tenMinUnits = current.class1Time))
+				(UniversityClock.tenMinUnits = current.stealTime))
 			do {
 				goToClass(); /* thief goes to first class */
 				steal();
