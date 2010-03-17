@@ -40,6 +40,8 @@ group Instructor {
 			workframes:
 				workframe wf_teach { // the instructor can be teaching
 					repeat: false;
+					variables:
+						forone(Instructor) instructor;					
 					detectables:
 						detectable noticeQuestionStdnt01 { // if a student asks a question
 							when(whenever)
@@ -47,20 +49,16 @@ group Instructor {
 							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
 							then impasse;
 						}
-						detectable noticeProjectorMissing { //TODO: This detectable should go only Instructor 1 I think... can I override the frame for this
-							when(whenever)
-							detect((Classroom_ITC315.projector = false), dc:100) // check if the projector is missing.
-							//TODO: couldn't one generalize this for all the students
-							then continue;
-						}
 					when(
 						(current.teaching = false) and
-						(UniversityClock.time = current.teachingTime))
+						(UniversityClock.time = current.teachingTime)
+						)
 					do {
 						conclude((current.teaching = true), bc:100, fc:100);
 						teach();
 					}
 				}
+				
 				workframe wf_answerQuestion { // or he can be answering a question
 					repeat: false;
 					variables:

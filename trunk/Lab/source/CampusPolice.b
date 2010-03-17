@@ -3,29 +3,59 @@ agent CampusPolice {
 	
 	attributes:
 		public boolean projector;
+		public boolean checkingCamera;
 		public symbol suitColor;
 	
 	initial_beliefs:
 		(current.projector = true);
 		(current.suitColor = unknown);
+		(current.checkingCamera = false);
 		
 	
-	activities:
-	
-		primitive_activity wait() {
-			random: false;
-			max_duration: 36000; // the whole 10 hours
-		}
+	activities:	
+		// primitive_activity wait() {
+		// 	random: false;
+		// 	max_duration: 36000; // the whole 10 hours
+		// }
 
 		primitive_activity answerCall() {
 			random: false;
 			max_duration: 500;
 		}
 		
-		primitive_activity checkCamera() {
-			random: false;
-			max_duration: 500;
+		composite_activity waitOnCalls() { //police officer waits on calls
+			activities:
+				primitive_activity wait()	{ // he/she "teaches" for 50 minutes
+					random: false;
+					max_duration: 36000; // 50 minutes
+				}
+			
+			workframes:
+				workframe wf_wait { // the instructor can be teaching
+					repeat: false;
+					priority: 0;
+					detectables:
+						detectable answerCall { // if the instructor calls 
+							when(whenever)
+							detect((Instructor_01.seenProjector = false), dc:100)
+							then abort;
+						}
+					when()
+					do {
+						wait();
+					}
+				}				
 		}
+		
+		
+		communicate checkCamera() { // Answer question that is asked by a student
+			max_duration: 500; 
+			with: ITC315Camera; // communication established police agent
+			about:
+				send(current.checkingCamera); // sends the instructor's current value of teaching
+			when: end;
+		}
+		
 
 	workframes:
 				workframe wf_wait { // the instructor can be teaching
@@ -52,13 +82,28 @@ agent CampusPolice {
 					do 
 					{
 						answerCall();
-						conclude((current.suitColor = ITC315Camera.suitColor), bc:100, fc: 100);
-						conclude((current.projector = false), bc:100, fc:100);
+						conclude((current.projector = Instructor_01.seenProjector), bc:100, fc:100);
+						conclude((current.checkingCamera = true), bc:100, fc:100);
 						checkCamera();
+						conclude((current.suitColor = ITC315Camera.suitColor), bc:100, fc: 100);
 					}
-				}				
-}
-
+				}
+								
+				workframe wf_informInstructors 
+				{
+					repeat: false;
+					variables:
+						foreach (Instructor) instructor;
+					when(
+						knownval(current.suitColor = red)
+						)
+					do 
+					{
+						answerCall();
+						wait();
+					}
+				}
+}				
 
 //class Sensor extends BaseClass {
 //	
@@ -127,5 +172,4 @@ agent CampusPolice {
 //				sense();
 //			}
 //		}
-// 2 + 1
 //}
