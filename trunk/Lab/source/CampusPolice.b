@@ -60,7 +60,7 @@ agent CampusPolice {
 						conclude((current.projector = Instructor_01.seenProjector), bc:100, fc:100);
 						checkCamera();
 						conclude((current.checkingCamera = true), bc:100, fc:100);
-						conclude((current.suitColor = ITC315Camera.suitColor), bc:100, fc: 100);
+						
 					}
 				}
 								
@@ -70,10 +70,11 @@ agent CampusPolice {
 					variables:
 						foreach (Instructor) instructor;
 					when(
-						knownval(current.suitColor = red)
+						knownval(ITC315Camera.suitColor = red)
 						)
 					do 
 					{
+						conclude((current.suitColor = ITC315Camera.suitColor), bc:100, fc: 100);
 						answerCall();
 						wait();
 					}
