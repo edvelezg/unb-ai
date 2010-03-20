@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE GROUP SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/group.dtd"> 
-<!-- Generated at Tue Mar 16 23:29:50 ADT 2010 -->
+<!-- Generated at Fri Mar 19 14:27:16 ADT 2010 -->
 
 <GROUP name="Instructor" display="Instructor">
 	<MEMBEROF ref="brahms.base.BaseGroup" />
@@ -34,19 +34,10 @@
 			</ACTIVITIES>
 			<WORKFRAMES>
 				<WORKFRAME name="Instructor.teach.wf_teach" display="wf_teach" wftype="1">
+					<VARIABLES>
+						<VARIABLE name="instructor" display="instructor" quantification="forone" type="Instructor" typeDetail="Group"/>
+					</VARIABLES>
 					<DETECTABLES>
-						<DETECTABLE name="noticeProjectorMissing" when="whenever">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="concept" objTypeDetail="Area" objRef="Classroom_ITC315" attRef="Classroom_ITC315.projector"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="false"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</DETECTABLE>
 						<DETECTABLE name="noticeQuestionStdnt01" when="whenever" action="impasse">
 							<CONDITION>
 								<VALUECOMPARISON relation="eq">

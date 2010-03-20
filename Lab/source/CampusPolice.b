@@ -31,6 +31,14 @@ agent CampusPolice {
 			when: end;
 		}		
 
+		communicate informInstructor(Instructor instructor) { // inform instructor
+			max_duration: 500; 
+			with: instructor; // communication established with instructor
+			about:
+				send(ITC315Camera.suitColor); // sends the thief's suitColor to the instructors
+			when: end;
+		}
+		
 	workframes:
 	
 				workframe wf_wait { // the instructor can be teaching
@@ -68,15 +76,14 @@ agent CampusPolice {
 				{
 					repeat: false;
 					variables:
-						foreach (Instructor) instructor;
+						collectall (Instructor) instructor;
 					when(
-						knownval(ITC315Camera.suitColor = red)
+						known(ITC315Camera.suitColor)
 						)
 					do 
 					{
 						conclude((current.suitColor = ITC315Camera.suitColor), bc:100, fc: 100);
-						answerCall();
-						wait();
+						informInstructor(instructor);
 					}
 				}
 }				

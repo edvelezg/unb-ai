@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE MODEL SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/model.dtd"> 
-<!-- Generated at Tue Mar 16 23:29:50 ADT 2010 -->
+<!-- Generated at Fri Mar 19 14:27:15 ADT 2010 -->
 
 <MODEL name="UniversityModel">
 	<AGENTREF ref="brahms.base.ANY-AGENT" />
