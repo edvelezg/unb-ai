@@ -62,12 +62,12 @@
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___Classroom_ITC315.b" modified="1265313984000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/LBGym.b" modified="1265313298000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student.b" modified="1267073726000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor.b" modified="1268792988000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor.b" modified="1268864805000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UniversityClock.b" modified="1264564706000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall___EngLibrary.b" modified="1265313994000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SUB.b" modified="1268268931000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/CampusPolice.b" modified="1268790924000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_01.b" modified="1268512379000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/CampusPolice.b" modified="1269019634000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_01.b" modified="1268861218000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Fredericton.b" modified="1264687242000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_07.b" modified="1267052414000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_06.b" modified="1267052402000"/>
@@ -75,11 +75,11 @@
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Zone.b" modified="1265896352000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Room.b" modified="1265313604000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Thief.b" modified="1268792653000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SecurityCamera.b" modified="1268788320000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SecurityCamera.b" modified="1268868657000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/LBGym___Bank.b" modified="1265313944000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Student_04.b" modified="1267052342000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_02.b" modified="1267066818000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/ITC315Camera.b" modified="1268787708000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/ITC315Camera.b" modified="1268868163000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UniversityModel.b" modified="1264539758000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/EngLibrary.b" modified="1265313728000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/HeadHall.b" modified="1265313728000"/>
@@ -89,9 +89,13 @@
   </SOURCE_FILES>
   
   <OPEN_FILES>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SecurityCamera.b" modified="1268788320000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/SecurityCamera.b" modified="1268868657000"/>
     <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Thief.b" modified="1268792653000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor.b" modified="1268792988000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor.b" modified="1268864805000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/CampusPolice.b" modified="1269019634000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/Instructor_01.b" modified="1268861218000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/UniversityClock.b" modified="1264564706000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Lab/source/ITC315Camera.b" modified="1268868163000"/>
   </OPEN_FILES>
   
 </PROJECT>

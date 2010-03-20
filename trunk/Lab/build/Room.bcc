@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AREADEF SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/areadef.dtd"> 
-<!-- Generated at Tue Mar 16 23:29:50 ADT 2010 -->
+<!-- Generated at Fri Mar 19 14:27:16 ADT 2010 -->
 
 <AREADEF name="Room" display="Room">
 	<EXTENDS ref="brahms.base.BaseAreaDef" />
