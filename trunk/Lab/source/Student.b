@@ -57,9 +57,8 @@ group Student {
 		}
 		
 		primitive_activity seesThief() {
-			random: true;
-			min_duration: 1200; // 20 minutes
-			max_duration: 1800; // 30 minutes
+			random: false;
+			max_duration: 500; // 30 minutes
 		}
 		
 		move goToHeadHall() {
@@ -101,11 +100,25 @@ group Student {
 		}
 		
   workframes:
-
+		// workframe wf_checkSecurityCamera 
+		// {
+		// 	repeat: false;
+		// 	when(
+		// 		(Instructor_01.seenProjector = false)
+		// 		)
+		// 	do 
+		// 	{
+		// 		answerCall();
+		// 		conclude((current.projector = Instructor_01.seenProjector), bc:100, fc:100);
+		// 		checkCamera();
+		// 		conclude((current.checkingCamera = true), bc:100, fc:100);
+		// 	
+		// 	}
+		// }
 		workframe wf_seesThief {
 			repeat: false;
 			when(
-				(Thief.location = current.location)
+				(current.location = LBGym)
 				)
 			do {
 				seesThief(); // between 20-40 minutes
@@ -260,6 +273,13 @@ group Student {
 
 		workframe wf_goToGymAfternoon {
 			repeat: false;
+			priority: 2;
+			detectables:
+				detectable senseThief {
+						when(whenever)
+						detect((Thief.location = current.location), dc:100)
+						then abort;
+				}
 			when(
 				(UniversityClock.time > 5) and
 				(current.afternoonActivity = exercise) and
@@ -272,6 +292,18 @@ group Student {
 		
 		workframe wf_goToGymAfterClass {
 			repeat: false;
+			priority: 2;
+			detectables:
+				detectable senseThief {
+						when(whenever)
+						detect((Thief.location = current.location), dc:100)
+						then abort;
+				}
+				// detectable answerCall { // if the instructor calls 
+				// 	when(whenever)
+				// 	detect((Instructor_01.seenProjector = false), dc:100)
+				// 	then abort;
+				// }		
 			when(
 				(UniversityClock.time > 5) and
 				(current.afterClassActivity = exercise) and
