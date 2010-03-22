@@ -100,28 +100,21 @@ group Student {
 				send(current.haveQuestion);
 			when: end;
 		}
+
+		communicate answerQuestion(Instructor instructor) { // Answer question that is asked by a instructor
+			max_duration: 30; 
+			with: instructor; // communication established with instructor agent
+			about:
+				send(current.culpritLocation); // sends the instructor's current value of teaching
+			when: end;
+		}
 		
   workframes:
-		// workframe wf_checkSecurityCamera 
-		// {
-		// 	repeat: false;
-		// 	when(
-		// 		(Instructor_01.seenProjector = false)
-		// 		)
-		// 	do 
-		// 	{
-		// 		answerCall();
-		// 		conclude((current.projector = Instructor_01.seenProjector), bc:100, fc:100);
-		// 		checkCamera();
-		// 		conclude((current.checkingCamera = true), bc:100, fc:100);
-		// 	
-		// 	}
-		// }
-		workframe wf_seesThief {
+		
+		workframe wf_seesThief { // This workframe is activated when the student knows the description and is in the same location as the thief
 			repeat: false;
 			when(
 				(current.location = Thief.location) and
-//				(current.location != OffCampus) and
 				(ITC315Camera.suitColor = red)
 				)
 			do {
@@ -332,6 +325,17 @@ group Student {
 			}
 		}
 		
+		workframe wf_answerQuestion { // or he can be answering a question
+			repeat: false;
+			variables:
+				forone(Instructor) instructor; // referring to one agent of the student group
+			when(
+				(current.inClass = true) and
+				(instructor.haveQuestion = true))
+			do {
+				answerQuestion(instructor);
+			}
+		}
 		
   thoughtframes:
 		
