@@ -51,29 +51,34 @@ group Instructor {
 				}
 			
 			workframes:
-//				workframe wf_teachInst3 { // the instructor can be teaching
-//					repeat: false;
-//					variables:
-//						forone(Instructor) instructor;					
-//					detectables:
-//						detectable noticeQuestionStdnt01 { // if a student asks a question
-//							when(whenever)
-//							//TODO: couldn't one generalize this for all the students
-//							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
-//							then impasse;
-//						}
-//					when(
-//						(instructor = Instructor_03) and
-//						(current.teaching = false) and
-//						(UniversityClock.time = current.teachingTime)
-//						)
-//					do {
-//						conclude((current.teaching = true), bc:100, fc:100);
-//						teach();
-//					}
-//				}
+				workframe wf_teach1 { // the instructor can be teaching
+					repeat: false;
+					detectables:
+						detectable noticeQuestionStdnt01 { // if a student asks a question
+							when(whenever)
+							//TODO: couldn't one generalize this for all the students
+							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
+							then impasse;
+						}
+						detectable noticeProjectorMissing { //TODO: This detectable should go only Instructor 1 I think... can I override the frame for this
+							when(whenever)
+							detect((Classroom_ITC315.projector = false), dc:100) // check if the projector is missing.
+							//TODO: couldn't one generalize this for all the students
+							then continue;
+						}
+
+					when(
+						(current.teaching = false) and
+						(UniversityClock.time = current.teachingTime) and
+						(current.teachingTime = 2) // only applies to the first instructor
+						)
+					do {
+						conclude((current.teaching = true), bc:100, fc:100);
+						teach();
+					}
+				}
 				
-				workframe wf_teachInst2 { // the instructor can be teaching
+				workframe wf_teach2 { // the instructor can be teaching
 					repeat: false;
 					variables:
 						forone(Instructor) instructor;					
@@ -85,7 +90,7 @@ group Instructor {
 							then impasse;
 						}
 					when(
-						(instructor = Instructor_02) and
+						(current.teachingTime = 5) and
 						(current.teaching = false) and
 						(UniversityClock.time = current.teachingTime)
 						)
@@ -95,7 +100,27 @@ group Instructor {
 						teach();
 					}
 				}
-				
+				workframe wf_teach3 { // instructor 3s teaching workframe
+					repeat: false;
+					variables:
+						forone(Instructor) instructor;					
+					detectables:
+						detectable noticeQuestionStdnt01 { // if a student asks a question
+							when(whenever)
+							//TODO: couldn't one generalize this for all the students
+							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
+							then impasse;
+						}
+					when(
+						(current.teachingTime = 7) and
+						(current.teaching = false) and
+						(UniversityClock.time = current.teachingTime)
+						)
+					do {
+						conclude((current.teaching = true), bc:100, fc:100);
+						teach();
+					}
+				}
 				workframe wf_answerQuestion { // or he can be answering a question
 					repeat: false;
 					variables:
