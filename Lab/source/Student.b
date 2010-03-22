@@ -13,6 +13,7 @@ group Student {
 		public boolean leaveCampus;
 		public boolean haveQuestion;
 		public BaseAreaDef culpritLocation;
+//		public symbol culpritSuit;
 		
 		
   relations:
@@ -28,6 +29,7 @@ group Student {
 		(current.finishedClasses = false);		
 		(current.leaveCampus = false);
 		(current.haveQuestion = false);
+//		(current.culpritSuit = unknown);
 
   initial_facts:
 		// empty
@@ -118,7 +120,9 @@ group Student {
 		workframe wf_seesThief {
 			repeat: false;
 			when(
-				(current.location = LBGym)
+				(current.location = Thief.location) and
+//				(current.location != OffCampus) and
+				(ITC315Camera.suitColor = red)
 				)
 			do {
 				seesThief(); // between 20-40 minutes
@@ -274,13 +278,7 @@ group Student {
 		workframe wf_goToGymAfternoon {
 			repeat: false;
 			priority: 2;
-			detectables:
-				detectable senseThief {
-						when(whenever)
-						detect((Thief.location = current.location), dc:100)
-						then abort;
-				}
-			when(
+			when( 
 				(UniversityClock.time > 5) and
 				(current.afternoonActivity = exercise) and
 				(current.inClass = false))

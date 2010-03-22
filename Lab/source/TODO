@@ -12,9 +12,9 @@
 
 //CHANGED: The Instructor who teaches the second class will tell the Student agents the description of the Culprit. 
 
-//FIXME: After class, when these agents go to either the SUB, the Gym, or the Library, they will be on the lookout for the Culprit. Attempt to write a detectable for that student in its workframe in gym
+//CHANGED: After class, when these agents go to either the SUB, the Gym, or the Library, they will be on the lookout for the Culprit.
 
-//FIXME: If they see the Culprit in a particular location, they should remember that location. 
+//CHANGED: If they see the Culprit in a particular location, they should remember that location. 
 
 //FIXME: When the third class begins, the final Instructor agent will ask the Students if they saw the Culprit. 
 
