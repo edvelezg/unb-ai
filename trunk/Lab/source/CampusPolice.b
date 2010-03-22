@@ -4,15 +4,22 @@ agent CampusPolice {
 	attributes:
 		public boolean projector;
 		public boolean checkingCamera;
+		public boolean waiting;
 		public symbol suitColor;
 	
 	initial_beliefs:
 		(current.projector = true);
 		(current.suitColor = unknown);
 		(current.checkingCamera = false);
+		(current.waiting = true);
 		
 	
 	activities:	
+		move goToGym() {
+			random: false;
+			location: LBGym;
+		}
+	
 		primitive_activity wait() {
 			random: false;
 			max_duration: 36000; // the whole 10 hours
@@ -75,7 +82,7 @@ agent CampusPolice {
 							detect((Instructor_01.seenProjector = false), dc:100)
 							then abort;
 						}
-					when()
+					when((current.waiting = true))
 					do {
 						wait();
 					}
@@ -93,7 +100,7 @@ agent CampusPolice {
 						conclude((current.projector = Instructor_01.seenProjector), bc:100, fc:100);
 						checkCamera();
 						conclude((current.checkingCamera = true), bc:100, fc:100);
-						
+						conclude((current.waiting = false), bc:100, fc:100);
 					}
 				}
 								
@@ -103,6 +110,7 @@ agent CampusPolice {
 					// variables:  // this did not work for some unknown reason.
 					// 	collectall (Instructor) instructor;
 					when(
+						(current.waiting = false) and
 						known(ITC315Camera.suitColor)
 						)
 					do 
@@ -112,6 +120,36 @@ agent CampusPolice {
 						informInstructor1();
 						informInstructor2();
 						informInstructor3();
+						conclude((current.waiting = true), bc:100, fc: 100);
 					}
 				}
+				
+				workframe wf_wait2 { // the instructor can be teaching
+					repeat: false;
+					priority: 0;
+					detectables:
+						detectable answerCall { // if the instructor calls 
+							when(whenever)
+							detect((Student_07.culpritLocation = LBGym), dc:100)
+							then abort;
+						}
+					when(
+						(current.waiting = true) and
+						known(ITC315Camera.suitColor)
+						)
+					do {
+						wait();
+					}
+				}
+								
+				workframe wf_moveTowardsThief { // the instructor can be teaching
+					repeat: false;
+					when(
+						(Student_07.culpritLocation = LBGym)
+						)
+					do {
+						goToGym();
+					}
+				}				
+				
 }				
