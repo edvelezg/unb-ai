@@ -45,6 +45,14 @@ group Instructor {
 			when: end;
 		}
 		
+		communicate callCampusPolice() { // Instructor 1 calls the campus police when he does not see the projector
+			max_duration: 30; 
+			with: CampusPolice;
+			about:
+				send(current.seenProjector = false);
+			when: end;
+		}
+		
 		broadcast announceToStudents() {
 					random: false;
 					max_duration: 500;
@@ -253,4 +261,34 @@ group Instructor {
 				leaveCampus();
 			}
 		}
+
+		workframe wf_callCampusPolice // only applies to instructor1 who calls police when he doesn't see the projector
+		{
+			repeat: false;
+			when(
+				(Classroom_ITC315.projector = false) and 
+				(current.teachingTime = 2)
+				)
+			do 
+			{
+				conclude((current.seenProjector = false), bc:100, fc:100);
+				callCampusPolice();
+			}
+		}	
+		
+		workframe wf_callCampusPoliceBack
+		{
+			repeat: false;
+			variables:
+				forone(Student) student;
+			when(
+				known(student.culpritLocation) and
+				(current.teachingTime = 7)
+				)
+			do 
+			{
+				conclude((current.culpritLocation = student.culpritLocation), bc:100, fc:100);
+				informCampusPolice();
+			}
+		}		
 }
