@@ -5,18 +5,9 @@ agent Instructor_03 memberof Instructor {
 		(current.myOfficeLoc = Instructor3_Office);
 		(current.leaveCampusTime = 9);
 		(current.teachingTime = 7);
-		
-	activities:
-		communicate informCampusPolice() {
-			max_duration: 500; 
-			with: CampusPolice;
-			about:
-				send(Student_07.culpritLocation);
-			when: end;
-		}
 
 	workframes:
-		workframe wf_callCampusPolice 
+		workframe wf_callCampusPoliceBack
 		{
 			repeat: false;
 			variables:
@@ -26,7 +17,7 @@ agent Instructor_03 memberof Instructor {
 				)
 			do 
 			{
-				// conclude((current.seenProjector = false), bc:100, fc:100);
+				conclude((current.culpritLocation = Student_07.culpritLocation), bc:100, fc:100);
 				informCampusPolice();
 			}
 		}		
