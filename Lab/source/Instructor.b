@@ -8,6 +8,12 @@ group Instructor {
 		public boolean teaching;
 		public boolean seenProjector; // whether the instructor has seen the projector
 		
+		public boolean seenProjector;
+		public symbol suitColor;
+		public boolean heardCP;
+		public boolean haveAnnouncement;
+
+
   relations:
 		// empty
 
@@ -15,6 +21,9 @@ group Instructor {
   initial_beliefs:
 		(current.waitingInClass = false);
 		(current.teaching = false);
+		(current.suitColor = unknown);
+		(current.heardCP = false);
+		(current.haveAnnouncement = false);
 
 
   initial_facts:
@@ -27,6 +36,15 @@ group Instructor {
 			with: student; // communication established with student agent
 			about:
 				send(current.teaching); // sends the instructor's current value of teaching
+			when: end;
+		}
+
+		broadcast tellStud() {
+					random: false;
+					max_duration: 10;
+					to: Classroom_ITC315;
+					about: 
+						send(current.suitColor);
 			when: end;
 		}
 		 

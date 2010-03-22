@@ -44,7 +44,7 @@ agent Instructor_01 memberof Instructor {
 					when(
 						(current.teaching = false) and
 						(UniversityClock.time = current.teachingTime) and
-						(instructor = Instructor_01) // only applies to instructors that are not the first instructor
+						(instructor = Instructor_01) // only applies to the first instructor
 						)
 					do {
 						conclude((current.teaching = true), bc:100, fc:100);
