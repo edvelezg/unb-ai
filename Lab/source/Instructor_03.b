@@ -17,7 +17,7 @@ agent Instructor_03 memberof Instructor {
 				)
 			do 
 			{
-				conclude((current.culpritLocation = Student_07.culpritLocation), bc:100, fc:100);
+				conclude((current.culpritLocation = student.culpritLocation), bc:100, fc:100);
 				informCampusPolice();
 			}
 		}		
