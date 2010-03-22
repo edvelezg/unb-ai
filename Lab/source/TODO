@@ -16,14 +16,14 @@
 
 //CHANGED: If they see the Culprit in a particular location, they should remember that location. 
 
-//FIXME: When the third class begins, the final Instructor agent will ask the Students if they saw the Culprit. 
+//CHANGED: When the third class begins, the final Instructor agent will ask the Students if they saw the Culprit. 
 
-//FIXME: Those Student agents that saw the Culprit will offer to answer the question, but only one of the 
+//CHANGED: Those Student agents that saw the Culprit will offer to answer the question, but only one of the 
 	// Student agents will be chosen by the Instructor to answer the question. 
 
-//FIXME: Based on the information received from the Student, after returning from class, the Instructor will contact the Campus Police
+//CHANGED: Based on the information received from the Student, after returning from class, the Instructor will contact the Campus Police
  // with the location of the Culprit. 
 
-//FIXME: The Campus Police must then move to this location before the end of the day. 
+//CHANGED: The Campus Police must then move to this location before the end of the day. 
 
 //CHANGED: For this simulation, the Culprit will hide in the Gym once it has taken the Projector and will remain at this location for the remainder of the day. 
