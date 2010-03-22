@@ -12,6 +12,7 @@ group Student {
 		public boolean finishedClasses;
 		public boolean leaveCampus;
 		public boolean haveQuestion;
+		public string culpritLocation;
 		
 		
   relations:

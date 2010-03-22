@@ -8,7 +8,7 @@
 
 //CHANGED: The Campus Police agent will review the Security Camera from its office and will then have the description of the Culprit. 
 
-//FIXME: It will then share this information with the three Instructor agents before the second class begins. 
+//CHANGED: It will then share this information with the three Instructor agents before the second class begins. 
 
 //FIXME: The Instructor who teaches the second class will tell the Student agents the description of the Culprit. 
 
