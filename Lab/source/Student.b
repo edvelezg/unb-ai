@@ -12,7 +12,7 @@ group Student {
 		public boolean finishedClasses;
 		public boolean leaveCampus;
 		public boolean haveQuestion;
-		public string culpritLocation;
+		public BaseAreaDef culpritLocation;
 		
 		
   relations:
@@ -51,6 +51,12 @@ group Student {
 		}
 		
 		primitive_activity wait() {
+			random: true;
+			min_duration: 1200; // 20 minutes
+			max_duration: 1800; // 30 minutes
+		}
+		
+		primitive_activity seesThief() {
 			random: true;
 			min_duration: 1200; // 20 minutes
 			max_duration: 1800; // 30 minutes
@@ -95,6 +101,17 @@ group Student {
 		}
 		
   workframes:
+
+		workframe wf_seesThief {
+			repeat: false;
+			when(
+				(Thief.location = current.location)
+				)
+			do {
+				seesThief(); // between 20-40 minutes
+				conclude((current.culpritLocation = Thief.location), bc:100, fc:100);
+			}
+		}
 
 		workframe wf_goToCampus {
 			repeat: false;

@@ -10,7 +10,7 @@
 
 //CHANGED: It will then share this information with the three Instructor agents before the second class begins. 
 
-//FIXME: The Instructor who teaches the second class will tell the Student agents the description of the Culprit. 
+//CHANGED: The Instructor who teaches the second class will tell the Student agents the description of the Culprit. 
 
 //FIXME: After class, when these agents go to either the SUB, the Gym, or the Library, they will be on the lookout for the Culprit. 
 
