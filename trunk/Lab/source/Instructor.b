@@ -7,8 +7,6 @@ group Instructor {
 		public boolean waitingInClass; // whether the instructor is currently waiting in class
 		public boolean teaching;
 		public boolean seenProjector; // whether the instructor has seen the projector
-		
-		public boolean seenProjector;
 		public symbol suitColor;
 		public boolean heardCP;
 		public boolean haveAnnouncement;
@@ -17,7 +15,6 @@ group Instructor {
   relations:
 		// empty
 
-
   initial_beliefs:
 		(current.waitingInClass = false);
 		(current.teaching = false);
@@ -25,10 +22,8 @@ group Instructor {
 		(current.heardCP = false);
 		(current.haveAnnouncement = false);
 
-
   initial_facts:
 		// empty
-		
 
   activities:
 		communicate answerQuestion(Student student) { // Answer question that is asked by a student
@@ -39,13 +34,13 @@ group Instructor {
 			when: end;
 		}
 
-		broadcast tellStud() {
+		broadcast announceToStudents() {
 					random: false;
-					max_duration: 10;
+					max_duration: 500;
 					to: Classroom_ITC315;
 					about: 
-						send(current.suitColor);
-			when: end;
+						send(ITC315Camera.suitColor);
+					when: end;
 		}
 		 
 		composite_activity teach() { //instructor's activity to teach
@@ -56,7 +51,29 @@ group Instructor {
 				}
 			
 			workframes:
-				workframe wf_teach { // the instructor can be teaching
+//				workframe wf_teachInst3 { // the instructor can be teaching
+//					repeat: false;
+//					variables:
+//						forone(Instructor) instructor;					
+//					detectables:
+//						detectable noticeQuestionStdnt01 { // if a student asks a question
+//							when(whenever)
+//							//TODO: couldn't one generalize this for all the students
+//							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
+//							then impasse;
+//						}
+//					when(
+//						(instructor = Instructor_03) and
+//						(current.teaching = false) and
+//						(UniversityClock.time = current.teachingTime)
+//						)
+//					do {
+//						conclude((current.teaching = true), bc:100, fc:100);
+//						teach();
+//					}
+//				}
+				
+				workframe wf_teachInst2 { // the instructor can be teaching
 					repeat: false;
 					variables:
 						forone(Instructor) instructor;					
@@ -68,11 +85,13 @@ group Instructor {
 							then impasse;
 						}
 					when(
+						(instructor = Instructor_02) and
 						(current.teaching = false) and
 						(UniversityClock.time = current.teachingTime)
 						)
 					do {
 						conclude((current.teaching = true), bc:100, fc:100);
+						announceToStudents();
 						teach();
 					}
 				}
