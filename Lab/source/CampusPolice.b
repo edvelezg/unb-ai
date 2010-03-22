@@ -130,7 +130,7 @@ agent CampusPolice {
 					detectables:
 						detectable answerCall { // if the instructor calls 
 							when(whenever)
-							detect((Student_07.culpritLocation = LBGym), dc:100)
+							detect((Instructor_03.culpritLocation != unknown), dc:100)
 							then abort;
 						}
 					when(
@@ -142,12 +142,13 @@ agent CampusPolice {
 					}
 				}
 								
-				workframe wf_moveTowardsThief { // the instructor can be teaching
+				workframe wf_thiefWasFound { // the instructor can be teaching
 					repeat: false;
 					when(
-						(Student_07.culpritLocation = LBGym)
+						(Instructor_03.culpritLocation != unknown)
 						)
 					do {
+						answerCall();
 						goToGym();
 					}
 				}				

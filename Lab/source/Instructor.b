@@ -11,7 +11,7 @@ group Instructor {
 		public boolean heardCP;
 		public boolean haveAnnouncement;
 		public boolean haveQuestion;
-
+		public BaseAreaDef culpritLocation;
 
   relations:
 		// empty
@@ -23,7 +23,8 @@ group Instructor {
 		(current.heardCP = false);
 		(current.haveAnnouncement = false);
 		(current.haveQuestion = false);
-
+		(current.culpritLocation = unknown);
+		
   initial_facts:
 		// empty
 
@@ -35,7 +36,15 @@ group Instructor {
 				send(current.teaching); // sends the instructor's current value of teaching
 			when: end;
 		}
-
+		
+		communicate informCampusPolice() { //informs the CampusPolice about the thief's location
+			max_duration: 500; 
+			with: CampusPolice;
+			about:
+				send(current.culpritLocation);
+			when: end;
+		}
+		
 		broadcast announceToStudents() {
 					random: false;
 					max_duration: 500;

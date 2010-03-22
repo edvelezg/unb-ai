@@ -29,7 +29,7 @@ group Student {
 		(current.finishedClasses = false);		
 		(current.leaveCampus = false);
 		(current.haveQuestion = false);
-//		(current.culpritSuit = unknown);
+		// (current.culpritSuit = unknown);
 
   initial_facts:
 		// empty
