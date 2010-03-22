@@ -115,7 +115,7 @@ group Student {
 			repeat: false;
 			when(
 				(current.location = Thief.location) and
-				(ITC315Camera.suitColor = red)
+				known(ITC315Camera.suitColor)
 				)
 			do {
 				seesThief(); // between 20-40 minutes
