@@ -13,7 +13,7 @@ group Student {
 		public boolean leaveCampus;
 		public boolean haveQuestion;
 		public BaseAreaDef culpritLocation;
-//		public symbol culpritSuit;
+		public symbol culpritSuit;
 		
 		
   relations:

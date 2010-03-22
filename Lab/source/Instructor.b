@@ -10,6 +10,7 @@ group Instructor {
 		public symbol suitColor;
 		public boolean heardCP;
 		public boolean haveAnnouncement;
+		public boolean haveQuestion;
 
 
   relations:
@@ -21,6 +22,7 @@ group Instructor {
 		(current.suitColor = unknown);
 		(current.heardCP = false);
 		(current.haveAnnouncement = false);
+		(current.haveQuestion = false);
 
   initial_facts:
 		// empty
@@ -40,6 +42,15 @@ group Instructor {
 					to: Classroom_ITC315;
 					about: 
 						send(ITC315Camera.suitColor);
+					when: end;
+		}
+		
+		broadcast askAboutThiefLocation() {
+					random: false;
+					max_duration: 500;
+					to: Classroom_ITC315;
+					about: 
+						send(current.haveQuestion);
 					when: end;
 		}
 		 
@@ -77,7 +88,6 @@ group Instructor {
 						teach();
 					}
 				}
-				
 				workframe wf_teach2 { // the instructor can be teaching
 					repeat: false;
 					variables:
@@ -118,6 +128,8 @@ group Instructor {
 						)
 					do {
 						conclude((current.teaching = true), bc:100, fc:100);
+						conclude((current.haveQuestion = true), bc:100, fc:100);
+						askAboutThiefLocation();
 						teach();
 					}
 				}

@@ -16,16 +16,16 @@ agent Instructor_01 memberof Instructor {
 		}
 		 
 	workframes:
-				workframe wf_callCampusPolice 
-				{
-					repeat: false;
-					when(
-						(Classroom_ITC315.projector = false)
-						)
-					do 
-					{
-						conclude((current.seenProjector = false), bc:100, fc:100);
-						callCampusPolice();
-					}
-				}				
+		workframe wf_callCampusPolice 
+		{
+			repeat: false;
+			when(
+				(Classroom_ITC315.projector = false)
+				)
+			do 
+			{
+				conclude((current.seenProjector = false), bc:100, fc:100);
+				callCampusPolice();
+			}
+		}				
 }
