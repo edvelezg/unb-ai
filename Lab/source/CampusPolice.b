@@ -6,16 +6,18 @@ agent CampusPolice {
 		public boolean checkingCamera;
 		public boolean waiting;
 		public symbol suitColor;
+		public BaseAreaDef culpritLocation;
 	
 	initial_beliefs:
 		(current.projector = true);
 		(current.suitColor = unknown);
 		(current.checkingCamera = false);
 		(current.waiting = true);
+		(current.culpritLocation = unknown);
 		
 	
 	activities:	
-		move goToGym() {
+		move goToCulpritLocation() {
 			random: false;
 			location: LBGym;
 		}
@@ -149,7 +151,8 @@ agent CampusPolice {
 						)
 					do {
 						answerCall();
-						goToGym();
+						conclude((current.culpritLocation = Instructor_03.culpritLocation), bc:100, fc:100);
+						goToCulpritLocation();
 					}
 				}				
 				
