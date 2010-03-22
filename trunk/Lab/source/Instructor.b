@@ -38,7 +38,7 @@ group Instructor {
 		}
 		
 		communicate informCampusPolice() { //informs the CampusPolice about the thief's location
-			max_duration: 500; 
+			max_duration: 100; 
 			with: CampusPolice;
 			about:
 				send(current.culpritLocation);
