@@ -20,8 +20,8 @@ agent Instructor_01 memberof Instructor {
 		{
 			repeat: false;
 			when(
-				(Classroom_ITC315.projector = false)
-				)
+					(Classroom_ITC315.projector = false)
+					)
 			do 
 			{
 				conclude((current.seenProjector = false), bc:100, fc:100);
