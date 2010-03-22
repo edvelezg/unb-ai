@@ -113,13 +113,20 @@ group Instructor {
 				workframe wf_teach3 { // instructor 3s teaching workframe
 					repeat: false;
 					variables:
-						forone(Instructor) instructor;					
+						forone(Instructor) instructor;
+						forone(Student)	student;				
 					detectables:
 						detectable noticeQuestionStdnt01 { // if a student asks a question
 							when(whenever)
 							//TODO: couldn't one generalize this for all the students
 							detect((Student_01.haveQuestion = true), dc:100) // check the belief of a student.
 							then impasse;
+						}
+						detectable getStudentAnswer { // if a student asks a question
+							when(whenever)
+							//TODO: couldn't one generalize this for all the students
+							detect((Student_07.culpritLocation = LBGym), dc:100) // check the belief of a student.
+							then continue;
 						}
 					when(
 						(current.teachingTime = 7) and
