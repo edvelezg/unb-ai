@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE GROUP SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/group.dtd"> 
-<!-- Generated at Fri Mar 19 14:27:16 ADT 2010 -->
+<!-- Generated at Mon Mar 22 21:16:23 ADT 2010 -->
 
 <GROUP name="Student" display="Student">
 	<MEMBEROF ref="brahms.base.BaseGroup" />
@@ -11,8 +11,10 @@
 		<ATTRIBUTE name="Student.class1Time" display="class1Time" scope="public" type="int"/>
 		<ATTRIBUTE name="Student.finishedClasses" display="finishedClasses" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Student.morningActivity" display="morningActivity" scope="public" type="symbol"/>
+		<ATTRIBUTE name="Student.culpritSuit" display="culpritSuit" scope="public" type="symbol"/>
 		<ATTRIBUTE name="Student.leaveCampus" display="leaveCampus" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Student.classesStarted" display="classesStarted" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Student.culpritLocation" display="culpritLocation" scope="public" type="brahms.base.BaseAreaDef" typeDetail="AreaDef"/>
 		<ATTRIBUTE name="Student.inClass" display="inClass" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Student.afternoonActivity" display="afternoonActivity" scope="public" type="symbol"/>
 		<ATTRIBUTE name="Student.class3Time" display="class3Time" scope="public" type="int"/>
@@ -56,10 +58,34 @@
 		</PRIM_ACT>
 		<MOVE_ACT name="Student.goToSUB" descriptor="goToSUB()" display="goToSUB" location="SUB" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
 		</MOVE_ACT>
+		<PRIM_ACT name="Student.seesThief" descriptor="seesThief()" display="seesThief" maxDuration="500">
+		</PRIM_ACT>
 		<PRIM_ACT name="Student.wait" descriptor="wait()" display="wait" random="true" minDuration="1200" maxDuration="1800">
 		</PRIM_ACT>
 		<MOVE_ACT name="Student.goToHeadHall" descriptor="goToHeadHall()" display="goToHeadHall" location="HeadHall" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
 		</MOVE_ACT>
+		<COMM_ACT name="Student.answerQuestion" descriptor="answerQuestion(LInstructor;)" display="answerQuestion" maxDuration="30" when="end">
+			<PARAMETERS>
+				<PARAMETER name="instructor" type="Instructor" typeDetail="Group" />
+			</PARAMETERS>
+			<WITH>
+				<WITHREF ref="instructor" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Student.culpritLocation"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
 		<COMM_ACT name="Student.sendQuestionStatus" descriptor="sendQuestionStatus()" display="sendQuestionStatus" maxDuration="20" when="end">
 			<WITH>
 				<WITHREF ref="Instructor_01" objType="Agent" />
@@ -333,6 +359,47 @@
 				</CONSEQUENCE>
 			</WF_DO>
 		</WORKFRAME>
+		<WORKFRAME name="Student.wf_seesThief" display="wf_seesThief" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Thief" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="known">
+					<CONDITION>
+						<VALUECOMPARISON>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="ITC315Camera" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="seesThief()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Student.culpritLocation"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Thief" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
 		<WORKFRAME name="Student.wf_goToClass1" display="wf_goToClass1" wftype="1">
 			<WHEN>
 				<PRECONDITION modifier="knownval">
@@ -468,7 +535,7 @@
 				</ACTIVITYREF>
 			</WF_DO>
 		</WORKFRAME>
-		<WORKFRAME name="Student.wf_goToGymAfternoon" display="wf_goToGymAfternoon" wftype="1">
+		<WORKFRAME name="Student.wf_goToGymAfternoon" display="wf_goToGymAfternoon" wftype="1" priority="2">
 			<WHEN>
 				<PRECONDITION modifier="knownval">
 					<CONDITION>
@@ -511,6 +578,44 @@
 				<ACTIVITYREF ref="goToGym()">
 				</ACTIVITYREF>
 				<ACTIVITYREF ref="exercise()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Student.wf_answerQuestion" display="wf_answerQuestion" wftype="1">
+			<VARIABLES>
+				<VARIABLE name="instructor" display="instructor" quantification="forone" type="Instructor" typeDetail="Group"/>
+			</VARIABLES>
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Student.inClass"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="variable" objRef="instructor" attRef="Instructor.haveQuestion"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="answerQuestion(LInstructor;)">
+					<PARAMVALS>
+						<PARAMVAL value="instructor" valueType="Variable"/>
+					</PARAMVALS>
 				</ACTIVITYREF>
 			</WF_DO>
 		</WORKFRAME>
@@ -688,7 +793,21 @@
 				</CONSEQUENCE>
 			</WF_DO>
 		</WORKFRAME>
-		<WORKFRAME name="Student.wf_goToGymAfterClass" display="wf_goToGymAfterClass" wftype="1">
+		<WORKFRAME name="Student.wf_goToGymAfterClass" display="wf_goToGymAfterClass" wftype="1" priority="2">
+			<DETECTABLES>
+				<DETECTABLE name="senseThief" when="whenever" action="abort">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Thief" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+			</DETECTABLES>
 			<WHEN>
 				<PRECONDITION modifier="knownval">
 					<CONDITION>
