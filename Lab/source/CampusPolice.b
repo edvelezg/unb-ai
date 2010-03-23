@@ -29,7 +29,7 @@ agent CampusPolice {
 
 		primitive_activity answerCall() {
 			random: false;
-			max_duration: 500;
+			max_duration: 100;
 		}
 		
 		communicate checkCamera() { // Answer question that is asked by a student
