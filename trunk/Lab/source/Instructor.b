@@ -141,8 +141,7 @@ group Instructor {
 						}
 						detectable getStudentAnswer { // if a student asks a question
 							when(whenever)
-							//TODO: couldn't one generalize this for all the students
-							detect((Student_07.culpritLocation = LBGym), dc:100) // check the belief of a student.
+							detect((Student_01.culpritLocation = LBGym), dc:100) // check the belief of a student.
 							then continue;
 						}
 					when(
@@ -168,6 +167,22 @@ group Instructor {
 						answerQuestion(studentToAnswer);
 					}
 				}
+				
+				workframe wf_callCampusPoliceBack
+				{
+					repeat: false;
+					variables:
+						forone(Student) student;
+					when(
+						known(student.culpritLocation) and
+						(current.teachingTime = 7)
+						)
+					do 
+					{
+						conclude((current.culpritLocation = student.culpritLocation), bc:100, fc:100);
+						informCampusPolice();
+					}
+				}				
 		}
 		
 		primitive_activity wait() {
@@ -273,22 +288,6 @@ group Instructor {
 			{
 				conclude((current.seenProjector = false), bc:100, fc:100);
 				callCampusPolice();
-			}
-		}	
-		
-		workframe wf_callCampusPoliceBack
-		{
-			repeat: false;
-			variables:
-				forone(Student) student;
-			when(
-				known(student.culpritLocation) and
-				(current.teachingTime = 7)
-				)
-			do 
-			{
-				conclude((current.culpritLocation = student.culpritLocation), bc:100, fc:100);
-				informCampusPolice();
 			}
 		}		
 }
