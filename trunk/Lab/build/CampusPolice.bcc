@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
+<!-- Generated at Mon Mar 22 21:16:23 ADT 2010 -->
+
+<AGENT name="CampusPolice" serializable="false" display="CampusPolice" location="PoliceBuilding">
+	<MEMBEROF ref="brahms.base.BaseGroup" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="CampusPolice.waiting" display="waiting" scope="public" type="boolean"/>
+		<ATTRIBUTE name="CampusPolice.suitColor" display="suitColor" scope="public" type="symbol"/>
+		<ATTRIBUTE name="CampusPolice.checkingCamera" display="checkingCamera" scope="public" type="boolean"/>
+		<ATTRIBUTE name="CampusPolice.culpritLocation" display="culpritLocation" scope="public" type="brahms.base.BaseAreaDef" typeDetail="AreaDef"/>
+		<ATTRIBUTE name="CampusPolice.projector" display="projector" scope="public" type="boolean"/>
+	</ATTRIBUTES>
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="CampusPolice.projector" evalOp="eq" value="true" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="CampusPolice.suitColor" evalOp="eq" value="unknown" valueType="unknown"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="CampusPolice.checkingCamera" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="CampusPolice.waiting" evalOp="eq" value="true" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="CampusPolice.culpritLocation" evalOp="eq" value="unknown" valueType="unknown"/>
+		</BELIEF>
+	</BELIEFS>
+	<ACTIVITIES>
+		<COMM_ACT name="CampusPolice.informInstructor2" descriptor="informInstructor2()" display="informInstructor2" maxDuration="500" when="end">
+			<WITH>
+				<WITHREF ref="Instructor_02" objType="Agent" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="ITC315Camera" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
+		<COMM_ACT name="CampusPolice.informInstructor1" descriptor="informInstructor1()" display="informInstructor1" maxDuration="500" when="end">
+			<WITH>
+				<WITHREF ref="Instructor_01" objType="Agent" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="ITC315Camera" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
+		<MOVE_ACT name="CampusPolice.goToCulpritLocation" descriptor="goToCulpritLocation()" display="goToCulpritLocation" location="LBGym" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
+		</MOVE_ACT>
+		<PRIM_ACT name="CampusPolice.wait" descriptor="wait()" display="wait" maxDuration="36000">
+		</PRIM_ACT>
+		<COMM_ACT name="CampusPolice.informInstructor3" descriptor="informInstructor3()" display="informInstructor3" maxDuration="500" when="end">
+			<WITH>
+				<WITHREF ref="Instructor_03" objType="Agent" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="ITC315Camera" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
+		<COMM_ACT name="CampusPolice.checkCamera" descriptor="checkCamera()" display="checkCamera" maxDuration="500" when="start">
+			<WITH>
+				<WITHREF ref="ITC315Camera" objType="Object" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.checkingCamera"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
+		<PRIM_ACT name="CampusPolice.answerCall" descriptor="answerCall()" display="answerCall" maxDuration="100">
+		</PRIM_ACT>
+	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="CampusPolice.wf_thiefWasFound" display="wf_thiefWasFound" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="uneq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Instructor_03" attRef="Instructor.culpritLocation"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="UNKNOWN"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="answerCall()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.culpritLocation"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Instructor_03" attRef="Instructor.culpritLocation"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<ACTIVITYREF ref="goToCulpritLocation()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="CampusPolice.wf_wait2" display="wf_wait2" wftype="1">
+			<DETECTABLES>
+				<DETECTABLE name="answerCall" when="whenever" action="abort">
+					<CONDITION>
+						<VALUECOMPARISON relation="uneq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Instructor_03" attRef="Instructor.culpritLocation"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="UNKNOWN"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+			</DETECTABLES>
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.waiting"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="known">
+					<CONDITION>
+						<VALUECOMPARISON>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="ITC315Camera" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="wait()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="CampusPolice.wf_informInstructors" display="wf_informInstructors" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.waiting"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="known">
+					<CONDITION>
+						<VALUECOMPARISON>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="ITC315Camera" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.suitColor"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="ITC315Camera" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<ACTIVITYREF ref="informInstructor1()">
+				</ACTIVITYREF>
+				<ACTIVITYREF ref="informInstructor2()">
+				</ACTIVITYREF>
+				<ACTIVITYREF ref="informInstructor3()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.waiting"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="CampusPolice.wf_checkSecurityCamera" display="wf_checkSecurityCamera" wftype="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Instructor_01" attRef="Instructor.seenProjector"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="answerCall()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.projector"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Instructor_01" attRef="Instructor.seenProjector"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<ACTIVITYREF ref="checkCamera()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.checkingCamera"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.waiting"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="CampusPolice.wf_wait" display="wf_wait" wftype="1">
+			<DETECTABLES>
+				<DETECTABLE name="answerCall" when="whenever" action="abort">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Instructor_01" attRef="Instructor.seenProjector"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+			</DETECTABLES>
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="CampusPolice.waiting"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="wait()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
+</AGENT>
