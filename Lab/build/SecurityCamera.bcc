@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
+<!-- Generated at Mon Mar 22 21:16:23 ADT 2010 -->
+
+<CLASS name="SecurityCamera" serializable="false" display="SecurityCamera">
+	<EXTENDS ref="brahms.base.BaseClass" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="SecurityCamera.suitColor" display="suitColor" scope="public" type="symbol"/>
+		<ATTRIBUTE name="SecurityCamera.senseTime" display="senseTime" scope="public" type="int"/>
+	</ATTRIBUTES>
+	<FACTS>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="SecurityCamera.senseTime" evalOp="eq" value="unknown" valueType="unknown"/>
+		</FACT>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="SecurityCamera.suitColor" evalOp="eq" value="unknown" valueType="unknown"/>
+		</FACT>
+	</FACTS>
+	<ACTIVITIES>
+		<PRIM_ACT name="SecurityCamera.record" descriptor="record()" display="record" maxDuration="500">
+		</PRIM_ACT>
+		<COMM_ACT name="SecurityCamera.sendSuitColor" descriptor="sendSuitColor()" display="sendSuitColor" maxDuration="30" when="end">
+			<WITH>
+				<WITHREF ref="CampusPolice" objType="Agent" />
+			</WITH>
+			<ABOUT>
+				<SEND contentType="condition">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="O" objType="variable" objRef="?"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</SEND>
+			</ABOUT>
+		</COMM_ACT>
+		<PRIM_ACT name="SecurityCamera.sense" descriptor="sense()" display="sense" maxDuration="36000">
+		</PRIM_ACT>
+	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="SecurityCamera.wf_sense2" display="wf_sense2" wftype="2">
+			<DETECTABLES>
+				<DETECTABLE name="isBeingChecked" when="whenever" action="abort">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="CampusPolice" attRef="CampusPolice.checkingCamera"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+				<DETECTABLE name="timeIsUp" when="whenever" action="abort">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Object" objRef="UniversityClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="11"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+			</DETECTABLES>
+			<WF_DO>
+				<ACTIVITYREF ref="sense()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="SecurityCamera.wf_sense1" display="wf_sense1" wftype="2" priority="2">
+			<DETECTABLES>
+				<DETECTABLE name="senseThief" when="whenever" action="abort">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Thief" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="brahms.base.BaseClass.location"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</DETECTABLE>
+			</DETECTABLES>
+			<WF_DO>
+				<ACTIVITYREF ref="sense()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="SecurityCamera.wf_recordEvent" display="wf_recordEvent" wftype="2" priority="1">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Thief" attRef="brahms.base.BaseGroup.location"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="brahms.base.BaseClass.location"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="record()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="SecurityCamera.senseTime"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Class" objRef="MyClock" attRef="MyClock.time"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="SecurityCamera.suitColor"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="Thief" attRef="Thief.suitColor"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="SecurityCamera.wf_sendSuitColor" display="wf_sendSuitColor" wftype="2">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="CampusPolice" attRef="CampusPolice.checkingCamera"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="sendSuitColor()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
+</CLASS>

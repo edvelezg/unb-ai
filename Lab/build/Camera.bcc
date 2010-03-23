@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
+<!-- Generated at Wed Mar 10 21:35:34 AST 2010 -->
+
+<CLASS name="Camera" serializable="false" display="Camera">
+	<EXTENDS ref="brahms.base.BaseClass" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Camera.suitColor" display="suitColor" scope="public" type="symbol"/>
+	</ATTRIBUTES>
+	<FACTS>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="Camera.suitColor" evalOp="eq" value="none" valueType="symbol"/>
+		</FACT>
+	</FACTS>
+</CLASS>
