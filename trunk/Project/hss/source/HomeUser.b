@@ -106,12 +106,12 @@ group HomeUser {
 					forone(Building) bd;
 				
 				when(
-					knownval(current.needsToToggleSystem = true) and
-					not(current.location = kp.location) and
-					knownval(kp.location = bd )
+					knownval(current.needsToToggleSystem = true) //and
+					// not(current.location = kp.location) and
+					// knownval(kp.location = bd )
 					)
 				do {
-					moveToLocation(bd);
+					moveToLocation(House1);
 				}
 			}  
 				
@@ -165,4 +165,17 @@ group HomeUser {
 				}
 			}
 	}
+
+	workframes:
+	
+			workframe wf_useKeypad{
+				repeat: false;
+				when(
+					knownval(current.needsToToggleSystem = true)
+					)
+				do {
+					useKeypad();
+				}
+			}
+
 }
