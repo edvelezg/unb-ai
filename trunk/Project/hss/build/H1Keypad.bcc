@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE OBJECT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/object.dtd"> 
+<!-- Generated at Sun Mar 28 15:38:24 ADT 2010 -->
+
+<OBJECT name="H1Keypad" serializable="false" display="H1Keypad" location="House1">
+	<INSTANCEOF ref="Keypad" />
+</OBJECT>

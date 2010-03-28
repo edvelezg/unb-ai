@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE MODEL SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/model.dtd"> 
+<!-- Generated at Sun Mar 28 15:38:24 ADT 2010 -->
+
+<MODEL name="hss">
+	<AGENTREF ref="brahms.base.ANY-AGENT" />
+	<AGENTREF ref="H1User" />
+	<OBJECTREF ref="brahms.base.Clock" />
+	<OBJECTREF ref="brahms.base.Date" />
+	<OBJECTREF ref="H1Keypad" />
+	<AREAREF ref="SecurityOffice" />
+	<AREAREF ref="PStation2" />
+	<AREAREF ref="PStation1" />
+	<AREAREF ref="EmgResponse" />
+	<AREAREF ref="brahms.base.NoLocation" />
+	<AREAREF ref="Fredericton" />
+	<AREAREF ref="House3" />
+	<AREAREF ref="House2" />
+	<AREAREF ref="House1" />
+	<PATHREF ref="PStation2___House1" />
+	<PATHREF ref="PStation1___House2" />
+	<PATHREF ref="House3___House1" />
+	<PATHREF ref="PStation1___House1" />
+	<PATHREF ref="House2___House1" />
+	<PATHREF ref="PStation1___PStation2" />
+	<PATHREF ref="PStation2___House3" />
+	<PATHREF ref="PStation2___House2" />
+	<PATHREF ref="PStation1___House3" />
+	<PATHREF ref="House3___House2" />
+</MODEL>

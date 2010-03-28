@@ -1,0 +1,3 @@
+area EmgResponse instanceof Building {
+
+}

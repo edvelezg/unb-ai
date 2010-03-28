@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
+<!-- Generated at Sun Mar 28 15:38:24 ADT 2010 -->
+
+<CLASS name="Keypad" serializable="false" display="Atm" resource="true">
+	<EXTENDS ref="brahms.base.BaseClass" />
+	<ATTRIBUTES>
+		<ATTRIBUTE name="Keypad.RepliedVerification" display="RepliedVerification" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.pinAsked" display="pinAsked" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.cashToDispense" display="cashToDispense" scope="public" type="double"/>
+		<ATTRIBUTE name="Keypad.checkedAccountPin" display="checkedAccountPin" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.pinIsWrong" display="pinIsWrong" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.currentAccountPin" display="currentAccountPin" scope="public" type="int"/>
+		<ATTRIBUTE name="Keypad.currentAmountRequested" display="currentAmountRequested" scope="public" type="double"/>
+		<ATTRIBUTE name="Keypad.sessionIsOn" display="sessionIsOn" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.cashDispensed" display="cashDispensed" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.amountChecked" display="amountChecked" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.cashCanBeDispensed" display="cashCanBeDispensed" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.currentAccountCode" display="currentAccountCode" scope="public" type="int"/>
+		<ATTRIBUTE name="Keypad.waitReply" display="waitReply" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.checkedAccountCode" display="checkedAccountCode" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.pinChecked" display="pinChecked" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.askedVerification" display="askedVerification" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.amountAsked" display="amountAsked" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.errorCount" display="errorCount" scope="public" type="int"/>
+	</ATTRIBUTES>
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinIsWrong" evalOp="uneq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.waitReply" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.amountAsked" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.RepliedVerification" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.amountChecked" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.currentAmountRequested" evalOp="eq" value="0.0" valueType="double"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.askedVerification" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.cashDispensed" evalOp="uneq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.sessionIsOn" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.cashToDispense" evalOp="eq" value="0.0" valueType="double"/>
+		</BELIEF>
+	</BELIEFS>
+</CLASS>

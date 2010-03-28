@@ -1,0 +1,4 @@
+//FIXME: Look at BOA_Atm which instance of Atm. I guess analogy should be Keypad -.H1_Keypad
+//FIXME: Agent Home_User which will be instanced as H1_User will work with keypad. Look at Student for this
+// Look at Composite activity Atm
+//FIXME: What are relations used for?
