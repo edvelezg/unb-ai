@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE PROJECT SYSTEM "file:////Applications/Brahms/AgentEnvironment/IDE/composer/dtds/ideproject.dtd">
+<PROJECT
+	name="hss"
+	package=""
+	release="176"
+	modelFile="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/hss.b" 
+  vmcfg="/Applications/Brahms/AgentEnvironment/config/vm.cfg"
+  srcdir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source"
+  builddir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/build"
+  barname="hss.bar"
+  bardir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/lib"
+  generatebar="false"
+  idedir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/ide_hss">
+  
+  <MODELS>
+    <MODEL type="agentmodel" file="agentmodel.xml"/>
+    <MODEL type="objectmodel" file="objectmodel.xml"/>
+    <MODEL type="conceptualobjectmodel" file="conceptualobjectmodel.xml"/>
+    <MODEL type="geographymodel" file="geographymodel.xml"/>
+    <MODEL type="activitymodel" file="activitymodel.xml"/>
+  </MODELS>
+  
+  <SOURCE_FOLDERS>
+    <SOURCE_FOLDER name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source"/>
+  </SOURCE_FOLDERS>
+  
+  <LIBRARY_FOLDERS>
+    <LIBRARY_FOLDER name="/Applications/Brahms/AgentEnvironment/bin/../Models/lib"/>
+  </LIBRARY_FOLDERS>
+  
+  <SOURCE_FILES>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___PStation2.b" modified="1269621627000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House3.b" modified="1269621557000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Keypad.b" modified="1269798587000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2.b" modified="1269620792000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/EmgResponse.b" modified="1269620977000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House3.b" modified="1269621574000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1Keypad.b" modified="1269798596000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Fredericton.b" modified="1269621629000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House2.b" modified="1269620759000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3.b" modified="1269620770000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House2.b" modified="1269621403000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House2.b" modified="1269621454000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House1.b" modified="1269621307000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House2___House1.b" modified="1269621113000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/SecurityOffice.b" modified="1269620630000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House1.b" modified="1269620748000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1.b" modified="1269620782000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/hss.b" modified="1269619838000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3___House2.b" modified="1269621485000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3___House1.b" modified="1269621146000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House1.b" modified="1269621183000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1User.b" modified="1269798548000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1269800711000"/>
+  </SOURCE_FILES>
+  
+  <OPEN_FILES>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1269800711000"/>
+  </OPEN_FILES>
+  
+</PROJECT>

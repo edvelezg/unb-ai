@@ -1,0 +1,3 @@
+area Fredericton instanceof City {
+
+}
