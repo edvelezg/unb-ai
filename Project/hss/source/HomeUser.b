@@ -41,7 +41,7 @@ group HomeUser {
 
 		activities:
 			primitive_activity insertBankCard() {
-				max_duration: 10;
+				max_duration: 300;
 			}
 		
 			primitive_activity rememberPin() { // user remembers pin
@@ -127,7 +127,7 @@ group HomeUser {
 			//			1) PROCESS COMMUNICATION (EG, PROCESS PIN)
 			//			2) ACTIVATE COMMUNICATION (EG, REPLY PIN)
 			//SO THAT THE TIMING OF THE MODEL IS CORRECT
-			workframe wf_waitAtmAsksPin {
+			workframe wf_waitKeypadAsksPin {
 			
 				repeat: true; 
 
@@ -146,6 +146,25 @@ group HomeUser {
 				do {
 					waitAtmReply();
 					conclude((current.waitAtmAsksPin = false), bc:100, fc:100);
+				}
+			}
+			
+			workframe wf_communicatePIN {
+				
+				repeat: true;
+
+				variables:
+					forone(Keypad) kp3;
+					forone(Building) bd3;
+
+				
+				when(
+					knownval(current.pinCommunicated = false) and
+					knownval(current.location = kp3.location)					
+					
+				do {
+					communicatePIN(kp3);
+					conclude((current.pinCommunicated = true), bc:100, fc:0);
 				}
 			}
 	}
