@@ -8,6 +8,7 @@ class Keypad {
 		public int currentAccountCode;
 		public int currentAccountPin;
 		public boolean sessionIsOn;
+		public boolean idle;
 		public boolean checkedAccountCode;
 		public boolean checkedAccountPin;
 		public boolean pinChecked;
@@ -116,6 +117,10 @@ class Keypad {
 						max_duration: 2;
 			}		
 
+			primitive_activity waitOnPin() {
+						max_duration: 50;
+			}		
+
 			communicate askPin(HomeUser hur) {
 						max_duration: 1;
 						with: hur;
@@ -123,4 +128,27 @@ class Keypad {
 							send(current.pinAsked = true);
 						when: end;
 			}
+
+		  workframes:
+		
+			workframe wf_teach2 { // the instructor can be teaching
+				repeat: false;
+				variables:
+					forone(Keypad) keypad;					
+				detectables:
+					detectable noticePinNotification { // if a student asks a question
+						when(whenever)
+						//TODO: couldn't one generalize this for all the students
+						detect((H1User.pinCommunicated = true), dc:100) // check the belief of a student.
+						then impasse;
+					}
+				when(
+						(current.idle = true)
+						)
+				do {
+					conclude((current.idle = false), bc:100, fc:100);
+					waitOnPin();
+				}
+			}
+		
 }

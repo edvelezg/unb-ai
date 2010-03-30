@@ -144,14 +144,10 @@ group HomeUser {
 			
 			workframe wf_communicatePIN {
 			
-				repeat: true;
-//				variables:
-//						forone(Keypad) kp3;
-					//forone(Building) bd3;
+				repeat: false;
 				when(
-						knownval(current.pinCommunicated = false) //and
-//						knownval(current.location = kp3.location) 
-						)					
+					knownval(current.pinCommunicated = false)
+					)					
 				do {
 					communicatePIN();
 					conclude((current.pinCommunicated = true), bc:100, fc:0);
