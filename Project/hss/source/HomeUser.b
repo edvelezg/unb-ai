@@ -52,9 +52,9 @@ group HomeUser {
 				max_duration: 3;
 			}
 
-			communicate communicatePIN(Keypad kp1) { // pin will be communicated to keypad
-				max_duration: 1;
-				with: kp1;
+			communicate communicatePIN() { // pin will be communicated to keypad
+				max_duration: 300;
+				with: H1Keypad;
 				about:
 					send(current.pinCommunicated = true),
 				//	send(current.believedPin = current.believedPin);
@@ -86,7 +86,7 @@ group HomeUser {
 				repeat: true;
 			
 				variables:
-					// forone(Keypad) kp;
+					//TODO: why doesn't this work !!!! :( forone(Keypad) kp;
 					forone(Building) bd;
 				
 				when(
@@ -120,16 +120,9 @@ group HomeUser {
 				}
 			}
 
-			//THE WAIT ACTIVITIES CAN BE INTERRUPTED BY DETECTABLES. FOR REALISM, ALSO COMMUNICATIONS BETWEEN ATM AND STUDENTS ARE
-			//MODELED. (NOTE THAT AGENT VIEWER CRASHES SOMETIMES WHEN OPENING wf WITH DETECTABLES.
-			//NOTE THAT SOME ACTIVITIES WILL BE TRIGGERED AS SOON AS THE FACT IS ESTABLISHED. THAT IS WHY THE COMMUNICATION
-			//WORKFRAMES IN THIS ATM MODEL ARE USUALLY MODELLED AS SUCH:
-			//			1) PROCESS COMMUNICATION (EG, PROCESS PIN)
-			//			2) ACTIVATE COMMUNICATION (EG, REPLY PIN)
-			//SO THAT THE TIMING OF THE MODEL IS CORRECT
 			workframe wf_waitKeypadAsksPin {
 			
-				repeat: true; 
+				repeat: false; 
 
 				variables:
 					forone(Keypad) kp4;
@@ -150,24 +143,21 @@ group HomeUser {
 			}
 			
 			workframe wf_communicatePIN {
-				
+			
 				repeat: true;
-
-				variables:
-					forone(Keypad) kp3;
-					forone(Building) bd3;
-
-				
+//				variables:
+//						forone(Keypad) kp3;
+					//forone(Building) bd3;
 				when(
-					knownval(current.pinCommunicated = false) and
-					knownval(current.location = kp3.location)					
-					
+						knownval(current.pinCommunicated = false) //and
+//						knownval(current.location = kp3.location) 
+						)					
 				do {
-					communicatePIN(kp3);
+					communicatePIN();
 					conclude((current.pinCommunicated = true), bc:100, fc:0);
 				}
 			}
-	}
+	} 
 
 	workframes:
 	
