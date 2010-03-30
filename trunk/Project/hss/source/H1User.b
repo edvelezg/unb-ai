@@ -4,5 +4,4 @@ agent H1User memberof HomeUser {
 	initial_beliefs:
 		(current.needsToToggleSystem = true);
 
-
 }

@@ -1,18 +1,10 @@
 group HomeUser {
 
 	attributes:
-		public double preferredCashOut;
 		public boolean needsToToggleSystem;
-		public boolean checkedDiner;
-		public boolean hasTakenCash;
-		public boolean hasEaten;
-		public boolean readyToLeaveAtm;
-		public boolean readyToLeaveRestaurant;
 		public boolean pinCommunicated;
 		public boolean sessionIsOn;
 		public boolean hasCard;
-		public boolean calculatedCash;
-		public boolean receivedCash;
 		public boolean pinRemembered;
 		public int correctPin;
 		public int believedPin;
@@ -24,17 +16,10 @@ group HomeUser {
 		public boolean repeatPin;
 
 	initial_beliefs:
-		(current.checkedDiner = false);
-		(current.hasEaten = false);
-		(current.hasTakenCash = false);
-		(current.readyToLeaveRestaurant = false);
-		(current.readyToLeaveAtm = false);
 		(current.pinCommunicated = false);
 		(current.sessionIsOn = false);
 		(current.hasCard = true);
-		(current.calculatedCash = false);
 		(current.needsToToggleSystem = false);
-		(current.receivedCash = false);
 		(current.pinRemembered = false);
 		(current.waitAtmAsksPin = false);
 		(current.waitAtmAsksAmount = false);
@@ -102,13 +87,13 @@ group HomeUser {
 				repeat: true;
 			
 				variables:
-					forone(Keypad) kp;
+					// forone(Keypad) kp;
 					forone(Building) bd;
 				
 				when(
-					knownval(current.needsToToggleSystem = true) //and
-					// not(current.location = kp.location) and
-					// knownval(kp.location = bd )
+					knownval(current.needsToToggleSystem = true) // and
+					// not(current.location = H1Keypad.location) and
+					// knownval(H1Keypad.location = bd )
 					)
 				do {
 					moveToLocation(House1);
