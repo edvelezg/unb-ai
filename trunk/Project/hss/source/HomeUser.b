@@ -83,7 +83,7 @@ group HomeUser {
 			
 			//THe user moves towards his new home to activate his system
 			workframe wf_moveToHome {
-				repeat: true;
+				repeat: false;
 			
 				variables:
 					//TODO: why doesn't this work !!!! :( forone(Keypad) kp;
@@ -102,7 +102,7 @@ group HomeUser {
 			
 			workframe wf_insertBankCard {
 				
-				repeat: true; 
+				repeat: false; 
 				
 				variables:
 					forone(Keypad) kp2;
