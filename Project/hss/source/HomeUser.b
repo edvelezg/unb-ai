@@ -14,6 +14,9 @@ group HomeUser {
 		public double amountRequested;
 		public boolean amountCommunicated;
 		public boolean repeatPin;
+		
+		//CHANGED:
+		public boolean isAtKeypad;
 
 	initial_beliefs:
 		(current.pinCommunicated = false);
@@ -26,6 +29,15 @@ group HomeUser {
 		(current.waitAtmRepliesVerification = false);
 		(current.amountCommunicated = false);
 		(current.repeatPin = false);
+
+		//CHANGED:
+		(current.isAtKeypad = false);
+
+	//CHANGED:
+	initial_facts:
+		(current.isAtKeypad = false);
+		
+		
 
 	activities:
 	
@@ -117,6 +129,7 @@ group HomeUser {
 				
 				do {
 					insertBankCard();
+					conclude((current.isAtKeypad = true), bc:100, fc:100);
 					conclude((current.waitAtmAsksPin = true), bc:100, fc:100);
 				}
 			}
@@ -129,7 +142,7 @@ group HomeUser {
 					forone(Keypad) kp4;
 									
 				detectables:
-					detectable atmAsksPin{
+					detectable keypadAsksPin{
 						when(whenever)
 							detect((kp4.pinAsked = true), dc:100)
 							then complete;
@@ -141,6 +154,31 @@ group HomeUser {
 					waitAtmReply();
 					conclude((current.waitAtmAsksPin = false), bc:100, fc:100);
 				}
+			}
+
+			workframe wf_rememberPin {
+				repeat: false;
+
+				variables:
+					forone(Keypad) kp3;
+					forone(Building) bd3;
+			            
+				when(
+					knownval(current.pinCommunicated = false) and
+					knownval(current.location = kp3.location) and
+					knownval(current.pinRemembered = false) and
+					knownval(kp3.pinAsked = true) and
+					knownval(current.pinCommunicated = false))
+					
+					
+				do {
+					rememberPin();
+					conclude((current.believedPin = kp3.pin), bc:100, fc:50);
+					conclude((current.believedPin = 9999), bc:50, fc:50);
+					conclude((current.pinRemembered = true), bc:100, fc:0);
+
+				}
+
 			}
 			
 			workframe wf_communicatePIN {
