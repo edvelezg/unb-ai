@@ -40,7 +40,6 @@ group HomeUser {
 	composite_activity useKeypad() {
 
 		activities:
-	
 			primitive_activity insertBankCard() {
 				max_duration: 10;
 			}
@@ -82,7 +81,7 @@ group HomeUser {
 
 		workframes:
 			
-			//THE STUDENT NEEDS FIRST TO MOVE TOWARDS THE ATM OWNED BY THE BANK WHERE SHE HAS HER ACCOUNT....				
+			//THe user moves towards his new home to activate his system
 			workframe wf_moveToHome {
 				repeat: true;
 			
