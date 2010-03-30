@@ -102,8 +102,8 @@ group HomeUser {
 					forone(Building) bd;
 				
 				when(
-					knownval(current.needsToToggleSystem = true) // and
-					// not(current.location = H1Keypad.location) and
+					knownval(current.needsToToggleSystem = true) and
+					not(current.location = H1Keypad.location) // and
 					// knownval(H1Keypad.location = bd )
 					)
 				do {

@@ -1,3 +1,4 @@
+//FIXME: doesn't the fredericton clock show up broadcasting like the Univesity clock in the other example :\
 class MyClock {
 
 	attributes:
