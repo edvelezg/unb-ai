@@ -111,7 +111,8 @@ group HomeUser {
 				when(
 					knownval(current.needsToToggleSystem = true) and
 					knownval(current.location = kp2.location) and
-					knownval(current.pinRemembered = false)) 
+					knownval(current.pinRemembered = false)
+					) 
 								
 				
 				do {
@@ -146,8 +147,10 @@ group HomeUser {
 			
 				repeat: false;
 				when(
-					knownval(current.pinCommunicated = false)
-					)					
+						knownval(current.pinCommunicated = false) and
+						knownval(current.pinRemembered = true) and
+						knownval(current.waitAtmAsksPin = false)
+						)					
 				do {
 					communicatePIN();
 					conclude((current.pinCommunicated = true), bc:100, fc:0);
