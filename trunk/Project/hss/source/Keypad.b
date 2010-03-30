@@ -8,7 +8,6 @@ class Keypad {
 		public int currentAccountCode;
 		public int currentAccountPin;
 		public boolean sessionIsOn;
-		public boolean idle;
 		public boolean checkedAccountCode;
 		public boolean checkedAccountPin;
 		public boolean pinChecked;
@@ -24,6 +23,9 @@ class Keypad {
 		public boolean cashDispensed;
 		public double cashToDispense;
 		public boolean RepliedVerification;
+		
+		//CHANGED: Ed
+		public int pin;
 
 	initial_beliefs:
 		(current.pinIsWrong != false);
@@ -56,120 +58,146 @@ class Keypad {
 		(current.cashDispensed != false);
 		(current.pinIsWrong != false);
 		(current.cashToDispense = 0.0);
-
-		activities:
-
-			primitive_activity getAccount() {
-						max_duration: 4;
-					}
-
-			primitive_activity getPin() {
-						max_duration: 500;
-					}
-
-			primitive_activity getAmount() {
-						max_duration: 5;
-					}
-
-			primitive_activity comparePins() {
-						max_duration: 4;
-					}
-
-			primitive_activity matchPin_No() {
-						max_duration: 3;
-					}
-
-
-			primitive_activity matchPin_Yes() {
-						max_duration: 3;
-					}
-
-			primitive_activity returnCardandMoney() {
-						max_duration: 9;
-					}
-
-			primitive_activity returnCardwithNoMoney() {
-						max_duration: 6;
-					}
-
-			primitive_activity waitStudentReply() {
-						max_duration: 3000;
-			}
-
-			primitive_activity waitBankReply() {
-						max_duration: 3000;
-			}
-
-			primitive_activity processPinReply() {
-						max_duration: 4;
-			}
-
-			primitive_activity processAskPin() {
-						max_duration: 3;
-			}
-
-
-			primitive_activity processAskBankVerification() {
-						max_duration: 4;
-			}
-
-			primitive_activity processAskAmount() {
-						max_duration: 2;
-			}		
-
-			primitive_activity waitOnPin() {
-						max_duration: 50;
-			}		
-
-			communicate askPin(HomeUser hur) {
-						max_duration: 1;
-						with: hur;
-						about:
-							send(current.pinAsked = true);
-						when: end;
-			}
-
-		  workframes:
 		
-			workframe wf_teach2 { // the instructor can be teaching
-				repeat: false;
-				variables:
-					forone(Keypad) keypad;					
-				detectables:
-					detectable noticePinNotification { // if a student asks a question
-						when(whenever)
-						//TODO: couldn't one generalize this for all the students
-						detect((H1User.pinCommunicated = true), dc:100) // check the belief of a student.
-						then impasse;
-					}
-				when(
-						(current.idle = true)
-						)
-				do {
-					conclude((current.idle = false), bc:100, fc:100);
-					waitOnPin();
+		//CHANGED: Ed
+		(current.pin = 1111);
+
+	activities:
+
+		primitive_activity getAccount() {
+					max_duration: 4;
 				}
-			}
+
+		primitive_activity getPin() {
+					max_duration: 500;
+				}
+
+		primitive_activity getAmount() {
+					max_duration: 5;
+				}
+
+		primitive_activity comparePins() {
+					max_duration: 4;
+				}
+
+		primitive_activity matchPin_No() {
+					max_duration: 3;
+				}
+
+
+		primitive_activity matchPin_Yes() {
+					max_duration: 3;
+				}
+
+		primitive_activity returnCardandMoney() {
+					max_duration: 9;
+				}
+
+		primitive_activity returnCardwithNoMoney() {
+					max_duration: 6;
+				}
+
+		primitive_activity waitStudentReply() {
+					max_duration: 3000;
+		}
+
+		primitive_activity waitBankReply() {
+					max_duration: 3000;
+		}
+
+		primitive_activity processPinReply() {
+					max_duration: 4;
+		}
+
+		primitive_activity processAskPin() {
+					max_duration: 100;
+		}
+
+
+		primitive_activity processAskBankVerification() {
+					max_duration: 4;
+		}
+
+		primitive_activity processAskAmount() {
+					max_duration: 2;
+		}		
+
+		primitive_activity waitOnPin() {
+					max_duration: 50;
+		}		
+
+		communicate askPin(HomeUser hur) {
+					max_duration: 1;
+					with: hur;
+					about:
+						send(current.pinAsked = true);
+					when: end;
+		}
+
+	workframes:
+
+		workframe wf_getAccount {
+
+					repeat: false;
+
+					variables:
+						forone(HomeUser) hur0; 
+
+					when(
+						knownval(hur0.isAtKeypad = true) and
+						knownval(current.sessionIsOn = false) and
+						knownval(current.checkedAccountCode = false)
+						)
+
+					do {
+						getAccount();
+						conclude((current.sessionIsOn = true), bc:100, fc:100);
+						conclude((current.checkedAccountCode = true), bc:100, fc:100);
+
+					}
+		}
+		
+
+		workframe wf_askPin {
+
+					repeat: true;
+
+					variables:
+						forone(HomeUser) hur1;
+
+					when(
+						knownval(current.checkedAccountPin = false) and
+						knownval(current.checkedAccountCode = true) and
+						knownval(current.pinAsked = false)
+						)
+
+
+					do {
+						processAskPin();
+						askPin(hur1);
+						conclude((current.pinAsked = true), bc:100, fc:100);
+					}
+		}			
 			
-			workframe wf_getPin {
-
-						repeat: false;
-
-						variables:
-							forone(HomeUser) homeusr;
-
-						when(
-							knownval(current.checkedAccountPin = false) and
-							knownval(current.checkedAccountCode = true) and
-							knownval(homeusr.pinCommunicated = true)
-							)
-
-						do {
-							getPin();
-							conclude((current.currentAccountPin = homeusr.believedPin), bc:100, fc:100);
-							conclude((current.checkedAccountPin = true), bc:100, fc:100);
-
-						}
-			}			
+			// workframe wf_getPin {
+			// 
+			// 			repeat: false;
+			// 
+			// 			variables:
+			// 				forone(HomeUser) hur1;
+			// 
+			// 			when(
+			// 				knownval(current.checkedAccountPin = false) and
+			// 				knownval(current.checkedAccountCode = true) and
+			// 				knownval(homeusr.pinCommunicated = true)
+			// 				)
+			// 
+			// 			do {
+			// 				getPin();
+			// 				conclude((current.currentAccountPin = homeusr.believedPin), bc:100, fc:100);
+			// 				conclude((current.checkedAccountPin = true), bc:100, fc:100);
+			// 
+			// 			}
+			// }			
 		
 }
