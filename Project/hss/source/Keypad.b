@@ -1,6 +1,6 @@
 class Keypad {
 
-	display: "Atm";
+	display: "Keypad";
   	cost: 0.0;
  	resource: true;
 
