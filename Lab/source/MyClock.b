@@ -10,7 +10,6 @@ class MyClock {
 		
 		
 	activities:
-
 		primitive_activity waitTenMinutes() {
 					random: false;
 					max_duration: 599; // 10 minutes
