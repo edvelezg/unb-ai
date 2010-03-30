@@ -29,7 +29,8 @@ group Instructor {
 		// empty
 
   activities:
-		communicate answerQuestion(Student student) { // Answer question that is asked by a student
+		communicate answerQuestion(Student student) { 
+		// Answer question that is asked by a student
 			max_duration: 30; 
 			with: student; // communication established with student agent
 			about:
@@ -37,7 +38,8 @@ group Instructor {
 			when: end;
 		}
 		
-		communicate informCampusPolice() { //informs the CampusPolice about the thief's location
+		communicate informCampusPolice() { 
+		//informs the CampusPolice about the thief's location
 			max_duration: 100; 
 			with: CampusPolice;
 			about:
@@ -45,7 +47,8 @@ group Instructor {
 			when: end;
 		}
 		
-		communicate callCampusPolice() { // Instructor 1 calls the campus police when he does not see the projector
+		communicate callCampusPolice() {
+		// Instructor 1 calls the campus police when he does not see the projector
 			max_duration: 30; 
 			with: CampusPolice;
 			about:
@@ -277,7 +280,8 @@ group Instructor {
 			}
 		}
 
-		workframe wf_callCampusPolice // only applies to instructor1 who calls police when he doesn't see the projector
+		workframe wf_callCampusPolice 
+		// only applies to instructor1 who calls police when he doesn't see the projector
 		{
 			repeat: false;
 			when(
