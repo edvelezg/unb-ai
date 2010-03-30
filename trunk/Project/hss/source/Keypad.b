@@ -36,4 +36,91 @@ class Keypad {
 		(current.sessionIsOn = false);
 		(current.cashToDispense = 0.0);
 
+	initial_facts:
+		(current.sessionIsOn = false);
+		(current.checkedAccountCode = false);
+		(current.checkedAccountPin = false);
+		(current.pinChecked = false);
+		(current.askedVerification = false);
+		(current.cashCanBeDispensed != false);
+		(current.currentAccountPin = 0);
+		(current.currentAccountCode = 0);
+		(current.errorCount = 0);
+		(current.pinAsked = false);
+		(current.waitReply = false);
+		(current.RepliedVerification = false);
+		(current.amountAsked = false);
+		(current.amountChecked = false);
+		(current.currentAmountRequested = 0.0);
+		(current.cashDispensed != false);
+		(current.pinIsWrong != false);
+		(current.cashToDispense = 0.0);
+
+		activities:
+
+			primitive_activity getAccount() {
+						max_duration: 4;
+					}
+
+			primitive_activity getPin() {
+						max_duration: 5;
+					}
+
+			primitive_activity getAmount() {
+						max_duration: 5;
+					}
+
+			primitive_activity comparePins() {
+						max_duration: 4;
+					}
+
+			primitive_activity matchPin_No() {
+						max_duration: 3;
+					}
+
+
+			primitive_activity matchPin_Yes() {
+						max_duration: 3;
+					}
+
+			primitive_activity returnCardandMoney() {
+						max_duration: 9;
+					}
+
+			primitive_activity returnCardwithNoMoney() {
+						max_duration: 6;
+					}
+
+			primitive_activity waitStudentReply() {
+						max_duration: 3000;
+			}
+
+			primitive_activity waitBankReply() {
+						max_duration: 3000;
+			}
+
+			primitive_activity processPinReply() {
+						max_duration: 4;
+			}
+
+			primitive_activity processAskPin() {
+						max_duration: 3;
+			}
+
+
+			primitive_activity processAskBankVerification() {
+						max_duration: 4;
+			}
+
+			primitive_activity processAskAmount() {
+						max_duration: 2;
+			}		
+
+			communicate askPin(HomeUser hur) {
+						max_duration: 1;
+						with: hur;
+						about:
+							send(current.pinAsked = true);
+						when: end;
+			}
 }
