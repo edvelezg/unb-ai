@@ -127,7 +127,7 @@ class Keypad {
 		}		
 
 		communicate askPin(HomeUser hur) {
-					max_duration: 1;
+					max_duration: 300;
 					with: hur;
 					about:
 						send(current.pinAsked = true);

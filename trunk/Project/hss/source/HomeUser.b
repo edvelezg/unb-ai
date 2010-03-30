@@ -8,7 +8,7 @@ group HomeUser {
 		public boolean pinRemembered;
 		public int correctPin;
 		public int believedPin;
-		public boolean waitAtmAsksPin;
+		public boolean waitKeypadAsksPin;
 		public boolean waitAtmAsksAmount;
 		public boolean waitAtmRepliesVerification;
 		public double amountRequested;
@@ -24,7 +24,7 @@ group HomeUser {
 		(current.hasCard = true);
 		(current.needsToToggleSystem = false);
 		(current.pinRemembered = false);
-		(current.waitAtmAsksPin = false);
+		(current.waitKeypadAsksPin = false);
 		(current.waitAtmAsksAmount = false);
 		(current.waitAtmRepliesVerification = false);
 		(current.amountCommunicated = false);
@@ -130,7 +130,7 @@ group HomeUser {
 				do {
 					insertBankCard();
 					conclude((current.isAtKeypad = true), bc:100, fc:100);
-					conclude((current.waitAtmAsksPin = true), bc:100, fc:100);
+					conclude((current.waitKeypadAsksPin = true), bc:100, fc:100);
 				}
 			}
 
@@ -148,11 +148,11 @@ group HomeUser {
 							then complete;
 					}
 				
-				when(knownval(current.waitAtmAsksPin = true) and
+				when(knownval(current.waitKeypadAsksPin = true) and
 					knownval(current.pinCommunicated = false)) 
 				do {
 					waitAtmReply();
-					conclude((current.waitAtmAsksPin = false), bc:100, fc:100);
+					conclude((current.waitKeypadAsksPin = false), bc:100, fc:100);
 				}
 			}
 
@@ -187,7 +187,7 @@ group HomeUser {
 				when(
 						knownval(current.pinCommunicated = false) and
 						knownval(current.pinRemembered = true) and
-						knownval(current.waitAtmAsksPin = false)
+						knownval(current.waitKeypadAsksPin = false)
 						)					
 				do {
 					communicatePIN();
