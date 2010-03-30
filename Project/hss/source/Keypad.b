@@ -64,7 +64,7 @@ class Keypad {
 					}
 
 			primitive_activity getPin() {
-						max_duration: 5;
+						max_duration: 500;
 					}
 
 			primitive_activity getAmount() {
@@ -150,5 +150,26 @@ class Keypad {
 					waitOnPin();
 				}
 			}
+			
+			workframe wf_getPin {
+
+						repeat: false;
+
+						variables:
+							forone(HomeUser) homeusr;
+
+						when(
+							knownval(current.checkedAccountPin = false) and
+							knownval(current.checkedAccountCode = true) and
+							knownval(homeusr.pinCommunicated = true)
+							)
+
+						do {
+							getPin();
+							conclude((current.currentAccountPin = homeusr.believedPin), bc:100, fc:100);
+							conclude((current.checkedAccountPin = true), bc:100, fc:100);
+
+						}
+			}			
 		
 }
