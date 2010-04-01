@@ -33,6 +33,20 @@ group HouseUser {
 			primitive_activity waitOnKeypad() {
 				max_duration: 400;
 			}
+
+			primitive_activity 	processCommunicatePin() {
+				max_duration: 100;
+			}
+
+			communicate communicatePIN(Keypad kp3) {
+				max_duration: 1;
+				with: kp3;
+				about:
+					send(current.pinCommunicated = true),
+					send(current.believedPin = current.believedPin);
+					// send(current.believedPin = unknown);
+				when: end;
+			}
 			
 
 			composite_activity useKeypad() {
@@ -137,6 +151,28 @@ group HouseUser {
 						}
 
 					}					
+
+					workframe wf_communicatePIN {
+
+						repeat: true;
+
+						variables:
+
+							forone(Keypad) kp3;
+
+						when(
+							knownval(current.pinCommunicated = false) and
+							knownval(current.location = kp3.location) and
+							knownval(current.pinRemembered = true) and
+							knownval(current.waitKeypadAsksPin = false))
+
+						do {
+							processCommunicatePin();
+							communicatePIN(kp3);
+							conclude((current.pinCommunicated = true), bc:100, fc:100);
+						}
+					}
+					
 	}
 				
   workframes:
