@@ -32,17 +32,19 @@
   <SOURCE_FILES>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___PStation2.b" modified="1269621627000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House3.b" modified="1269621557000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Keypad.b" modified="1269798587000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/MyClock.b" modified="1270060443000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2.b" modified="1269620792000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Keypad.b" modified="1270060127000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/EmgResponse.b" modified="1269620977000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House3.b" modified="1269621574000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1Keypad.b" modified="1269798596000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Fredericton.b" modified="1269621629000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1Keypad.b" modified="1269957417000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Fredericton.b" modified="1270060625000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House2.b" modified="1269620759000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3.b" modified="1269620770000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3.b" modified="1270052192000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House2.b" modified="1269621403000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House2.b" modified="1269621454000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House1.b" modified="1269621307000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/FrederictonClock.b" modified="1270060378000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House2___House1.b" modified="1269621113000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/SecurityOffice.b" modified="1269620630000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House1.b" modified="1269620748000"/>
@@ -51,12 +53,19 @@
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3___House2.b" modified="1269621485000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3___House1.b" modified="1269621146000"/>
     <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House1.b" modified="1269621183000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1User.b" modified="1269798548000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1269800711000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1User.b" modified="1270059568000"/>
+    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1270059643000"/>
   </SOURCE_FILES>
   
   <OPEN_FILES>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1269800711000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1270059643000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/FrederictonClock.b" modified="1270060378000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/MyClock.b" modified="1270060443000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1User.b" modified="1270059568000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Keypad.b" modified="1270060127000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1Keypad.b" modified="1269957417000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Fredericton.b" modified="1270060625000"/>
+    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3.b" modified="1270052192000"/>
   </OPEN_FILES>
   
 </PROJECT>

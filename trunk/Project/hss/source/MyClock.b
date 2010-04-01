@@ -1,4 +1,3 @@
-//FIXME: doesn't the fredericton clock show up broadcasting like the Univesity clock in the other example :\
 class MyClock {
 
 	attributes:
@@ -11,7 +10,6 @@ class MyClock {
 		
 		
 	activities:
-
 		primitive_activity waitTenMinutes() {
 					random: false;
 					max_duration: 599; // 10 minutes
@@ -20,7 +18,7 @@ class MyClock {
 		broadcast announceTime() {
 					random: false;
 					max_duration: 1;
-					to: House3;
+					to: Fredericton;
 					about: 
 						send(current.tenMinUnits),
 						send(current.time);
