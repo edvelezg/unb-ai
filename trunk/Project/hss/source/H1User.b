@@ -7,7 +7,7 @@ agent H1User memberof HouseUser{
 		(current.activity1Time = 1);
 		(current.pinRemembered = false);
 		
-  initial_facts:
+  	initial_facts:
 		(current.needsToToggleSystem = true);
 		(current.activity1Time = 1);
 

@@ -6,16 +6,35 @@ group HouseUser {
 		public boolean pinRemembered;		
 		public boolean waitKeypadAsksPin;		
 		public boolean isAtKeypad;
-
+		public boolean pinCommunicated;		
+		public boolean pinRemembered;
+		public int believedPin;
+		
 			
-  relations:
-		// empty
+	initial_beliefs:
+		(current.needsToToggleSystem = true);
+		(current.activity1Time = 1);
+		(current.pinRemembered = false);
+		(current.pinCommunicated = false);		
+
+  	initial_facts:
+		(current.needsToToggleSystem = true);
+		(current.activity1Time = 1);
 		
   activities:
+
+			primitive_activity rememberPin() {
+				max_duration: 10;
+			}	
 
 			move moveToLocation(Building loc) {
 					 location: loc;
 			}
+			
+			primitive_activity waitOnKeypad() {
+				max_duration: 400;
+			}
+			
 
 			composite_activity useKeypad() {
 
@@ -67,6 +86,57 @@ group HouseUser {
 							conclude((current.isAtKeypad = true), bc:100, fc:100);
 							conclude((current.waitKeypadAsksPin = true), bc:100, fc:100);
 						}
+					}
+
+					workframe wf_waitKeypadAsksPin {
+
+						repeat: true; 
+
+						variables:
+							forone(Keypad) kp;
+
+						detectables:
+
+							detectable keypadAsksPin{
+								when(whenever)
+									detect((kp.pinAsked = true), dc:100)
+									then complete;
+							}
+							
+						when(
+							knownval(current.waitKeypadAsksPin = true) and
+							knownval(current.pinCommunicated = false)
+							) 
+						do {
+							waitOnKeypad();
+							conclude((current.waitKeypadAsksPin = false), bc:100, fc:100);
+
+						}
+
+					}		
+													
+					workframe wf_rememberPin {
+						repeat: true;
+
+						variables:
+							forone(Keypad) kp3;
+
+						when(
+							knownval(current.pinCommunicated = false) and
+							knownval(current.location = kp.location) and
+							knownval(current.pinRemembered = false) and
+							knownval(kp.pinAsked = true)
+							)
+
+
+						do {
+							rememberPin();
+							conclude((current.believedPin = kp.pin), bc:100, fc:50);
+							conclude((current.believedPin = 9999), bc:50, fc:50);
+							conclude((current.pinRemembered = true), bc:100, fc:0);
+
+						}
+
 					}					
 	}
 				
