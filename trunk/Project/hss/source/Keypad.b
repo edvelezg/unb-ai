@@ -72,7 +72,7 @@ class Keypad {
 					with: H1User;
 					about:
 						send(current.pinAsked = true);
-					when: end;
+					when: start;
 		}
 
 
