@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AREA SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/area.dtd"> 
-<!-- Generated at Sun Mar 28 15:38:24 ADT 2010 -->
+<!-- Generated at Wed Mar 31 15:37:17 ADT 2010 -->
 
 <AREA name="SecurityOffice" display="SecurityOffice">
 	<INSTANCEOF ref="brahms.base.Building" />

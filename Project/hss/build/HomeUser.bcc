@@ -1,48 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE GROUP SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/group.dtd"> 
-<!-- Generated at Sun Mar 28 15:38:24 ADT 2010 -->
+<!-- Generated at Wed Mar 31 15:37:17 ADT 2010 -->
 
 <GROUP name="HomeUser" display="HomeUser">
 	<MEMBEROF ref="brahms.base.BaseGroup" />
 	<ATTRIBUTES>
-		<ATTRIBUTE name="HomeUser.believedPin" display="believedPin" scope="public" type="int"/>
-		<ATTRIBUTE name="HomeUser.pinRemembered" display="pinRemembered" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.preferredCashOut" display="preferredCashOut" scope="public" type="double"/>
-		<ATTRIBUTE name="HomeUser.needsToToggleSystem" display="needsToToggleSystem" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.readyToLeaveAtm" display="readyToLeaveAtm" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.checkedDiner" display="checkedDiner" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.waitAtmAsksAmount" display="waitAtmAsksAmount" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.sessionIsOn" display="sessionIsOn" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.amountCommunicated" display="amountCommunicated" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.calculatedCash" display="calculatedCash" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.pinCommunicated" display="pinCommunicated" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.readyToLeaveRestaurant" display="readyToLeaveRestaurant" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.receivedCash" display="receivedCash" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.hasCard" display="hasCard" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.waitAtmRepliesVerification" display="waitAtmRepliesVerification" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.hasTakenCash" display="hasTakenCash" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.repeatPin" display="repeatPin" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.waitAtmAsksPin" display="waitAtmAsksPin" scope="public" type="boolean"/>
-		<ATTRIBUTE name="HomeUser.amountRequested" display="amountRequested" scope="public" type="double"/>
-		<ATTRIBUTE name="HomeUser.hasEaten" display="hasEaten" scope="public" type="boolean"/>
 		<ATTRIBUTE name="HomeUser.correctPin" display="correctPin" scope="public" type="int"/>
+		<ATTRIBUTE name="HomeUser.hasCard" display="hasCard" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.needsToToggleSystem" display="needsToToggleSystem" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.believedPin" display="believedPin" scope="public" type="int"/>
+		<ATTRIBUTE name="HomeUser.waitAtmAsksAmount" display="waitAtmAsksAmount" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.amountRequested" display="amountRequested" scope="public" type="double"/>
+		<ATTRIBUTE name="HomeUser.sessionIsOn" display="sessionIsOn" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.isAtKeypad" display="isAtKeypad" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.waitAtmRepliesVerification" display="waitAtmRepliesVerification" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.amountCommunicated" display="amountCommunicated" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.repeatPin" display="repeatPin" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.pinCommunicated" display="pinCommunicated" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.waitKeypadAsksPin" display="waitKeypadAsksPin" scope="public" type="boolean"/>
+		<ATTRIBUTE name="HomeUser.pinRemembered" display="pinRemembered" scope="public" type="boolean"/>
 	</ATTRIBUTES>
 	<BELIEFS>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.checkedDiner" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.hasEaten" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.hasTakenCash" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.readyToLeaveRestaurant" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.readyToLeaveAtm" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
 		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.pinCommunicated" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
@@ -53,19 +31,13 @@
 			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.hasCard" evalOp="eq" value="true" valueType="boolean"/>
 		</BELIEF>
 		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.calculatedCash" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.needsToToggleSystem" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.receivedCash" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
 		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.pinRemembered" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
 		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.waitAtmAsksPin" evalOp="eq" value="false" valueType="boolean"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.waitKeypadAsksPin" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
 		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.waitAtmAsksAmount" evalOp="eq" value="false" valueType="boolean"/>
@@ -79,7 +51,15 @@
 		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.repeatPin" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.isAtKeypad" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
 	</BELIEFS>
+	<FACTS>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.isAtKeypad" evalOp="eq" value="false" valueType="boolean"/>
+		</FACT>
+	</FACTS>
 	<ACTIVITIES>
 		<MOVE_ACT name="HomeUser.moveToLocation" descriptor="moveToLocation(LBuilding;)" display="moveToLocation" location="loc" detectDepartureInSubAreas="true" detectArrivalInSubAreas="true">
 			<PARAMETERS>
@@ -88,231 +68,5 @@
 		</MOVE_ACT>
 		<PRIM_ACT name="HomeUser.waitAtmReply" descriptor="waitAtmReply()" display="waitAtmReply" maxDuration="300">
 		</PRIM_ACT>
-		<COMP_ACT name="HomeUser.useKeypad" descriptor="useKeypad()" display="useKeypad" endCondition="nowork">
-			<ACTIVITIES>
-				<PRIM_ACT name="HomeUser.useKeypad$doNotActivateSecuritySystem" descriptor="doNotActivateSecuritySystem()" display="doNotActivateSecuritySystem" maxDuration="18">
-				</PRIM_ACT>
-				<PRIM_ACT name="HomeUser.useKeypad$finishTransaction" descriptor="finishTransaction()" display="finishTransaction" maxDuration="14">
-				</PRIM_ACT>
-				<COMM_ACT name="HomeUser.useKeypad$communicatePIN" descriptor="communicatePIN(LKeypad;)" display="communicatePIN" maxDuration="1" when="end">
-					<PARAMETERS>
-						<PARAMETER name="kp1" type="Keypad" typeDetail="Class" />
-					</PARAMETERS>
-					<WITH>
-						<WITHREF ref="kp1" />
-					</WITH>
-					<ABOUT>
-						<SEND contentType="condition">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.pinCommunicated"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="true"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</SEND>
-						<SEND contentType="condition">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.believedPin"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="UNKNOWN"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</SEND>
-					</ABOUT>
-				</COMM_ACT>
-				<PRIM_ACT name="HomeUser.useKeypad$processCommunicatePin" descriptor="processCommunicatePin()" display="processCommunicatePin" maxDuration="3">
-				</PRIM_ACT>
-				<PRIM_ACT name="HomeUser.useKeypad$activateSecuritySystem" descriptor="activateSecuritySystem()" display="activateSecuritySystem" maxDuration="18">
-				</PRIM_ACT>
-				<PRIM_ACT name="HomeUser.useKeypad$insertBankCard" descriptor="insertBankCard()" display="insertBankCard" maxDuration="10">
-				</PRIM_ACT>
-				<PRIM_ACT name="HomeUser.useKeypad$rememberPin" descriptor="rememberPin()" display="rememberPin" maxDuration="10">
-				</PRIM_ACT>
-				<PRIM_ACT name="HomeUser.useKeypad$waitKeypadReply" descriptor="waitKeypadReply()" display="waitKeypadReply" maxDuration="300">
-				</PRIM_ACT>
-			</ACTIVITIES>
-			<WORKFRAMES>
-				<WORKFRAME name="HomeUser.useKeypad.wf_moveToHome" display="wf_moveToHome" wftype="1" repeat="true">
-					<VARIABLES>
-						<VARIABLE name="bd" display="bd" quantification="forone" type="brahms.base.Building" typeDetail="AreaDef"/>
-						<VARIABLE name="kp" display="kp" quantification="forone" type="Keypad" typeDetail="Class"/>
-					</VARIABLES>
-					<WHEN>
-						<PRECONDITION modifier="knownval">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.needsToToggleSystem"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="true"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-						<PRECONDITION modifier="not">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="brahms.base.BaseGroup.location"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="OA" objType="variable" objRef="kp" attRef="brahms.base.BaseClass.location"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-						<PRECONDITION modifier="knownval">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="variable" objRef="kp" attRef="brahms.base.BaseClass.location"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="O" objType="variable" objRef="bd"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-					</WHEN>
-					<WF_DO>
-						<ACTIVITYREF ref="moveToLocation(LBuilding;)">
-							<PARAMVALS>
-								<PARAMVAL value="bd" valueType="Variable"/>
-							</PARAMVALS>
-						</ACTIVITYREF>
-					</WF_DO>
-				</WORKFRAME>
-				<WORKFRAME name="HomeUser.useKeypad.wf_waitAtmAsksPin" display="wf_waitAtmAsksPin" wftype="1" repeat="true">
-					<VARIABLES>
-						<VARIABLE name="kp4" display="kp4" quantification="forone" type="Keypad" typeDetail="Class"/>
-					</VARIABLES>
-					<DETECTABLES>
-						<DETECTABLE name="atmAsksPin" when="whenever" action="complete">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="variable" objRef="kp4" attRef="Keypad.pinAsked"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="true"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</DETECTABLE>
-					</DETECTABLES>
-					<WHEN>
-						<PRECONDITION modifier="knownval">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.waitAtmAsksPin"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="true"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-						<PRECONDITION modifier="knownval">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.pinCommunicated"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="false"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-					</WHEN>
-					<WF_DO>
-						<ACTIVITYREF ref="waitAtmReply()">
-						</ACTIVITYREF>
-						<CONSEQUENCE>
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.waitAtmAsksPin"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="false"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</CONSEQUENCE>
-					</WF_DO>
-				</WORKFRAME>
-				<WORKFRAME name="HomeUser.useKeypad.wf_insertBankCard" display="wf_insertBankCard" wftype="1" repeat="true">
-					<VARIABLES>
-						<VARIABLE name="bd2" display="bd2" quantification="forone" type="brahms.base.Building" typeDetail="AreaDef"/>
-						<VARIABLE name="kp2" display="kp2" quantification="forone" type="Keypad" typeDetail="Class"/>
-					</VARIABLES>
-					<WHEN>
-						<PRECONDITION modifier="knownval">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.needsToToggleSystem"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="true"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-						<PRECONDITION modifier="knownval">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="brahms.base.BaseGroup.location"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="OA" objType="variable" objRef="kp2" attRef="brahms.base.BaseClass.location"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-						<PRECONDITION modifier="knownval">
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.pinRemembered"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="false"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</PRECONDITION>
-					</WHEN>
-					<WF_DO>
-						<ACTIVITYREF ref="insertBankCard()">
-						</ACTIVITYREF>
-						<CONSEQUENCE>
-							<CONDITION>
-								<VALUECOMPARISON relation="eq">
-									<EXPRESSION>
-										<OPERAND type="OA" objType="current" objRef="current" attRef="HomeUser.waitAtmAsksPin"/>
-									</EXPRESSION>
-									<EXPRESSION>
-										<OPERAND type="V" valueType="boolean" value="true"/>
-									</EXPRESSION>
-								</VALUECOMPARISON>
-							</CONDITION>
-						</CONSEQUENCE>
-					</WF_DO>
-				</WORKFRAME>
-			</WORKFRAMES>
-		</COMP_ACT>
 	</ACTIVITIES>
 </GROUP>

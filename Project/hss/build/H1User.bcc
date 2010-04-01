@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
-<!-- Generated at Sun Mar 28 15:38:24 ADT 2010 -->
+<!-- Generated at Wed Mar 31 15:37:17 ADT 2010 -->
 
-<AGENT name="H1User" serializable="false" display="H1User" location="House3">
+<AGENT name="H1User" serializable="false" display="H1User" location="Fredericton">
 	<MEMBEROF ref="HomeUser" />
 	<BELIEFS>
 		<BELIEF>
