@@ -7,7 +7,6 @@ group HouseUser {
 		public boolean waitKeypadAsksPin;		
 		public boolean isAtKeypad;
 		public boolean pinCommunicated;		
-		public boolean pinRemembered;
 		public int believedPin;
 		
 			
@@ -93,13 +92,13 @@ group HouseUser {
 						repeat: true; 
 
 						variables:
-							forone(Keypad) kp;
+							// forone(Keypad) kp;
 
 						detectables:
 
 							detectable keypadAsksPin{
 								when(whenever)
-									detect((kp.pinAsked = true), dc:100)
+									detect((H1Keypad.pinAsked = true), dc:100)
 									then complete;
 							}
 							
@@ -119,19 +118,19 @@ group HouseUser {
 						repeat: true;
 
 						variables:
-							forone(Keypad) kp3;
+							// forone(Keypad) kp3;
 
 						when(
 							knownval(current.pinCommunicated = false) and
-							knownval(current.location = kp.location) and
+							knownval(current.location = H1Keypad.location) and
 							knownval(current.pinRemembered = false) and
-							knownval(kp.pinAsked = true)
+							knownval(H1Keypad.pinAsked = true)
 							)
 
 
 						do {
 							rememberPin();
-							conclude((current.believedPin = kp.pin), bc:100, fc:50);
+							conclude((current.believedPin = H1Keypad.pin), bc:100, fc:50);
 							conclude((current.believedPin = 9999), bc:50, fc:50);
 							conclude((current.pinRemembered = true), bc:100, fc:0);
 

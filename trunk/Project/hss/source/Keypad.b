@@ -15,6 +15,7 @@ class Keypad {
 		(current.pinIsWrong != false);
 		(current.hasStarted = false);
 		(current.pinChecked = false);		
+		(current.pinAsked = false);		
 		
 	initial_facts:
 		(current.pinChecked = false);
@@ -26,7 +27,7 @@ class Keypad {
 	activities:
 
 		primitive_activity startKeypad() {
-					max_duration: 100;
+					max_duration: 50;
 				}
 
 		primitive_activity getPin() {
@@ -67,7 +68,7 @@ class Keypad {
 //		}
 
 		communicate askPin() {
-					max_duration: 300;
+					max_duration: 50;
 					with: H1User;
 					about:
 						send(current.pinAsked = true);
