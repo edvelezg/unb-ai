@@ -4,14 +4,14 @@
 	name="hss"
 	package=""
 	release="176"
-	modelFile="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/hss.b" 
+	modelFile="/Users/Naix/Desktop/hss/source/hss.b" 
   vmcfg="/Applications/Brahms/AgentEnvironment/config/vm.cfg"
-  srcdir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source"
-  builddir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/build"
+  srcdir="/Users/Naix/Desktop/hss/source"
+  builddir="/Users/Naix/Desktop/hss/build"
   barname="hss.bar"
-  bardir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/lib"
+  bardir="/Users/Naix/Desktop/hss/lib"
   generatebar="false"
-  idedir="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/ide_hss">
+  idedir="/Users/Naix/Desktop/hss/ide_hss">
   
   <MODELS>
     <MODEL type="agentmodel" file="agentmodel.xml"/>
@@ -22,7 +22,7 @@
   </MODELS>
   
   <SOURCE_FOLDERS>
-    <SOURCE_FOLDER name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source"/>
+    <SOURCE_FOLDER name="/Users/Naix/Desktop/hss/source"/>
   </SOURCE_FOLDERS>
   
   <LIBRARY_FOLDERS>
@@ -30,42 +30,43 @@
   </LIBRARY_FOLDERS>
   
   <SOURCE_FILES>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___PStation2.b" modified="1269621627000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House3.b" modified="1269621557000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/MyClock.b" modified="1270060443000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2.b" modified="1269620792000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Keypad.b" modified="1270060127000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/EmgResponse.b" modified="1269620977000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House3.b" modified="1269621574000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1Keypad.b" modified="1269957417000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Fredericton.b" modified="1270060625000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House2.b" modified="1269620759000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3.b" modified="1270052192000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House2.b" modified="1269621403000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House2.b" modified="1269621454000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation2___House1.b" modified="1269621307000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/FrederictonClock.b" modified="1270060378000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House2___House1.b" modified="1269621113000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/SecurityOffice.b" modified="1269620630000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House1.b" modified="1269620748000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1.b" modified="1269620782000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/hss.b" modified="1269619838000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3___House2.b" modified="1269621485000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3___House1.b" modified="1269621146000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/PStation1___House1.b" modified="1269621183000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1User.b" modified="1270059568000"/>
-    <SOURCE_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1270059643000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/Student.b" modified="1270146593000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation1___PStation2.b" modified="1269621627000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/H1Keypad.b" modified="1270143276000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/SecurityOffice.b" modified="1269620630000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/EmgResponse.b" modified="1269620977000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/House3.b" modified="1269620770000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation1___House2.b" modified="1269621454000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/House3___House2.b" modified="1269621485000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/House3___House1.b" modified="1269621146000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation2___House2.b" modified="1269621403000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/MyClock.b" modified="1270122684000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation1___House1.b" modified="1269621183000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation1.b" modified="1269620782000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/Keypad.b" modified="1270151819000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/hss.b" modified="1269619838000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation2.b" modified="1269620792000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation2___House1.b" modified="1269621307000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation1___House3.b" modified="1269621557000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/House1.b" modified="1269620748000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/FredClock.b" modified="1270122672000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/User.b" modified="1270151204000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/HouseUser.b" modified="1270151408000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/House2.b" modified="1269620759000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/House2___House1.b" modified="1269621113000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/Fredericton.b" modified="1269621629000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/PStation2___House3.b" modified="1269621574000"/>
+    <SOURCE_FILE name="/Users/Naix/Desktop/hss/source/Stu1.b" modified="1270142009000"/>
   </SOURCE_FILES>
   
   <OPEN_FILES>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/HomeUser.b" modified="1270059643000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/FrederictonClock.b" modified="1270060378000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/MyClock.b" modified="1270060443000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1User.b" modified="1270059568000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Keypad.b" modified="1270060127000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/H1Keypad.b" modified="1269957417000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/Fredericton.b" modified="1270060625000"/>
-    <OPEN_FILE name="/Users/Naix/Documents/UNB-Courses/AI/unb-ai/Project/hss/source/House3.b" modified="1270052192000"/>
+    <OPEN_FILE name="/Users/Naix/Desktop/hss/source/MyClock.b" modified="1270122684000"/>
+    <OPEN_FILE name="/Users/Naix/Desktop/hss/source/FredClock.b" modified="1270122672000"/>
+    <OPEN_FILE name="/Users/Naix/Desktop/hss/source/Stu1.b" modified="1270142009000"/>
+    <OPEN_FILE name="/Users/Naix/Desktop/hss/source/Student.b" modified="1270146593000"/>
+    <OPEN_FILE name="/Users/Naix/Desktop/hss/source/User.b" modified="1270151204000"/>
+    <OPEN_FILE name="/Users/Naix/Desktop/hss/source/Keypad.b" modified="1270151819000"/>
+    <OPEN_FILE name="/Users/Naix/Desktop/hss/source/HouseUser.b" modified="1270151408000"/>
   </OPEN_FILES>
   
 </PROJECT>
