@@ -23,7 +23,7 @@ group HouseUser {
   activities:
 
 			primitive_activity rememberPin() {
-				max_duration: 10;
+				max_duration: 100;
 			}	
 
 			move moveToLocation(Building loc) {
