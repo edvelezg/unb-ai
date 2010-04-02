@@ -9,24 +9,29 @@ class Keypad {
 		public boolean pinIsWrong;	
 		public boolean pinReceived;
 		public boolean pinAsked;	
+		public boolean hasComparedOnce;	
 		// public boolean pinIsCorrect;	
 		public boolean readyToActivate;
 		public int enteredPin;		
 		public int correctPin;
-		
+		public int errorCount;		
 
 	initial_beliefs:
 		(current.pinIsWrong != false);
 		(current.hasStarted = false);
 		(current.pinReceived = false);				
-		(current.pinAsked = false);		
+		(current.pinAsked = false);
+		(current.hasComparedOnce = false);
+		(current.errorCount = 0);		
 		
 	initial_facts:
 		(current.pinReceived = false);
 		(current.pinAsked = false);
 		(current.pinIsWrong != false);		
 		(current.correctPin = 1111);
-		(current.hasStarted = false);		
+		(current.hasStarted = false);	
+		(current.hasComparedOnce = false);	
+		(current.errorCount = 0);		
 
 	activities:
 
@@ -178,12 +183,36 @@ class Keypad {
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(current.enteredPin != current.correctPin))
+						knownval(current.enteredPin != current.correctPin) and
+						knownval(current.hasComparedOnce = false)
+						)
 					do {
 						comparePins();
 						conclude((current.pinIsWrong = true), bc:100, fc:100);
+						conclude((current.hasComparedOnce = true), bc:100, fc:100);
 						conclude((current.readyToActivate = false), bc:100, fc:100);
 					}
-		}		
+		}
+		
+//		workframe wf_comparePins_again {
+//
+//					repeat: true;		
+//											
+//					when(
+//						knownval(current.correctPin = false) and
+//						knownval(current.hasComparedOnce = true) and
+//						knownval(current.errorCount < 2) and 
+//						knownval(current.pinAsked = true) and
+//						knownval(current.pinChecked = false)
+//						) 
+//
+//					do {
+//						processAskPin();
+//						conclude((current.pinIsWrong = true), bc:100, fc:100);
+//						conclude((H1User.pinCommunicated = false), bc:100, fc:0);
+//						conclude((H1User.pinRemembered = false), bc:100, fc:0);
+//						conclude((current.errorCount =  current.errorCount + 1), bc:100, fc:100);
+//					}
+//		}		
 		
 }
