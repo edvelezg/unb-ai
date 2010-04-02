@@ -18,7 +18,7 @@ class Keypad {
 	initial_beliefs:
 		(current.pinIsWrong != false);
 		(current.hasStarted = false);
-		(current.pinReceived = false);		
+		(current.pinReceived = false);				
 		(current.pinAsked = false);		
 		
 	initial_facts:
@@ -160,7 +160,7 @@ class Keypad {
 		workframe wf_comparePins_ok {
 
 					repeat: false;
-					
+
 					when(
 						known(current.enteredPin) and
 						known(current.correctPin) and

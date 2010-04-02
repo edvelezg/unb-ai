@@ -43,8 +43,8 @@ group HouseUser {
 				with: kp3;
 				about:
 					send(current.pinCommunicated = true),
-					// send(current.believedPin = current.believedPin);
-					send(current.believedPin = unknown);
+					send(current.believedPin = current.believedPin);
+					// send(current.believedPin = unknown);
 				when: end;
 			}
 			
