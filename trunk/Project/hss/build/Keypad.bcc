@@ -1,152 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
-<!-- Generated at Wed Mar 31 15:37:17 ADT 2010 -->
+<!-- Generated at Fri Apr 02 17:08:20 ADT 2010 -->
 
 <CLASS name="Keypad" serializable="false" display="Keypad" resource="true">
 	<EXTENDS ref="brahms.base.BaseClass" />
 	<ATTRIBUTES>
-		<ATTRIBUTE name="Keypad.RepliedVerification" display="RepliedVerification" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.pinReceived" display="pinReceived" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Keypad.pinAsked" display="pinAsked" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.cashToDispense" display="cashToDispense" scope="public" type="double"/>
-		<ATTRIBUTE name="Keypad.checkedAccountPin" display="checkedAccountPin" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.correctPin" display="correctPin" scope="public" type="int"/>
+		<ATTRIBUTE name="Keypad.enteredPin" display="enteredPin" scope="public" type="int"/>
+		<ATTRIBUTE name="Keypad.readyToActivate" display="readyToActivate" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Keypad.pinIsWrong" display="pinIsWrong" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.currentAccountPin" display="currentAccountPin" scope="public" type="int"/>
-		<ATTRIBUTE name="Keypad.currentAmountRequested" display="currentAmountRequested" scope="public" type="double"/>
-		<ATTRIBUTE name="Keypad.sessionIsOn" display="sessionIsOn" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.cashDispensed" display="cashDispensed" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.amountChecked" display="amountChecked" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.cashCanBeDispensed" display="cashCanBeDispensed" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.currentAccountCode" display="currentAccountCode" scope="public" type="int"/>
-		<ATTRIBUTE name="Keypad.waitReply" display="waitReply" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.pin" display="pin" scope="public" type="int"/>
-		<ATTRIBUTE name="Keypad.checkedAccountCode" display="checkedAccountCode" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.pinChecked" display="pinChecked" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.askedVerification" display="askedVerification" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.amountAsked" display="amountAsked" scope="public" type="boolean"/>
-		<ATTRIBUTE name="Keypad.errorCount" display="errorCount" scope="public" type="int"/>
+		<ATTRIBUTE name="Keypad.hasStarted" display="hasStarted" scope="public" type="boolean"/>
 	</ATTRIBUTES>
 	<BELIEFS>
 		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinIsWrong" evalOp="uneq" value="false" valueType="boolean"/>
 		</BELIEF>
 		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.waitReply" evalOp="eq" value="false" valueType="boolean"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.hasStarted" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
 		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.amountAsked" evalOp="eq" value="false" valueType="boolean"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinReceived" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
 		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.RepliedVerification" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.amountChecked" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.currentAmountRequested" evalOp="eq" value="0.0" valueType="double"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.askedVerification" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.cashDispensed" evalOp="uneq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.sessionIsOn" evalOp="eq" value="false" valueType="boolean"/>
-		</BELIEF>
-		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.cashToDispense" evalOp="eq" value="0.0" valueType="double"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinAsked" evalOp="eq" value="false" valueType="boolean"/>
 		</BELIEF>
 	</BELIEFS>
 	<FACTS>
 		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.sessionIsOn" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.checkedAccountCode" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.checkedAccountPin" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinChecked" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.askedVerification" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.cashCanBeDispensed" evalOp="uneq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.currentAccountPin" evalOp="eq" value="0" valueType="int"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.currentAccountCode" evalOp="eq" value="0" valueType="int"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.errorCount" evalOp="eq" value="0" valueType="int"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinReceived" evalOp="eq" value="false" valueType="boolean"/>
 		</FACT>
 		<FACT>
 			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinAsked" evalOp="eq" value="false" valueType="boolean"/>
 		</FACT>
 		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.waitReply" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.RepliedVerification" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.amountAsked" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.amountChecked" evalOp="eq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.currentAmountRequested" evalOp="eq" value="0.0" valueType="double"/>
-		</FACT>
-		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.cashDispensed" evalOp="uneq" value="false" valueType="boolean"/>
-		</FACT>
-		<FACT>
 			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinIsWrong" evalOp="uneq" value="false" valueType="boolean"/>
 		</FACT>
 		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.cashToDispense" evalOp="eq" value="0.0" valueType="double"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.correctPin" evalOp="eq" value="1111" valueType="int"/>
 		</FACT>
 		<FACT>
-			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pin" evalOp="eq" value="1111" valueType="int"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.hasStarted" evalOp="eq" value="false" valueType="boolean"/>
 		</FACT>
 	</FACTS>
 	<ACTIVITIES>
-		<PRIM_ACT name="Keypad.waitBankReply" descriptor="waitBankReply()" display="waitBankReply" maxDuration="3000">
+		<PRIM_ACT name="Keypad.startKeypad" descriptor="startKeypad()" display="startKeypad" maxDuration="50">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.processPinReply" descriptor="processPinReply()" display="processPinReply" maxDuration="4">
+		<PRIM_ACT name="Keypad.returnCardwithNoMoney" descriptor="returnCardwithNoMoney()" display="returnCardwithNoMoney" maxDuration="100">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.waitStudentReply" descriptor="waitStudentReply()" display="waitStudentReply" maxDuration="3000">
+		<PRIM_ACT name="Keypad.returnCardandMoney" descriptor="returnCardandMoney()" display="returnCardandMoney" maxDuration="100">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.processAskAmount" descriptor="processAskAmount()" display="processAskAmount" maxDuration="2">
+		<PRIM_ACT name="Keypad.getPin" descriptor="getPin()" display="getPin" maxDuration="100">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.returnCardwithNoMoney" descriptor="returnCardwithNoMoney()" display="returnCardwithNoMoney" maxDuration="6">
+		<PRIM_ACT name="Keypad.comparePins" descriptor="comparePins()" display="comparePins" maxDuration="100">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.returnCardandMoney" descriptor="returnCardandMoney()" display="returnCardandMoney" maxDuration="9">
+		<PRIM_ACT name="Keypad.matchPin_No" descriptor="matchPin_No()" display="matchPin_No" maxDuration="100">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.getPin" descriptor="getPin()" display="getPin" maxDuration="500">
+		<PRIM_ACT name="Keypad.matchPin_Yes" descriptor="matchPin_Yes()" display="matchPin_Yes" maxDuration="100">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.comparePins" descriptor="comparePins()" display="comparePins" maxDuration="4">
+		<PRIM_ACT name="Keypad.processAskPin" descriptor="processAskPin()" display="processAskPin" maxDuration="100">
 		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.matchPin_No" descriptor="matchPin_No()" display="matchPin_No" maxDuration="3">
-		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.getAmount" descriptor="getAmount()" display="getAmount" maxDuration="5">
-		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.getAccount" descriptor="getAccount()" display="getAccount" maxDuration="4">
-		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.matchPin_Yes" descriptor="matchPin_Yes()" display="matchPin_Yes" maxDuration="3">
-		</PRIM_ACT>
-		<COMM_ACT name="Keypad.askPin" descriptor="askPin(LHomeUser;)" display="askPin" maxDuration="300" when="end">
-			<PARAMETERS>
-				<PARAMETER name="hur" type="HomeUser" typeDetail="Group" />
-			</PARAMETERS>
+		<COMM_ACT name="Keypad.askPin" descriptor="askPin()" display="askPin" maxDuration="1" when="start">
 			<WITH>
-				<WITHREF ref="hur" />
+				<WITHREF ref="H1User" objType="Agent" />
 			</WITH>
 			<ABOUT>
 				<SEND contentType="condition">
@@ -163,11 +80,314 @@
 				</SEND>
 			</ABOUT>
 		</COMM_ACT>
-		<PRIM_ACT name="Keypad.waitOnPin" descriptor="waitOnPin()" display="waitOnPin" maxDuration="50">
-		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.processAskPin" descriptor="processAskPin()" display="processAskPin" maxDuration="100">
-		</PRIM_ACT>
-		<PRIM_ACT name="Keypad.processAskBankVerification" descriptor="processAskBankVerification()" display="processAskBankVerification" maxDuration="4">
-		</PRIM_ACT>
 	</ACTIVITIES>
+	<WORKFRAMES>
+		<WORKFRAME name="Keypad.wf_comparePins_bad" display="wf_comparePins_bad" wftype="2">
+			<WHEN>
+				<PRECONDITION modifier="known">
+					<CONDITION>
+						<VALUECOMPARISON>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.enteredPin"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="known">
+					<CONDITION>
+						<VALUECOMPARISON>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.correctPin"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinReceived"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="uneq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.enteredPin"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.correctPin"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="comparePins()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinIsWrong"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.readyToActivate"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Keypad.wf_comparePins_ok" display="wf_comparePins_ok" wftype="2">
+			<WHEN>
+				<PRECONDITION modifier="known">
+					<CONDITION>
+						<VALUECOMPARISON>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.enteredPin"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="known">
+					<CONDITION>
+						<VALUECOMPARISON>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.correctPin"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinReceived"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.enteredPin"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.correctPin"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="comparePins()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinIsWrong"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.readyToActivate"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Keypad.wf_getPin" display="wf_getPin" wftype="2">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinReceived"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="H1User" attRef="HouseUser.pinCommunicated"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="getPin()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.enteredPin"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="H1User" attRef="HouseUser.believedPin"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinReceived"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Keypad.wf_startKeypad" display="wf_startKeypad" wftype="2">
+			<VARIABLES>
+				<VARIABLE name="hur0" display="hur0" quantification="forone" type="HouseUser" typeDetail="Group"/>
+			</VARIABLES>
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="variable" objRef="hur0" attRef="HouseUser.isAtKeypad"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.hasStarted"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="startKeypad()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.hasStarted"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Keypad.wf_askPin" display="wf_askPin" wftype="2" repeat="true">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="H1User" attRef="HouseUser.isAtKeypad"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.hasStarted"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinAsked"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinAsked"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<ACTIVITYREF ref="askPin()">
+				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+	</WORKFRAMES>
 </CLASS>

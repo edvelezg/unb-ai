@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE OBJECT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/object.dtd"> 
-<!-- Generated at Wed Mar 31 15:37:17 ADT 2010 -->
+<!-- Generated at Fri Apr 02 17:08:20 ADT 2010 -->
 
 <OBJECT name="H1Keypad" serializable="false" display="H1Keypad" location="House1">
 	<INSTANCEOF ref="Keypad" />
+	<BELIEFS>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.correctPin" evalOp="eq" value="1111" valueType="int"/>
+		</BELIEF>
+	</BELIEFS>
+	<FACTS>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.correctPin" evalOp="eq" value="1111" valueType="int"/>
+		</FACT>
+	</FACTS>
 </OBJECT>
