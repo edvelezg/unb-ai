@@ -5,23 +5,27 @@ class Keypad {
  	resource: true;
 
 	attributes:
-		public boolean pinIsWrong;	
-		public boolean pinChecked;
-		public boolean pinAsked;	
 		public boolean hasStarted;
-		public int pin;
+		public boolean pinIsWrong;	
+		public boolean pinReceived;
+		public boolean pinAsked;	
+		// public boolean pinIsCorrect;	
+		public boolean readyToActivate;
+		public int enteredPin;		
+		public int correctPin;
+		
 
 	initial_beliefs:
 		(current.pinIsWrong != false);
 		(current.hasStarted = false);
-		(current.pinChecked = false);		
+		(current.pinReceived = false);		
 		(current.pinAsked = false);		
 		
 	initial_facts:
-		(current.pinChecked = false);
+		(current.pinReceived = false);
 		(current.pinAsked = false);
 		(current.pinIsWrong != false);		
-		(current.pin = 1111);
+		(current.correctPin = 1111);
 		(current.hasStarted = false);		
 
 	activities:
@@ -29,11 +33,11 @@ class Keypad {
 		primitive_activity startKeypad() {
 					max_duration: 50;
 				}
-
+				
 		primitive_activity getPin() {
 					max_duration: 100;
 				}
-
+				
 		primitive_activity comparePins() {
 					max_duration: 100;
 				}
@@ -41,7 +45,6 @@ class Keypad {
 		primitive_activity matchPin_No() {
 					max_duration: 100;
 				}
-
 
 		primitive_activity matchPin_Yes() {
 					max_duration: 100;
@@ -68,7 +71,7 @@ class Keypad {
 //		}
 
 		communicate askPin() {
-					max_duration: 50;
+					max_duration: 1;
 					with: H1User;
 					about:
 						send(current.pinAsked = true);
@@ -96,26 +99,26 @@ class Keypad {
 					}
 		}	
 		
-//		workframe wf_askPin {
-//
-//					repeat: true;
-//
-//					variables:
-//						forone(HouseUser) hur1;
-//
-//					when(
-//						knownval(hur1.isAtKeypad = true) and					
-//						knownval(current.hasStarted = true) and
-//						knownval(current.pinAsked = false)
-//						)
-//
-//
-//					do {
-//						processAskPin();
-//						askPin(hur1);
-//						conclude((current.pinAsked = true), bc:100, fc:100);
-//					}
-//		}	
+		// workframe wf_askPin {
+		// 
+		// 			repeat: true;
+		// 
+		// 			variables:
+		// 				forone(HouseUser) hur1;
+		// 
+		// 			when(
+		// 				knownval(hur1.isAtKeypad = true) and					
+		// 				knownval(current.hasStarted = true) and
+		// 				knownval(current.pinAsked = false)
+		// 				)
+		// 
+		// 
+		// 			do {
+		// 				processAskPin();
+		// 				askPin(hur1);
+		// 				conclude((current.pinAsked = true), bc:100, fc:100);
+		// 			}
+		// }	
 
 		workframe wf_askPin {
 
@@ -132,6 +135,58 @@ class Keypad {
 						conclude((current.pinAsked = true), bc:100, fc:100);
 						askPin();
 					}
-		}	
+		}
+		
+		workframe wf_getPin {
+
+					repeat: true;
+
+					variables:
+						forone(HouseUser) hur;
+					
+					when(
+						knownval(current.pinReceived = false) and
+						knownval(hur.pinCommunicated = true)
+						)
+						
+					do {
+						getPin();
+						conclude((current.enteredPin = hur.believedPin), bc:100, fc:100);
+						conclude((current.pinReceived = true), bc:100, fc:100);
+						
+					}
+		}
+
+		workframe wf_comparePins_ok {
+
+					repeat: false;
+					
+					when(
+						known(current.enteredPin) and
+						known(current.correctPin) and
+						knownval(current.pinReceived = true) and
+						knownval(current.enteredPin = current.correctPin))
+					do {
+						comparePins();
+						conclude((current.pinIsWrong = false), bc:100, fc:100);
+						conclude((current.readyToActivate = true), bc:100, fc:100);
+					}
+		}
+		
+		workframe wf_comparePins_bad {
+
+					repeat: false;
+					
+					when(
+						known(current.enteredPin) and
+						known(current.correctPin) and
+						knownval(current.pinReceived = true) and
+						knownval(current.enteredPin != current.correctPin))
+					do {
+						comparePins();
+						conclude((current.pinIsWrong = true), bc:100, fc:100);
+						conclude((current.readyToActivate = false), bc:100, fc:100);
+					}
+		}		
 		
 }

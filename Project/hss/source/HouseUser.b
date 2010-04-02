@@ -35,7 +35,7 @@ group HouseUser {
 			}
 
 			primitive_activity 	processCommunicatePin() {
-				max_duration: 100;
+				max_duration: 3;
 			}
 
 			communicate communicatePIN(Keypad kp3) {
@@ -43,8 +43,8 @@ group HouseUser {
 				with: kp3;
 				about:
 					send(current.pinCommunicated = true),
-					send(current.believedPin = current.believedPin);
-					// send(current.believedPin = unknown);
+					// send(current.believedPin = current.believedPin);
+					send(current.believedPin = unknown);
 				when: end;
 			}
 			
@@ -144,7 +144,7 @@ group HouseUser {
 
 						do {
 							rememberPin();
-							conclude((current.believedPin = H1Keypad.pin), bc:100, fc:50);
+							conclude((current.believedPin = H1Keypad.correctPin), bc:100, fc:50);
 							conclude((current.believedPin = 9999), bc:50, fc:50);
 							conclude((current.pinRemembered = true), bc:100, fc:0);
 
