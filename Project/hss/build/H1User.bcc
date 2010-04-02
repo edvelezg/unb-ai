@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
-<!-- Generated at Wed Mar 31 15:37:17 ADT 2010 -->
+<!-- Generated at Fri Apr 02 17:08:20 ADT 2010 -->
 
-<AGENT name="H1User" serializable="false" display="H1User" location="Fredericton">
-	<MEMBEROF ref="HomeUser" />
+<AGENT name="H1User" serializable="false" display="H1User" location="House2">
+	<MEMBEROF ref="HouseUser" />
 	<BELIEFS>
 		<BELIEF>
-			<OAV lObjRef="current" lObjType="Current" attRef="HomeUser.needsToToggleSystem" evalOp="eq" value="true" valueType="boolean"/>
+			<OAV lObjRef="current" lObjType="Current" attRef="HouseUser.needsToToggleSystem" evalOp="eq" value="true" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="HouseUser.activity1Time" evalOp="eq" value="1" valueType="int"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="HouseUser.pinRemembered" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="HouseUser.believedPin" evalOp="eq" value="1111" valueType="int"/>
 		</BELIEF>
 	</BELIEFS>
+	<FACTS>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="HouseUser.needsToToggleSystem" evalOp="eq" value="true" valueType="boolean"/>
+		</FACT>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="HouseUser.activity1Time" evalOp="eq" value="1" valueType="int"/>
+		</FACT>
+	</FACTS>
 </AGENT>
