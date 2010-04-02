@@ -139,19 +139,16 @@ class Keypad {
 		
 		workframe wf_getPin {
 
-					repeat: true;
+					repeat: false;
 
-					variables:
-						forone(HouseUser) hur;
-					
 					when(
 						knownval(current.pinReceived = false) and
-						knownval(hur.pinCommunicated = true)
+						knownval(H1User.pinCommunicated = true)
 						)
 						
 					do {
 						getPin();
-						conclude((current.enteredPin = hur.believedPin), bc:100, fc:100);
+						conclude((current.enteredPin = H1User.believedPin), bc:100, fc:100);
 						conclude((current.pinReceived = true), bc:100, fc:100);
 						
 					}
