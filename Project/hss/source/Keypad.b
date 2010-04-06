@@ -208,7 +208,7 @@ class Keypad {
 					do {
 						processAskPin();
 						conclude((current.pinIsWrong = false), bc:100, fc:100);
-						// conclude((current.pinAsked = false), bc:100, fc:100);
+						conclude((current.pinAsked = false), bc:100, fc:100);
 						conclude((H1User.pinCommunicated = false), bc:100, fc:100);
 						conclude((H1User.pinRemembered = false), bc:100, fc:100);
 						conclude((current.errorCount =  current.errorCount + 1), bc:100, fc:100);
