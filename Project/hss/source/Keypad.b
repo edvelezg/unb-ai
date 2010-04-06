@@ -144,7 +144,7 @@ class Keypad {
 		
 		workframe wf_getPin {
 
-					repeat: false;
+					repeat: true;
 
 					when(
 						knownval(current.pinReceived = false) and
@@ -183,8 +183,8 @@ class Keypad {
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(current.enteredPin != current.correctPin) and
-						knownval(current.hasComparedOnce = false)
+						knownval(current.enteredPin != current.correctPin) // and
+						// knownval(current.hasComparedOnce = false)
 						)
 					do {
 						comparePins();
@@ -194,25 +194,25 @@ class Keypad {
 					}
 		}
 		
-//		workframe wf_comparePins_again {
-//
-//					repeat: true;		
-//											
-//					when(
-//						knownval(current.correctPin = false) and
-//						knownval(current.hasComparedOnce = true) and
-//						knownval(current.errorCount < 2) and 
-//						knownval(current.pinAsked = true) and
-//						knownval(current.pinChecked = false)
-//						) 
-//
-//					do {
-//						processAskPin();
-//						conclude((current.pinIsWrong = true), bc:100, fc:100);
-//						conclude((H1User.pinCommunicated = false), bc:100, fc:0);
-//						conclude((H1User.pinRemembered = false), bc:100, fc:0);
-//						conclude((current.errorCount =  current.errorCount + 1), bc:100, fc:100);
-//					}
-//		}		
+		workframe wf_comparePins_again {
+
+					repeat: true;		
+											
+					when(
+						knownval(current.pinIsWrong = true) and
+						knownval(current.hasComparedOnce = true) and
+						knownval(current.errorCount < 2) and 
+						knownval(current.pinAsked = true)
+						) 
+
+					do {
+						processAskPin();
+						conclude((current.pinIsWrong = false), bc:100, fc:100);
+						// conclude((current.pinAsked = false), bc:100, fc:100);
+						conclude((H1User.pinCommunicated = false), bc:100, fc:100);
+						conclude((H1User.pinRemembered = false), bc:100, fc:100);
+						conclude((current.errorCount =  current.errorCount + 1), bc:100, fc:100);
+					}
+		}		
 		
 }
