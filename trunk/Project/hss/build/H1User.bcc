@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE AGENT SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/agent.dtd"> 
-<!-- Generated at Fri Apr 02 17:08:20 ADT 2010 -->
+<!-- Generated at Wed Apr 07 13:23:13 ADT 2010 -->
 
 <AGENT name="H1User" serializable="false" display="H1User" location="House2">
 	<MEMBEROF ref="HouseUser" />
@@ -16,6 +16,9 @@
 		</BELIEF>
 		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="HouseUser.believedPin" evalOp="eq" value="1111" valueType="int"/>
+		</BELIEF>
+		<BELIEF>
+			<OAO lObjRef="H1Keypad" lObjType="Object" attRef="brahms.base.BaseClass.location" equalOp="eq" rObjRef="House1" rObjType="Area"/>
 		</BELIEF>
 	</BELIEFS>
 	<FACTS>
