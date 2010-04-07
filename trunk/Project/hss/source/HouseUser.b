@@ -72,10 +72,11 @@ group HouseUser {
 						repeat: false;
 						variables:
 							forone(Building) bd;
+							forone(Keypad) kp;
 						when(
 							knownval(current.needsToToggleSystem = true) and
-							not(current.location = H1Keypad.location) and
-							(H1Keypad.location = bd)
+							not(current.location = kp.location) and
+							(kp.location = bd)
 							)
 						do {
 							moveToLocation(bd);
@@ -152,6 +153,31 @@ group HouseUser {
 						}
 
 					}					
+
+					workframe wf_rememberPinAgain {
+						repeat: true;
+
+						variables:
+							// forone(Keypad) kp3;
+
+						when(
+							knownval(current.pinCommunicated = false) and
+							knownval(current.location = H1Keypad.location) and
+							knownval(current.pinRemembered = false) and
+							knownval(H1Keypad.pinAsked = true) and
+							knownval(H1Keypad.repeatPin = true) 
+							)
+
+
+						do {
+							rememberPin();
+							conclude((current.believedPin = H1Keypad.correctPin), bc:100, fc:50);
+							conclude((current.believedPin = 9999), bc:50, fc:50);
+							conclude((current.pinRemembered = true), bc:100, fc:0);
+
+						}
+
+					}										
 
 					workframe wf_communicatePIN {
 
