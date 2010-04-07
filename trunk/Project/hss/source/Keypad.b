@@ -11,6 +11,7 @@ class Keypad {
 		public boolean pinAsked;	
 		public boolean hasComparedOnce;	
 		public boolean readyToActivate;
+		public boolean repeatPin;
 		public int enteredPin;		
 		public int correctPin;
 		public int errorCount;		
@@ -22,6 +23,8 @@ class Keypad {
 		(current.pinAsked = false);
 		(current.hasComparedOnce = false);
 		(current.errorCount = 0);		
+		(current.repeatPin = false);		
+		(current.correctPin = 1111);
 		
 	initial_facts:
 		(current.pinReceived = false);
@@ -31,6 +34,7 @@ class Keypad {
 		(current.hasStarted = false);	
 		(current.hasComparedOnce = false);	
 		(current.errorCount = 0);		
+		(current.repeatPin = false);
 
 	activities:
 
@@ -79,6 +83,14 @@ class Keypad {
 					with: H1User;
 					about:
 						send(current.pinAsked = true);
+					when: start;
+		}
+
+		communicate repeatPin() {
+					max_duration: 1;
+					with: H1User;
+					about:
+						send(current.repeatPin = true);
 					when: start;
 		}
 
@@ -166,7 +178,8 @@ class Keypad {
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(current.enteredPin = current.correctPin))
+						knownval(current.enteredPin = current.correctPin)
+						)
 					do {
 						comparePins();
 						conclude((current.pinIsWrong = false), bc:100, fc:100);
@@ -182,8 +195,8 @@ class Keypad {
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(current.enteredPin != current.correctPin) // and
-						// knownval(current.hasComparedOnce = false)
+						knownval(current.enteredPin != current.correctPin) and
+						knownval(current.hasComparedOnce = false)
 						)
 					do {
 						comparePins();
@@ -206,11 +219,13 @@ class Keypad {
 
 					do {
 						processAskPin();
+						conclude((H1User.pinCommunicated = false), bc:100, fc:0);
+						conclude((H1User.pinRemembered = false), bc:100, fc:0);						
 						conclude((current.pinIsWrong = false), bc:100, fc:100);
 						conclude((current.pinAsked = false), bc:100, fc:100);
-						conclude((H1User.pinCommunicated = false), bc:100, fc:0);
-						conclude((H1User.pinRemembered = false), bc:100, fc:0);
 						conclude((current.errorCount =  current.errorCount + 1), bc:100, fc:100);
+						conclude((current.repeatPin = true), bc:100, fc:100);
+						repeatPin();						
 					}
 		}		
 		
