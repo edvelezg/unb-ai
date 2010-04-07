@@ -90,7 +90,9 @@ class Keypad {
 					max_duration: 1;
 					with: H1User;
 					about:
-						send(current.repeatPin = true);
+						send(current.repeatPin = true),
+						send(H1User.pinCommunicated = false),
+						send(H1User.pinRemembered = false);
 					when: start;
 		}
 
@@ -149,6 +151,7 @@ class Keypad {
 
 					do {
 						conclude((current.pinAsked = true), bc:100, fc:100);
+						conclude((current.pinReceived = false), bc:100, fc:100);
 						askPin();
 					}
 		}
@@ -166,7 +169,6 @@ class Keypad {
 						getPin();
 						conclude((current.enteredPin = H1User.believedPin), bc:100, fc:100);
 						conclude((current.pinReceived = true), bc:100, fc:100);
-						
 					}
 		}
 
@@ -219,10 +221,10 @@ class Keypad {
 
 					do {
 						processAskPin();
-						conclude((H1User.pinCommunicated = false), bc:100, fc:0);
-						conclude((H1User.pinRemembered = false), bc:100, fc:0);						
+						conclude((H1User.pinCommunicated = false), bc:100, fc:100);
+						conclude((H1User.pinRemembered = false), bc:100, fc:100);						
 						conclude((current.pinIsWrong = false), bc:100, fc:100);
-						conclude((current.pinAsked = false), bc:100, fc:100);
+						conclude((current.pinAsked = false), bc:100, fc:100);						
 						conclude((current.errorCount =  current.errorCount + 1), bc:100, fc:100);
 						conclude((current.repeatPin = true), bc:100, fc:100);
 						repeatPin();						
