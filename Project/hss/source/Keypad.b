@@ -25,6 +25,8 @@ class Keypad {
 		(current.errorCount = 0);		
 		(current.repeatPin = false);		
 		(current.correctPin = 1111);
+		(current.enteredPin = unknown);
+		(H1User.believedPin = unknown);		
 		
 	initial_facts:
 		(current.pinReceived = false);
@@ -35,6 +37,8 @@ class Keypad {
 		(current.hasComparedOnce = false);	
 		(current.errorCount = 0);		
 		(current.repeatPin = false);
+		(current.enteredPin = unknown);
+		(H1User.believedPin = unknown);				
 
 	activities:
 
@@ -180,7 +184,7 @@ class Keypad {
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(current.enteredPin = current.correctPin)
+						knownval(H1User.believedPin = current.correctPin)
 						)
 					do {
 						comparePins();
@@ -197,7 +201,7 @@ class Keypad {
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(current.enteredPin != current.correctPin) and
+						knownval(H1User.believedPin != current.correctPin) and
 						knownval(current.hasComparedOnce = false)
 						)
 					do {
