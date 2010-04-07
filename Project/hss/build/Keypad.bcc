@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
-<!-- Generated at Fri Apr 02 17:08:20 ADT 2010 -->
+<!-- Generated at Wed Apr 07 13:23:13 ADT 2010 -->
 
 <CLASS name="Keypad" serializable="false" display="Keypad" resource="true">
 	<EXTENDS ref="brahms.base.BaseClass" />
@@ -9,8 +9,10 @@
 		<ATTRIBUTE name="Keypad.pinAsked" display="pinAsked" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Keypad.correctPin" display="correctPin" scope="public" type="int"/>
 		<ATTRIBUTE name="Keypad.enteredPin" display="enteredPin" scope="public" type="int"/>
+		<ATTRIBUTE name="Keypad.hasComparedOnce" display="hasComparedOnce" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Keypad.readyToActivate" display="readyToActivate" scope="public" type="boolean"/>
 		<ATTRIBUTE name="Keypad.pinIsWrong" display="pinIsWrong" scope="public" type="boolean"/>
+		<ATTRIBUTE name="Keypad.errorCount" display="errorCount" scope="public" type="int"/>
 		<ATTRIBUTE name="Keypad.hasStarted" display="hasStarted" scope="public" type="boolean"/>
 	</ATTRIBUTES>
 	<BELIEFS>
@@ -25,6 +27,12 @@
 		</BELIEF>
 		<BELIEF>
 			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.pinAsked" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.hasComparedOnce" evalOp="eq" value="false" valueType="boolean"/>
+		</BELIEF>
+		<BELIEF>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.errorCount" evalOp="eq" value="0" valueType="int"/>
 		</BELIEF>
 	</BELIEFS>
 	<FACTS>
@@ -42,6 +50,12 @@
 		</FACT>
 		<FACT>
 			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.hasStarted" evalOp="eq" value="false" valueType="boolean"/>
+		</FACT>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.hasComparedOnce" evalOp="eq" value="false" valueType="boolean"/>
+		</FACT>
+		<FACT>
+			<OAV lObjRef="current" lObjType="Current" attRef="Keypad.errorCount" evalOp="eq" value="0" valueType="int"/>
 		</FACT>
 	</FACTS>
 	<ACTIVITIES>
@@ -146,6 +160,18 @@
 					<CONDITION>
 						<VALUECOMPARISON relation="eq">
 							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.hasComparedOnce"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
 								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.readyToActivate"/>
 							</EXPRESSION>
 							<EXPRESSION>
@@ -230,7 +256,7 @@
 				</CONSEQUENCE>
 			</WF_DO>
 		</WORKFRAME>
-		<WORKFRAME name="Keypad.wf_getPin" display="wf_getPin" wftype="2">
+		<WORKFRAME name="Keypad.wf_getPin" display="wf_getPin" wftype="2" repeat="true">
 			<WHEN>
 				<PRECONDITION modifier="knownval">
 					<CONDITION>
@@ -387,6 +413,123 @@
 				</CONSEQUENCE>
 				<ACTIVITYREF ref="askPin()">
 				</ACTIVITYREF>
+			</WF_DO>
+		</WORKFRAME>
+		<WORKFRAME name="Keypad.wf_comparePins_again" display="wf_comparePins_again" wftype="2" repeat="true">
+			<WHEN>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinIsWrong"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.hasComparedOnce"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="lt">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.errorCount"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="int" value="2"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinAsked"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+			</WHEN>
+			<WF_DO>
+				<ACTIVITYREF ref="processAskPin()">
+				</ACTIVITYREF>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinIsWrong"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinAsked"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE factCertainty="0">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="H1User" attRef="HouseUser.pinCommunicated"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE factCertainty="0">
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="H1User" attRef="HouseUser.pinRemembered"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.errorCount"/>
+							</EXPRESSION>
+							<EXPRESSION operator="plus">
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.errorCount"/>
+								<OPERAND type="V" valueType="int" value="1"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
 			</WF_DO>
 		</WORKFRAME>
 	</WORKFRAMES>

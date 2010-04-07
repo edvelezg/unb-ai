@@ -14,7 +14,7 @@ group HouseUser {
 		(current.needsToToggleSystem = true);
 		(current.activity1Time = 1);
 		(current.pinRemembered = false);
-		(current.pinCommunicated = false);		
+		(current.pinCommunicated = false);
 
   	initial_facts:
 		(current.needsToToggleSystem = true);
@@ -71,13 +71,14 @@ group HouseUser {
 						
 						repeat: false;
 						variables:
-						// TODO: I want this to work with a variable, how to I do this?
+							forone(Building) bd;
 						when(
 							knownval(current.needsToToggleSystem = true) and
-							not(current.location = H1Keypad.location)
+							not(current.location = H1Keypad.location) and
+							(H1Keypad.location = bd)
 							)
 						do {
-							moveToLocation(House1);
+							moveToLocation(bd);
 						}
 					}  
 					
