@@ -71,7 +71,7 @@ group HouseUser {
 						
 						repeat: false;
 						variables:
-						// none yet
+						// TODO: I want this to work with a variable, how to I do this?
 						when(
 							knownval(current.needsToToggleSystem = true) and
 							not(current.location = H1Keypad.location)
@@ -157,7 +157,6 @@ group HouseUser {
 						repeat: true;
 
 						variables:
-
 							forone(Keypad) kp3;
 
 						when(
@@ -172,6 +171,7 @@ group HouseUser {
 							conclude((current.pinCommunicated = true), bc:100, fc:100);
 						}
 					}
+					
 					
 	}
 				
