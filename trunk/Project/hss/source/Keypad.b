@@ -173,18 +173,19 @@ class Keypad {
 						getPin();
 						conclude((current.enteredPin = H1User.believedPin), bc:100, fc:100);
 						conclude((current.pinReceived = true), bc:100, fc:100);
+						conclude((current.hasComparedOnce = false), bc:100, fc:100);
 					}
 		}
 
 		workframe wf_comparePins_ok {
 
-					repeat: false;
+					repeat: true;
 
 					when(
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(H1User.believedPin = current.correctPin)
+						(H1User.believedPin = current.correctPin)
 						)
 					do {
 						comparePins();
@@ -195,14 +196,14 @@ class Keypad {
 		
 		workframe wf_comparePins_bad {
 
-					repeat: false;
+					repeat: true;
 					
 					when(
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						knownval(H1User.believedPin != current.correctPin) and
-						knownval(current.hasComparedOnce = false)
+						knownval(current.hasComparedOnce = false) and
+						(H1User.believedPin != current.correctPin)
 						)
 					do {
 						comparePins();
@@ -213,14 +214,13 @@ class Keypad {
 		}
 		
 		workframe wf_comparePins_again {
-
 					repeat: true;		
 											
 					when(
 						knownval(current.pinIsWrong = true) and
 						knownval(current.hasComparedOnce = true) and
 						knownval(current.errorCount < 2) and 
-						knownval(current.pinAsked = true)
+						knownval(current.pinReceived = true)
 						) 
 
 					do {
