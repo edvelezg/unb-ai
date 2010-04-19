@@ -1,0 +1,3 @@
+class House extends BaseClass {
+
+}

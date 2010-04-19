@@ -9,7 +9,6 @@ group HouseUser {
 		public boolean isAtKeypad;
 		public boolean pinCommunicated;		
 		public int believedPin;
-		
 			
 	initial_beliefs:
 		(current.needsToToggleSystem = true);

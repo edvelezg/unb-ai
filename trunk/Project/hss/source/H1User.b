@@ -8,8 +8,6 @@ agent H1User memberof HouseUser{
 		(current.pinRemembered = false);
 		(current.believedPin = 1111); 
 		(H1Keypad.location = House1);		
-
-
 		
   	initial_facts:
 		(current.needsToToggleSystem = true);
