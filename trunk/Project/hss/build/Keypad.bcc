@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
-<!-- Generated at Mon Apr 19 17:00:10 ADT 2010 -->
+<!-- Generated at Mon Apr 19 19:23:43 ADT 2010 -->
 
 <CLASS name="Keypad" serializable="false" display="Keypad" resource="true">
 	<EXTENDS ref="brahms.base.BaseClass" />
