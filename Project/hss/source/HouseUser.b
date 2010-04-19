@@ -37,7 +37,7 @@ group HouseUser {
 			}
 
 			primitive_activity 	processCommunicatePin() {
-				max_duration: 3;
+				max_duration: 10;
 			}
 
 			communicate communicatePIN(Keypad kp3) {
@@ -127,7 +127,6 @@ group HouseUser {
 						do {
 							waitOnKeypad();
 							conclude((current.waitKeypadAsksPin = false), bc:100, fc:100);
-
 						}
 
 					}		
@@ -173,6 +172,8 @@ group HouseUser {
 						do {
 							processCommunicatePin();
 							conclude((current.pinCommunicated = true), bc:100, fc:100);
+							conclude((current.hasResponse = false), bc:100, fc:100);
+							conclude((H1Keypad.repeatPin = false), bc:100, fc:100);
 							communicatePIN(kp3);
 						}
 					}			
@@ -186,11 +187,11 @@ group HouseUser {
 
 						detectables:
 
-							detectable keypadAsksPin{
-								when(whenever)
-									detect((H1Keypad.repeatPin = true), dc:100)
-									then complete;
-							}
+						detectable keypadAsksPin{
+							when(whenever)
+								detect((H1Keypad.repeatPin = true), dc:100)
+								then complete;
+						}
 							
 						when(
 							knownval(current.pinCommunicated = true) and
@@ -199,7 +200,6 @@ group HouseUser {
 						do {
 							waitOnKeypad();
 							conclude((current.hasResponse = true), bc:100, fc:100);
-
 						}
 
 					}							

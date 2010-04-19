@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <!DOCTYPE CLASS SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/class.dtd"> 
-<!-- Generated at Mon Apr 19 15:39:25 ADT 2010 -->
+<!-- Generated at Mon Apr 19 17:00:10 ADT 2010 -->
 
 <CLASS name="Keypad" serializable="false" display="Keypad" resource="true">
 	<EXTENDS ref="brahms.base.BaseClass" />
@@ -161,7 +161,7 @@
 		</COMM_ACT>
 	</ACTIVITIES>
 	<WORKFRAMES>
-		<WORKFRAME name="Keypad.wf_comparePins_bad" display="wf_comparePins_bad" wftype="2">
+		<WORKFRAME name="Keypad.wf_comparePins_bad" display="wf_comparePins_bad" wftype="2" repeat="true">
 			<WHEN>
 				<PRECONDITION modifier="known">
 					<CONDITION>
@@ -195,24 +195,24 @@
 				</PRECONDITION>
 				<PRECONDITION modifier="knownval">
 					<CONDITION>
-						<VALUECOMPARISON relation="uneq">
-							<EXPRESSION>
-								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="H1User" attRef="HouseUser.believedPin"/>
-							</EXPRESSION>
-							<EXPRESSION>
-								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.correctPin"/>
-							</EXPRESSION>
-						</VALUECOMPARISON>
-					</CONDITION>
-				</PRECONDITION>
-				<PRECONDITION modifier="knownval">
-					<CONDITION>
 						<VALUECOMPARISON relation="eq">
 							<EXPRESSION>
 								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.hasComparedOnce"/>
 							</EXPRESSION>
 							<EXPRESSION>
 								<OPERAND type="V" valueType="boolean" value="false"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</PRECONDITION>
+				<PRECONDITION modifier="knownval">
+					<CONDITION>
+						<VALUECOMPARISON relation="uneq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="concept" objTypeDetail="Agent" objRef="H1User" attRef="HouseUser.believedPin"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.correctPin"/>
 							</EXPRESSION>
 						</VALUECOMPARISON>
 					</CONDITION>
@@ -259,7 +259,7 @@
 				</CONSEQUENCE>
 			</WF_DO>
 		</WORKFRAME>
-		<WORKFRAME name="Keypad.wf_comparePins_ok" display="wf_comparePins_ok" wftype="2">
+		<WORKFRAME name="Keypad.wf_comparePins_ok" display="wf_comparePins_ok" wftype="2" repeat="true">
 			<WHEN>
 				<PRECONDITION modifier="known">
 					<CONDITION>
@@ -383,6 +383,18 @@
 							</EXPRESSION>
 							<EXPRESSION>
 								<OPERAND type="V" valueType="boolean" value="true"/>
+							</EXPRESSION>
+						</VALUECOMPARISON>
+					</CONDITION>
+				</CONSEQUENCE>
+				<CONSEQUENCE>
+					<CONDITION>
+						<VALUECOMPARISON relation="eq">
+							<EXPRESSION>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.hasComparedOnce"/>
+							</EXPRESSION>
+							<EXPRESSION>
+								<OPERAND type="V" valueType="boolean" value="false"/>
 							</EXPRESSION>
 						</VALUECOMPARISON>
 					</CONDITION>
@@ -546,7 +558,7 @@
 					<CONDITION>
 						<VALUECOMPARISON relation="eq">
 							<EXPRESSION>
-								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinAsked"/>
+								<OPERAND type="OA" objType="current" objRef="current" attRef="Keypad.pinReceived"/>
 							</EXPRESSION>
 							<EXPRESSION>
 								<OPERAND type="V" valueType="boolean" value="true"/>
