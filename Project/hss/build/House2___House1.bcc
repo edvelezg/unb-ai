@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?> 
-<!DOCTYPE PATH SYSTEM "file:////Applications/Brahms/AgentEnvironment/bin/../DTD/path.dtd"> 
-<!-- Generated at Mon Apr 19 20:05:51 ADT 2010 -->
-
-<PATH name="House2___House1" display="House2___House1" distance="1200">
-	<AREAREF ref="House2" />
-	<AREAREF ref="House1" />
-</PATH>
