@@ -3,5 +3,5 @@
 // Look at Composite activity Atm
 //FIXME: How can we make it generic so that Any agent that enters the room one detects its presence.
 //FIXME: The keypad does not recognize a correct pin entered by the user :(
-
+//FIXME: I am not getting random behavior when the thief chooses a house
 //CHANGED: Keypad semiworks.
