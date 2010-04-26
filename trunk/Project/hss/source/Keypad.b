@@ -39,7 +39,7 @@ class Keypad {
 		(current.errorCount      = 0);		
 		(current.repeatPin       = false);
 		(current.enteredPin      = unknown);
-		(current.readyToActivatete = false);		
+		(current.readyToActivate = false);		
 		(H1User.believedPin      = unknown);				
 
 	activities:
