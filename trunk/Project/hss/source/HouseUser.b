@@ -193,11 +193,11 @@ group HouseUser {
 									then complete;
 							}
 							
-							// detectable keypadAsksPin{
-							// 	when(whenever)
-							// 		detect((H1Keypad.repeatPin = true), dc:100)
-							// 		then complete;
-							// }
+							detectable keypadAcceptsPin{
+								when(whenever)
+									detect((H1Keypad.readyToActivate = true), dc:100)
+									then complete;
+							}
 							
 						when(
 							knownval(current.pinCommunicated = true) and
