@@ -17,28 +17,30 @@ class Keypad {
 		public int errorCount;		
 
 	initial_beliefs:
-		(current.pinIsWrong != false);
-		(current.hasStarted = false);
-		(current.pinReceived = false);				
-		(current.pinAsked = false);
+		(current.pinIsWrong 	!= false);
+		(current.hasStarted      = false);
+		(current.pinReceived     = false);				
+		(current.pinAsked        = false);
 		(current.hasComparedOnce = false);
-		(current.errorCount = 0);		
-		(current.repeatPin = false);		
-		(current.correctPin = 1111);
-		(current.enteredPin = unknown);
-		(H1User.believedPin = unknown);		
+		(current.errorCount      = 0);		
+		(current.repeatPin       = false);		
+		(current.correctPin      = 1111);
+		(current.enteredPin      = unknown);
+		(H1User.believedPin      = unknown);		
+		(current.readyToActivate = false);		
 		
 	initial_facts:
-		(current.pinReceived = false);
-		(current.pinAsked = false);
-		(current.pinIsWrong != false);		
-		(current.correctPin = 1111);
-		(current.hasStarted = false);	
+		(current.pinReceived     = false);
+		(current.pinAsked        = false);
+		(current.pinIsWrong 	!= false);		
+		(current.correctPin      = 1111);
+		(current.hasStarted      = false);	
 		(current.hasComparedOnce = false);	
-		(current.errorCount = 0);		
-		(current.repeatPin = false);
-		(current.enteredPin = unknown);
-		(H1User.believedPin = unknown);				
+		(current.errorCount      = 0);		
+		(current.repeatPin       = false);
+		(current.enteredPin      = unknown);
+		(current.readyToActivatete = false);		
+		(H1User.believedPin      = unknown);				
 
 	activities:
 
@@ -62,6 +64,10 @@ class Keypad {
 					max_duration: 100;
 				}
 
+		primitive_activity activateSS() {
+					max_duration: 100;
+				}
+
 		primitive_activity returnCardandMoney() {
 					max_duration: 100;
 				}
@@ -74,7 +80,7 @@ class Keypad {
 					max_duration: 100;
 		}
 		
-//		communicate askPin(HouseUser hur) { // WHY DOESN'T THIS WORK :(
+//		communicate askPin(HouseUser hur) { //TODO: WHY DOESN'T THIS WORK :(
 //					max_duration: 300;
 //					with: hur;
 //					about:
@@ -94,9 +100,9 @@ class Keypad {
 					max_duration: 1;
 					with: H1User;
 					about:
-						send(current.repeatPin = true),
+						send(current.repeatPin      = true),
 						send(H1User.pinCommunicated = false),
-						send(H1User.pinRemembered = false);
+						send(H1User.pinRemembered   = false);
 					when: start;
 		}
 
@@ -129,12 +135,10 @@ class Keypad {
 		// 				forone(HouseUser) hur1;
 		// 
 		// 			when(
-		// 				knownval(hur1.isAtKeypad = true) and					
+		// 				knownval(hur1.isAtKeypad = true) and
 		// 				knownval(current.hasStarted = true) and
 		// 				knownval(current.pinAsked = false)
 		// 				)
-		// 
-		// 
 		// 			do {
 		// 				processAskPin();
 		// 				askPin(hur1);
@@ -182,10 +186,11 @@ class Keypad {
 					repeat: false;
 
 					when(
-						known(current.enteredPin) and
-						known(current.correctPin) and
+						known(current.enteredPin) 	  and
+						known(current.correctPin) 	  and
 						knownval(current.pinReceived = true) and
-						(current.enteredPin = current.correctPin)
+						knownval(current.readyToActivate = false) and
+						knownval(current.enteredPin = current.correctPin)
 						)
 					do {
 						comparePins();
@@ -193,6 +198,24 @@ class Keypad {
 						conclude((current.readyToActivate = true), bc:100, fc:100);
 					}
 		}
+		
+		workframe wf_activateSS {
+
+					repeat: false;
+
+					when(
+//						known(current.enteredPin) 			 and
+//						known(current.correctPin) 			 and
+//						knownval(current.pinReceived = true) and
+//						knownval(current.enteredPin = current.correctPin) and
+						knownval(current.readyToActivate = true)
+						)
+					do {
+						activateSS();
+						conclude((current.pinIsWrong = false), bc:100, fc:100);
+						conclude((current.readyToActivate = true), bc:100, fc:100);
+					}
+		}		
 		
 		workframe wf_comparePins_bad {
 
@@ -233,6 +256,5 @@ class Keypad {
 						conclude((current.repeatPin = true), bc:100, fc:100);
 						repeatPin();						
 					}
-		}		
-		
+		}				
 }
