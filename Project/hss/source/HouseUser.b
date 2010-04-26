@@ -12,14 +12,15 @@ group HouseUser {
 			
 	initial_beliefs:
 		(current.needsToToggleSystem = true);
-		(current.activity1Time = 1);
-		(current.pinRemembered = false);
-		(current.pinCommunicated = false);
-		(current.hasResponse = false);
+		(current.activity1Time       = 1);
+		(current.pinRemembered       = false);
+		(current.pinCommunicated     = false);
+		(current.hasResponse         = false);
 
   	initial_facts:
 		(current.needsToToggleSystem = true);
-		(current.activity1Time = 1);
+		(current.activity1Time       = 1);
+
 		
   activities:
 
@@ -116,7 +117,7 @@ group HouseUser {
 							detectable keypadAsksPin{
 								when(whenever)
 									detect((H1Keypad.pinAsked = true), dc:100)
-									then complete;
+										then complete;
 							}
 							
 						when(
@@ -182,15 +183,21 @@ group HouseUser {
 						repeat: true; 
 
 						variables:
-							// forone(Keypad) kp;
+							forone(Keypad) kp;
 
 						detectables:
 
-						detectable keypadAsksPin{
-							when(whenever)
-								detect((H1Keypad.repeatPin = true), dc:100)
-								then complete;
-						}
+							detectable keypadAsksPin{
+								when(whenever)
+									detect((H1Keypad.repeatPin = true), dc:100)
+									then complete;
+							}
+							
+							// detectable keypadAsksPin{
+							// 	when(whenever)
+							// 		detect((H1Keypad.repeatPin = true), dc:100)
+							// 		then complete;
+							// }
 							
 						when(
 							knownval(current.pinCommunicated = true) and
