@@ -146,8 +146,8 @@ group HouseUser {
 
 						do {
 							rememberPin();
-							conclude((current.believedPin = H1Keypad.correctPin), bc:100, fc:50);
-							conclude((current.believedPin = 9999), bc:50, fc:50);
+							conclude((current.believedPin = H1Keypad.correctPin), bc:100, fc:100);
+//							conclude((current.believedPin = 9999), bc:25, fc:25);
 							conclude((current.pinRemembered = true), bc:100, fc:0);
 
 						}
