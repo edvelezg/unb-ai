@@ -179,13 +179,13 @@ class Keypad {
 
 		workframe wf_comparePins_ok {
 
-					repeat: true;
+					repeat: false;
 
 					when(
 						known(current.enteredPin) and
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
-						(H1User.believedPin = current.correctPin)
+						(current.enteredPin = current.correctPin)
 						)
 					do {
 						comparePins();
@@ -203,7 +203,7 @@ class Keypad {
 						known(current.correctPin) and
 						knownval(current.pinReceived = true) and
 						knownval(current.hasComparedOnce = false) and
-						(H1User.believedPin != current.correctPin)
+						(current.enteredPin != current.correctPin)
 						)
 					do {
 						comparePins();
