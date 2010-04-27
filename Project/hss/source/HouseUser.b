@@ -8,20 +8,22 @@ group HouseUser {
 		public boolean waitKeypadAsksPin;		
 		public boolean isAtKeypad;
 		public boolean pinCommunicated;		
+		public boolean SOpinCommunicated;		
 		public int believedPin;
+		public boolean callReceived;
+		public string SOpin;
+		
 			
 	initial_beliefs:
 		(current.needsToToggleSystem = true);
-		(current.activity1Time       = 1);
-		(current.pinRemembered       = false);
-		(current.pinCommunicated     = false);
-		(current.hasResponse         = false);
+		(current.activity1Time = 1);
+		(current.pinRemembered = false);
+		(current.pinCommunicated = false);
+		(current.hasResponse = false);
 
   	initial_facts:
 		(current.needsToToggleSystem = true);
-		(current.activity1Time       = 1);
-		
-
+		(current.activity1Time = 1);
 		
   activities:
 
@@ -131,7 +133,7 @@ group HouseUser {
 							detectable keypadAsksPin{
 								when(whenever)
 									detect((H1Keypad.pinAsked = true), dc:100)
-										then complete;
+									then complete;
 							}
 							
 						when(
