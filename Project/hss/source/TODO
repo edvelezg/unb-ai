@@ -1,7 +1,4 @@
-//CHANGED: Look at BOA_Atm which instance of Atm. I guess analogy should be Keypad -.H1_Keypad
-//CHANGED: Agent Home_User which will be instanced as H1_User will work with keypad. Look at Student for this
 // Look at Composite activity Atm
-//FIXME: How can we make it generic so that Any agent that enters the room one detects its presence.
-//FIXME: The keypad does not recognize a correct pin entered by the user :(
 //FIXME: I am not getting random behavior when the thief chooses a house
+//FIXME: Sensor must detect thief and comm w/ SS
 //CHANGED: Keypad semiworks.

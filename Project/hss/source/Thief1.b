@@ -2,10 +2,15 @@ agent Thief1 memberof Thief {
 	
 	location: House3;
 	attributes:
+		public Rooms first;	
+		public Rooms second;	
+		public Rooms third;	
 		public Rooms visitedRoom1;	
 		public Rooms visitedRoom2;
 		public Rooms visitedRoom3;
 		public boolean isAtHouse;			
+		public boolean hasOrder;			
+		
 		
 	initial_beliefs:
 		(H2.location = House2);			
@@ -17,6 +22,7 @@ agent Thief1 memberof Thief {
 		(current.visitedRoom2 = unknown);
 		(current.visitedRoom3 = unknown);		
 		(current.isAtHouse = false);
+		(current.hasOrder = false);
 
 	activities:
 
@@ -52,6 +58,28 @@ agent Thief1 memberof Thief {
 					conclude((current.isAtHouse = true), bc:100, fc:100);					
 				}
 			}	
+
+			workframe wf_determineOrder 
+			{
+				repeat: false;
+				variables:
+					forone(Building) bd;
+					forone(House) hs;
+				when(
+					(current.location = hs.location) and
+					knownval(hs.location = bd) and
+					knownval(current.hasOrder = false)
+					)
+				do 
+				{
+					moveToLocation(bd);
+					conclude((current.first = Garage2), bc:100, fc:100);					
+					conclude((current.first = OpenGround), bc:50, fc:50);					
+					conclude((current.first = Foyer), bc:50, fc:50);					
+					conclude((current.hasOrder = true), bc:100, fc:100);					
+					
+				}
+			}	
 			
 			workframe wf_movetoRoom1
 			{
@@ -64,7 +92,9 @@ agent Thief1 memberof Thief {
 				when(
 					knownval(current.isAtHouse = true) and
 					knownval(rm.hasEntry = true) and
-					knownval(current.visitedRoom1 = unknown)
+					knownval(current.hasOrder = true) and
+					knownval(current.visitedRoom1 = unknown) and
+					knownval(current.first = rm)
 					)
 				do 
 				{
@@ -84,6 +114,7 @@ agent Thief1 memberof Thief {
 				when(
 					knownval(current.isAtHouse = true) and
 					knownval(rm.hasEntry = true) and
+					knownval(current.hasOrder = true) and
 					known(current.visitedRoom1) and
 					knownval(rm != current.visitedRoom1) and
 					knownval(current.visitedRoom2 = unknown)
@@ -106,6 +137,7 @@ agent Thief1 memberof Thief {
 				when(
 					knownval(current.isAtHouse = true) and
 					knownval(rm.hasEntry = true) and
+					knownval(current.hasOrder = true) and
 					knownval(rm != current.visitedRoom1) and
 					knownval(rm != current.visitedRoom2) and
 					knownval(current.visitedRoom3 = unknown)
