@@ -17,19 +17,13 @@ agent SS {
 			}
 
 			primitive_activity inactiveSS() {
-				max_duration: 5000;
+				max_duration: 8000;
 			}
 			
 			primitive_activity activeSS() {
-				max_duration: 5000;
+				max_duration: 8000;
 			}
-						
-			
-//			composite_activity activeSS() { //instructor's activity to teach
-//				activities:
-//				workframes:
-//			}	
-	
+							
 	workframes:
 	
 //			workframe wf_movetoHouse 
