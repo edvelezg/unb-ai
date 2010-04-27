@@ -121,7 +121,7 @@ group Instructor {
 						}
 					when(
 						(current.teachingTime = 5) and
-						(current.teaching = false) and
+						(current.teaching     = false) and
 						(UniversityClock.time = current.teachingTime)
 						)
 					do {
@@ -149,7 +149,7 @@ group Instructor {
 						}
 					when(
 						(current.teachingTime = 7) and
-						(current.teaching = false) and
+						(current.teaching     = false) and
 						(UniversityClock.time = current.teachingTime)
 						)
 					do {
