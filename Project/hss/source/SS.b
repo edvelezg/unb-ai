@@ -2,11 +2,13 @@ agent SS {
 
 	location: House1;
 	attributes:
+		public symbol state; 	
 	
 	initial_beliefs:
 		(H2.location = House2);			
 		(H1.location = House1);		
 		(H1Keypad.readyToActivate = unknown);		
+		(current.state = inactive);
 		
 	activities:
 
@@ -18,29 +20,15 @@ agent SS {
 				max_duration: 5000;
 			}
 			
-			primitive_activity activateSS() {
-				max_duration: 100;
+			primitive_activity activeSS() {
+				max_duration: 5000;
 			}
+						
 			
-			composite_activity activeSS() { //instructor's activity to teach
-
-				activities:
-					primitive_activity active()	{ // he/she "teaches" for 50 minutes
-						random: false;
-						max_duration: 3000; // 50 minutes
-					}
-				
-				workframes:
-					workframe wf_activeSS { // the instructor can be teaching
-						repeat: false;
-						detectables:
-						when(
-								)
-						do {
-							active();
-						}
-					}		
-			}	
+//			composite_activity activeSS() { //instructor's activity to teach
+//				activities:
+//				workframes:
+//			}	
 	
 	workframes:
 	
@@ -73,28 +61,49 @@ agent SS {
 							then complete;
 					}
 				when(
-//						(current.location = hs.location) and
-//						knownval(hs.location = bd) and
-//						(FredClock.time = 1)
-						)
+					knownval(current.state = inactive) and
+					knownval(FredClock.time < 8)
+					)
 				do 
 				{
 					
 					inactiveSS();
+					conclude((current.state = active), bc:100, fc:100);
+					conclude((H1Keypad.readyToActivate = false), bc:100, fc:100);
 				}
 			}
-			
-		workframe wf_activateSystem {
-			repeat: false;
-			priority: 1;
-			variables:
-				forone(Keypad) kp;						
-			when(
-					(kp.readyToActivate = true)
+
+			workframe wf_activeSS {
+				repeat: false;
+				detectables:
+						detectable keypadAcceptsPin{
+							when(whenever)
+								detect((H1Keypad.readyToActivate = true), dc:100)
+								then complete;
+						}
+
+				when(
+					knownval(current.state = active) and
+					knownval(FredClock.time < 8)
 					)
-			do {
-				activeSS();
-			}
-		}			
+				do {
+					activeSS();
+					conclude((current.state = inactive), bc:100, fc:100);
+					conclude((H1Keypad.readyToActivate = false), bc:100, fc:100);					
+				}
+			}		
+			
+//		workframe wf_activateSystem {
+//			repeat: false;
+//			priority: 1;
+//			variables:
+//				forone(Keypad) kp;						
+//			when(
+//					(kp.readyToActivate = true)
+//					)
+//			do {
+//				activeSS();
+//			}
+//		}			
 
 }
