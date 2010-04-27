@@ -6,6 +6,7 @@ class Sensor extends BaseClass {
 	
 	initial_facts:
 		(current.senseTime = unknown);
+		// (Thief1.location = House2);
 			
 	activities:
 		
@@ -27,13 +28,13 @@ class Sensor extends BaseClass {
 			variables:
 				forone(Thief) th;
 				
-			detectables:
-				detectable senseThief {
-						when(whenever)
-						detect((th.location = current.location), dc:100)
-						then abort;
-				}
-			when()
+		//	detectables:
+		//		detectable senseThief {
+		///				when(whenever)
+		//				detect((th.location = current.location), dc:100)
+		//				then abort;
+		//		}
+			when(knownval(th.location = current.location))
 			do {
 				sense();
 			}
