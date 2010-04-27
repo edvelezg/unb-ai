@@ -254,7 +254,6 @@ group HouseUser {
 					knownval(SecurityOfficer.calledUser = true)
 					) 
 			do {
-//						temp();
 						conclude((current.SOpinCommunicated = true), bc:100, fc:100);
 						communicateSOPIN();
 						

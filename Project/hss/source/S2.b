@@ -1,3 +1,3 @@
 object S2 instanceof Sensor {
-	location: House2;
+	location: Foyer;
 }
