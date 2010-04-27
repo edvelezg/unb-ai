@@ -26,22 +26,22 @@ agent SS {
 							
 	workframes:
 	
-//			workframe wf_movetoHouse 
-//			{
-//				repeat: false;
-//				variables:
-//					forone(Building) bd;
-//					forone(House) hs;
-//				when(
-//					not(current.location = hs.location) and
-//					knownval(hs.location = bd) and
-//					(FredClock.time = 1)
-//					)
-//				do 
-//				{
-//					moveToLocation(bd);
-//				}
-//			}
+			// workframe wf_movetoHouse 
+			// {
+			// 	repeat: false;
+			// 	variables:
+			// 		forone(Building) bd;
+			// 		forone(House) hs;
+			// 	when(
+			// 		not(current.location = hs.location) and
+			// 		knownval(hs.location = bd) and
+			// 		(FredClock.time = 1)
+			// 		)
+			// 	do 
+			// 	{
+			// 		moveToLocation(bd);
+			// 	}
+			// }
 
 			workframe wf_inactiveSS
 			{
@@ -87,17 +87,17 @@ agent SS {
 				}
 			}		
 			
-//		workframe wf_activateSystem {
-//			repeat: false;
-//			priority: 1;
-//			variables:
-//				forone(Keypad) kp;						
-//			when(
-//					(kp.readyToActivate = true)
-//					)
-//			do {
-//				activeSS();
-//			}
-//		}			
+		// workframe wf_activateSystem {
+		// 	repeat: false;
+		// 	priority: 1;
+		// 	variables:
+		// 		forone(Keypad) kp;						
+		// 	when(
+		// 			(kp.readyToActivate = true)
+		// 			)
+		// 	do {
+		// 		activeSS();
+		// 	}
+		// }			
 
 }

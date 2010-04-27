@@ -106,6 +106,13 @@ class Keypad {
 					when: start;
 		}
 
+		communicate tellSSToActivate() {
+					max_duration: 1;
+					with: SS;
+					about:
+						send(current.readyToActivate = current.readyToActivate);
+					when: start;
+		}
 
 	workframes:
 
@@ -195,7 +202,9 @@ class Keypad {
 					do {
 						comparePins();
 						conclude((current.pinIsWrong = false), bc:100, fc:100);
-						conclude((current.readyToActivate = true), bc:100, fc:100);
+						conclude((current.readyToActivate = true), bc:100, fc:0);
+						activateSS();
+						tellSSToActivate();
 					}
 		}
 		
@@ -207,13 +216,12 @@ class Keypad {
 //						known(current.enteredPin) 			 and
 //						known(current.correctPin) 			 and
 //						knownval(current.pinReceived = true) and
-//						knownval(current.enteredPin = current.correctPin) and
+						knownval(current.pinIsWrong = false) 		and
 						knownval(current.readyToActivate = true)
 						)
 					do {
 						activateSS();
 						conclude((current.pinIsWrong = false), bc:100, fc:100);
-						conclude((current.readyToActivate = true), bc:100, fc:100);
 					}
 		}		
 		
