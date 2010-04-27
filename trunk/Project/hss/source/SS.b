@@ -5,10 +5,10 @@ agent SS {
 		public symbol state; 	
 	
 	initial_beliefs:
-		(H2.location = House2);			
-		(H1.location = House1);		
+		(H2.location              = House2);			
+		(H1.location              = House1);		
 		(H1Keypad.readyToActivate = unknown);		
-		(current.state = active);
+		(current.state            = inactive);
 		
 	activities:
 
@@ -20,29 +20,30 @@ agent SS {
 				max_duration: 28800;
 			}
 			
-			primitive_activity activeSS() {
-				max_duration: 28800;
+			// primitive_activity activeSS() {
+			// 	max_duration: 28800;
+			// }
+			composite_activity activeSS() { //instructor's activity to teach
+				
+				activities:
+					primitive_activity active()	{ // he/she "teaches" for 50 minutes
+						random: false;
+						max_duration: 28800; // 50 minutes
+					}
+				workframes:
+						workframe wf_active { // or he can be answering a question
+							repeat: false;
+							when(
+								)
+							do {
+								active();
+							}
+						}						
 			}
+			
 							
 	workframes:
 	
-			// workframe wf_movetoHouse 
-			// {
-			// 	repeat: false;
-			// 	variables:
-			// 		forone(Building) bd;
-			// 		forone(House) hs;
-			// 	when(
-			// 		not(current.location = hs.location) and
-			// 		knownval(hs.location = bd) and
-			// 		(FredClock.time = 1)
-			// 		)
-			// 	do 
-			// 	{
-			// 		moveToLocation(bd);
-			// 	}
-			// }
-
 			workframe wf_inactiveSS
 			{
 				repeat: false;
