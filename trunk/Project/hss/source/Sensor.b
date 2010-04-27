@@ -4,9 +4,12 @@ class Sensor extends BaseClass {
 		public int senseTime;
 		public boolean hasDetectedM;
 	
+	initial_beliefs:
+		(current.hasDetectedM = false); 
+	
 	initial_facts:
 		(current.senseTime = unknown);
-		(Thief1.location = House2);
+		(current.hasDetectedM = false);
 			
 	activities:
 		
@@ -15,9 +18,9 @@ class Sensor extends BaseClass {
 			max_duration: 43200; // the whole 12 hours
 		}
 		
-		primitive_activity record() {
+		primitive_activity sendAlert() {
 			random: false;
-			max_duration: 1;
+			max_duration: 120;
 		}
 		
 		communicate communicateAlarm() {
@@ -35,70 +38,46 @@ class Sensor extends BaseClass {
 			repeat: false;
 		//	priority: 2;
 			variables:
-				forone(Thief) th;
+				forone(Thief) t;
 				
 			detectables:
 				detectable senseThief {
 						when(whenever)
-						detect((th.location = current.location), dc:100)
+						detect((t.location = current.location), dc:100)
 						then abort;
 				}
-			when(knownval(th.location = current.location))
+			when()
 			do {
 				sense();
 			}
 		}
-
-		workframe wf_S {
-			repeat: false;
-		//	priority: 2;
-			variables:
-				forone(Thief) th;
-				
-		//	detectables:
-		//		detectable senseThief {
-		///				when(whenever)
-		//				detect((th.location = current.location), dc:100)
-		//				then abort;
-		//		}
-			when(knownval(th.location = current.location))
-			do {
-				sense();
-			}
-		}	
+	
 		workframe wf_senseMovement {
 			repeat: false;
 		//priority: 1;
 			variables:
-				forone(Thief) th;
-			when((th.location = current.location))
+				forone(Thief) t;
+			when((t.location = current.location))
 			do {
-				record();
+				sendAlert();
 				conclude((current.senseTime = MyClock.time), fc:100);
-				conclude((current.hasDetectedM = true), fc:100);
-				communicateAlarm();
+				conclude((current.hasDetectedM = true), bc:100, fc:100);
 			}
 		}
 
 		workframe wf_sense2 {
 			repeat: false;
 		//	priority: 0;
-			variables:
-				forone(Thief) th;		
 			detectables:
 				detectable timeIsUp {
 						when(whenever)
 						detect((FredClock.time = 12), dc:100)
 						then abort;
 				}
-				detectable senseThief {
-						when(whenever)
-						detect((th.location = current.location), dc:100)
-						then abort;
-				}				
 			when()
 			do {
 				sense();
 			}
 		}
+
 }
