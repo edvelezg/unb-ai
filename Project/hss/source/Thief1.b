@@ -4,6 +4,7 @@ agent Thief1 memberof Thief {
 	attributes:
 		public Rooms visitedRoom1;	
 		public Rooms visitedRoom2;
+		public Rooms visitedRoom3;
 		public boolean isAtHouse;			
 		
 	initial_beliefs:
@@ -11,8 +12,10 @@ agent Thief1 memberof Thief {
 		(H1.location = House1);		
 		(Garage2.hasEntry = true);
 		(OpenGround.hasEntry = true);		
+		(Foyer.hasEntry = true);		
 		(current.visitedRoom1 = unknown);
 		(current.visitedRoom2 = unknown);
+		(current.visitedRoom3 = unknown);		
 		(current.isAtHouse = false);
 
 	activities:
@@ -53,7 +56,7 @@ agent Thief1 memberof Thief {
 			workframe wf_movetoRoom1
 			{
 				repeat: false;
-				priority: 1;
+				priority: 2;
 				variables:
 					forone(Building) bd;
 					forone(House) hs;
@@ -73,6 +76,7 @@ agent Thief1 memberof Thief {
 			workframe wf_movetoRoom2
 			{
 				repeat: false;
+				priority: 1;				
 				variables:
 					forone(Building) bd;
 					forone(House) hs;
@@ -80,8 +84,9 @@ agent Thief1 memberof Thief {
 				when(
 					knownval(current.isAtHouse = true) and
 					knownval(rm.hasEntry = true) and
-//					not(rm = current.visitedRoom1) and
-					(rm != current.visitedRoom1)
+					known(current.visitedRoom1) and
+					knownval(rm != current.visitedRoom1) and
+					knownval(current.visitedRoom2 = unknown)
 					)
 				do 
 				{
@@ -89,6 +94,28 @@ agent Thief1 memberof Thief {
 					moveToRoom(rm);
 					conclude((current.visitedRoom2 = rm), bc:100, fc:100);
 				}
-			}			
+			}	
+
+			workframe wf_movetoRoom3
+			{
+				repeat: false;
+				variables:
+					forone(Building) bd;
+					forone(House) hs;
+					forone(Rooms) rm;
+				when(
+					knownval(current.isAtHouse = true) and
+					knownval(rm.hasEntry = true) and
+					knownval(rm != current.visitedRoom1) and
+					knownval(rm != current.visitedRoom2) and
+					knownval(current.visitedRoom3 = unknown)
+					)
+				do 
+				{
+					sneakToRoom();
+					moveToRoom(rm);
+					conclude((current.visitedRoom3 = rm), bc:100, fc:100);
+				}
+			}					
 			
 }
