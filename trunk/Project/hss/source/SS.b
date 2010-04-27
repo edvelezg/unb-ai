@@ -8,7 +8,7 @@ agent SS {
 		(H2.location = House2);			
 		(H1.location = House1);		
 		(H1Keypad.readyToActivate = unknown);		
-		(current.state = inactive);
+		(current.state = active);
 		
 	activities:
 
@@ -17,11 +17,11 @@ agent SS {
 			}
 
 			primitive_activity inactiveSS() {
-				max_duration: 8000;
+				max_duration: 28800;
 			}
 			
 			primitive_activity activeSS() {
-				max_duration: 8000;
+				max_duration: 28800;
 			}
 							
 	workframes:
@@ -54,6 +54,11 @@ agent SS {
 							detect((H1Keypad.readyToActivate = true), dc:100)
 							then complete;
 					}
+					detectable dayHasEnded{
+						when(whenever)
+							detect((FredClock.time = 8), dc:100)
+							then complete;
+					}					
 				when(
 					knownval(current.state = inactive) and
 					knownval(FredClock.time < 8)
@@ -75,7 +80,11 @@ agent SS {
 								detect((H1Keypad.readyToActivate = true), dc:100)
 								then complete;
 						}
-
+						detectable dayHasEnded{
+							when(whenever)
+								detect((FredClock.time = 8), dc:100)
+								then abort;
+						}					
 				when(
 					knownval(current.state = active) and
 					knownval(FredClock.time < 8)
