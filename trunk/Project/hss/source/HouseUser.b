@@ -20,6 +20,7 @@ group HouseUser {
   	initial_facts:
 		(current.needsToToggleSystem = true);
 		(current.activity1Time       = 1);
+		
 
 		
   activities:
@@ -36,6 +37,11 @@ group HouseUser {
 				max_duration: 400;
 			}
 
+//			primitive_activity temp() {
+//				max_duration: 100;
+//			}
+						
+
 			primitive_activity 	processCommunicatePin() {
 				max_duration: 10;
 			}
@@ -50,6 +56,14 @@ group HouseUser {
 				when: end;
 			}
 			
+			communicate communicateSOPIN() {
+				max_duration: 10;
+				with: SecurityOfficer;
+				about:
+					send(current.SOpinCommunicated = true),
+					send(H1User.SOpin = H1User.SOpin);
+				when: end;
+			}
 
 			composite_activity useKeypad() {
 
@@ -224,4 +238,25 @@ group HouseUser {
 				useKeypad();
 			}
 		}
+		
+		workframe wf_SecurityOfficerAsksPin {
+			repeat: false; 
+			detectables:
+//				detectable SOAsksPin{
+//					when(whenever)
+//						detect((SecurityOfficer.securitypinAsked = true), dc:100)
+//						then complete;
+//				}		
+			when(
+					knownval(current.SOpinCommunicated = false) and
+					knownval(SecurityOfficer.calledUser = true)
+					) 
+			do {
+//						temp();
+						conclude((current.SOpinCommunicated = true), bc:100, fc:100);
+						communicateSOPIN();
+						
+				 }
+			}
+			
 }
