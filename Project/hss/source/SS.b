@@ -20,6 +20,18 @@ agent SS {
 				max_duration: 28800;
 			}
 			
+			primitive_activity sendAlarm() {
+				max_duration: 100;
+			}			
+			
+			communicate communicateAlarm(Sensor snr) {
+				max_duration: 10;
+				with: SecurityOfficer;
+				about:
+					send(snr.hasDetectedM = true);
+				when: end;
+			}		
+			
 			composite_activity activeSS() { //instructor's activity to teach
 				
 				activities:
@@ -30,6 +42,7 @@ agent SS {
 				workframes:
 						workframe wf_active { // or he can be answering a question
 							repeat: false;
+							priority: 3;
 							variables:
 								forone(Sensor) snr;
 							detectables:
@@ -45,17 +58,35 @@ agent SS {
 							}
 						}
 						
-						workframe wf_active { // or he can be answering a question
+						workframe wf_getAlarm { // or he can be answering a question
 							repeat: false;
+							priority: 2;
 							variables:
 								forone(Sensor) snr;			
 							when(
-									(snr.hasDetectedM = true)
-									)
+								(snr.hasDetectedM = true)
+								)
+							do {
+								sendAlarm();
+								communicateAlarm(snr);
+							}
+						}
+						
+						workframe wf_active0 { // or he can be answering a question
+							repeat: false;
+							priority: 1;
+							detectables:
+								detectable dayHasEnded{
+									when(whenever)
+										detect((FredClock.time = 12), dc:100)
+										then complete;
+								}					
+							when(
+								)
 							do {
 								active();
 							}
-						}												
+						}
 			}
 			
 							
