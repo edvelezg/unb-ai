@@ -3,12 +3,14 @@ agent SS {
 	location: House1;
 	attributes:
 		public symbol state; 	
+		public boolean hasSignal; 	
 	
 	initial_beliefs:
 		(H2.location              = House2);			
 		(H1.location              = House1);		
 		(H1Keypad.readyToActivate = unknown);		
 		(current.state            = inactive);
+		(current.hasSignal        = false);
 		
 	activities:
 
@@ -41,52 +43,57 @@ agent SS {
 					}
 				workframes:
 						workframe wf_active { // or he can be answering a question
-							repeat: false;
-							priority: 3;
+							repeat: true;
+							// priority: 3;
 							variables:
 								forone(Sensor) snr;
 							detectables:
 								detectable keypadAcceptsPin{
 									when(whenever)
 										detect((<Sensor>.hasDetectedM = true), dc:100)
-										then impasse;
+										then complete;
 								}							
 							when(
+								(current.hasSignal = false) and
+								knownval(FredClock.time < 12)
 								)
 							do {
 								active();
+								conclude((current.hasSignal = true), bc:100, fc:100);								
 							}
 						}
 						
 						workframe wf_getAlarm { // or he can be answering a question
-							repeat: false;
-							priority: 2;
+							repeat: true;
 							variables:
 								forone(Sensor) snr;			
 							when(
-								(snr.hasDetectedM = true)
+								(snr.hasDetectedM = true) and
+								(current.hasSignal = true)
 								)
 							do {
 								sendAlarm();
+								conclude((current.hasSignal = false), bc:100, fc:100);
+								conclude((snr.hasDetectedM = false), bc:100, fc:100);
 								communicateAlarm(snr);
 							}
 						}
 						
-						workframe wf_active0 { // or he can be answering a question
-							repeat: false;
-							priority: 1;
-							detectables:
-								detectable dayHasEnded{
-									when(whenever)
-										detect((FredClock.time = 12), dc:100)
-										then complete;
-								}					
-							when(
-								)
-							do {
-								active();
-							}
-						}
+						// workframe wf_active0 { // or he can be answering a question
+						// 	repeat: false;
+						// 	priority: 1;
+						// 	detectables:
+						// 		detectable dayHasEnded{
+						// 			when(whenever)
+						// 				detect((FredClock.time = 12), dc:100)
+						// 				then complete;
+						// 		}					
+						// 	when(
+						// 		)
+						// 	do {
+						// 		active();
+						// 	}
+						// }
 			}
 			
 							
@@ -109,8 +116,8 @@ agent SS {
 							then abort;
 					}					
 				when(
-					knownval(current.state = inactive)  and
-					knownval(FredClock.time >= 0 )
+					knownval(current.state = inactive)  // and
+					// 					knownval(FredClock.time >= 0 )
 					)
 				do 
 				{
