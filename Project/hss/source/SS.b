@@ -25,7 +25,7 @@ agent SS {
 			}
 			
 			primitive_activity sendAlarm() {
-				max_duration: 100;
+				max_duration: 20;
 			}			
 			
 			communicate communicateAlarm(Sensor snr) {
@@ -38,7 +38,7 @@ agent SS {
 					
 			broadcast broacastAlarmSound() {
 						random: false;
-						max_duration: 500;
+						max_duration: 10;
 						to: House1;
 						about: 
 							send(current.alarmSound = true);
