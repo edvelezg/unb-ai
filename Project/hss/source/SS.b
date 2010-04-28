@@ -4,6 +4,7 @@ agent SS {
 	attributes:
 		public symbol state; 	
 		public boolean hasSignal; 	
+		public boolean alarmSound;		
 	
 	initial_beliefs:
 		(H2.location              = House2);			
@@ -11,6 +12,7 @@ agent SS {
 		(H1Keypad.readyToActivate = unknown);		
 		(current.state            = inactive);
 		(current.hasSignal        = false);
+		(current.alarmSound       = false);
 		
 	activities:
 
@@ -32,7 +34,16 @@ agent SS {
 				about:
 					send(snr.hasDetectedM = true);
 				when: end;
-			}		
+			}
+					
+			broadcast broacastAlarmSound() {
+						random: false;
+						max_duration: 500;
+						to: House1;
+						about: 
+							send(current.alarmSound = true);
+						when: end;
+			}			
 			
 			composite_activity activeSS() { //instructor's activity to teach
 				
@@ -68,14 +79,16 @@ agent SS {
 							variables:
 								forone(Sensor) snr;			
 							when(
-								(snr.hasDetectedM = true) and
+								(snr.hasDetectedM  = true) and
 								(current.hasSignal = true)
 								)
 							do {
 								sendAlarm();
 								conclude((current.hasSignal = false), bc:100, fc:100);
 								conclude((snr.hasDetectedM = false), bc:100, fc:100);
-								communicateAlarm(snr);
+								conclude((current.alarmSound = true), bc:100, fc:100);
+								// communicateAlarm(snr);
+								broacastAlarmSound();
 							}
 						}
 						
@@ -121,7 +134,6 @@ agent SS {
 					)
 				do 
 				{
-					
 					inactiveSS();
 					conclude((current.state = active), bc:100, fc:100);
 					conclude((H1Keypad.readyToActivate = false), bc:100, fc:100);

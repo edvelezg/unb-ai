@@ -13,16 +13,16 @@ agent Thief1 memberof Thief {
 		
 		
 	initial_beliefs:
-		(H2.location = House2);			
-		(H1.location = House1);		
-		(Garage2.hasEntry = true);
-		(OpenGround.hasEntry = true);		
-		(Foyer.hasEntry = true);		
+		(H2.location          = House2);			
+		(H1.location          = House1);		
+		(Garage2.hasEntry     = true);
+		(OpenGround.hasEntry  = true);		
+		(Foyer.hasEntry       = true);		
 		(current.visitedRoom1 = unknown);
 		(current.visitedRoom2 = unknown);
 		(current.visitedRoom3 = unknown);		
-		(current.isAtHouse = false);
-		(current.hasOrder = false);
+		(current.isAtHouse    = false);
+		(current.hasOrder     = false);
 
 	activities:
 
@@ -35,7 +35,7 @@ agent Thief1 memberof Thief {
 			}
 
 			primitive_activity sneakToRoom() {
-				max_duration: 100;
+				max_duration: 500;
 			}	
 			
 	
