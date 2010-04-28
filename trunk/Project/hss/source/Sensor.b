@@ -59,7 +59,7 @@ class Sensor extends BaseClass {
 			when((th.location = current.location))
 			do {
 				conclude((current.senseTime = MyClock.time), fc:100);
-				conclude((current.hasDetectedM = true), bc:100, fc:100);
+				conclude((current.hasDetectedM = true), bc:100, fc:0);
 				sendAlert();
 				communicateAlarm();
 			}
