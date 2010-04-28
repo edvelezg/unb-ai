@@ -36,14 +36,13 @@ class Sensor extends BaseClass {
 
 		workframe wf_sense1 {
 			repeat: false;
-		//	priority: 2;
+			priority: 2;
 			variables:
-				forone(Thief) t;
-				
+//				forone(Thief) th; TODO: how do we make this detectable generic.
 			detectables:
 				detectable senseThief {
 						when(whenever)
-						detect((t.location = current.location), dc:100)
+						detect((<Thief>.location = current.location), dc:100)
 						then abort;
 				}
 			when()
@@ -54,20 +53,21 @@ class Sensor extends BaseClass {
 	
 		workframe wf_senseMovement {
 			repeat: false;
-		//priority: 1;
+			priority: 1;
 			variables:
-				forone(Thief) t;
-			when((t.location = current.location))
+				forone(Thief) th;
+			when((th.location = current.location))
 			do {
-				sendAlert();
 				conclude((current.senseTime = MyClock.time), fc:100);
 				conclude((current.hasDetectedM = true), bc:100, fc:100);
+				sendAlert();
+				communicateAlarm();
 			}
 		}
 
 		workframe wf_sense2 {
 			repeat: false;
-		//	priority: 0;
+			priority: 0;
 			detectables:
 				detectable timeIsUp {
 						when(whenever)

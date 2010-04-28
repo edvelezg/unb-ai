@@ -50,7 +50,7 @@ agent Thief1 memberof Thief {
 				when(
 					not(current.location = hs.location) and
 					knownval(hs.location = bd) and
-					(FredClock.time = 1)
+					(FredClock.time = 2)
 					)
 				do 
 				{
