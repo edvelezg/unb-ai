@@ -20,9 +20,6 @@ agent SS {
 				max_duration: 28800;
 			}
 			
-			// primitive_activity activeSS() {
-			// 	max_duration: 28800;
-			// }
 			composite_activity activeSS() { //instructor's activity to teach
 				
 				activities:
@@ -33,12 +30,32 @@ agent SS {
 				workframes:
 						workframe wf_active { // or he can be answering a question
 							repeat: false;
+							variables:
+								forone(Sensor) snr;
+							detectables:
+								detectable keypadAcceptsPin{
+									when(whenever)
+										detect((<Sensor>.hasDetectedM = true), dc:100)
+										then impasse;
+								}							
 							when(
 								)
 							do {
 								active();
 							}
-						}						
+						}
+						
+						workframe wf_active { // or he can be answering a question
+							repeat: false;
+							variables:
+								forone(Sensor) snr;			
+							when(
+									(snr.hasDetectedM = true)
+									)
+							do {
+								active();
+							}
+						}												
 			}
 			
 							
@@ -57,12 +74,12 @@ agent SS {
 					}
 					detectable dayHasEnded{
 						when(whenever)
-							detect((FredClock.time = 8), dc:100)
-							then complete;
+							detect((FredClock.time = 12), dc:100)
+							then abort;
 					}					
 				when(
-					knownval(current.state = inactive) and
-					knownval(FredClock.time < 8)
+					knownval(current.state = inactive)  and
+					knownval(FredClock.time >= 0 )
 					)
 				do 
 				{
@@ -83,12 +100,12 @@ agent SS {
 						}
 						detectable dayHasEnded{
 							when(whenever)
-								detect((FredClock.time = 8), dc:100)
+								detect((FredClock.time = 12), dc:100)
 								then abort;
 						}					
 				when(
 					knownval(current.state = active) and
-					knownval(FredClock.time < 8)
+					knownval(FredClock.time < 12)
 					)
 				do {
 					activeSS();
