@@ -29,6 +29,7 @@ agent Thief1 memberof Thief {
 		(current.wasDetectedInRoom3 = false);
 		(current.wasDetectedInRoom2 = false);
 		(current.wasDetectedInRoom1 = false);
+		(SS.alarmSound              = false);
 
 	activities:
 
@@ -40,8 +41,12 @@ agent Thief1 memberof Thief {
 					 location: room;
 			}
 
-			primitive_activity sneakToRoom() {
+			primitive_activity stayInRoom() {
 				max_duration: 1000;
+			}	
+
+			primitive_activity hearsAlarm() {
+				max_duration: 100;
 			}	
 			
 	
@@ -107,12 +112,13 @@ agent Thief1 memberof Thief {
 					knownval(rm.hasEntry = true) and
 					knownval(current.hasOrder = true) and
 					knownval(current.visitedRoom1 = unknown) and
-					knownval(current.first = rm)
+					knownval(current.first = rm) and
+					knownval(SS.alarmSound = false)
 					)
 				do 
 				{
-					sneakToRoom();
 					moveToRoom(rm);
+					stayInRoom();
 					conclude((current.visitedRoom1 = rm), bc:100, fc:100);
 				}
 			}
@@ -133,9 +139,9 @@ agent Thief1 memberof Thief {
 					)
 				do 
 				{
-					sneakToRoom();
-					moveToRoom(rm);
+					hearsAlarm();
 					conclude((current.wasDetectedInRoom1 = true), bc:100, fc:100);
+					conclude((SS.alarmSound = false), bc:100, fc:100);
 				}
 			}	
 					
@@ -147,18 +153,25 @@ agent Thief1 memberof Thief {
 					forone(Building) bd;
 					forone(House) hs;
 					forone(Rooms) rm;
+				detectables:
+					detectable wasDetected{
+						when(whenever)
+							detect((SS.alarmSound = true), dc:100)
+							then complete;
+					}
 				when(
 					knownval(current.isAtHouse = true) and
 					knownval(rm.hasEntry = true) and
 					knownval(current.hasOrder = true) and
 					known(current.visitedRoom1) and
 					knownval(rm != current.visitedRoom1) and
-					knownval(current.visitedRoom2 = unknown)
+					knownval(current.visitedRoom2 = unknown) and
+					knownval(SS.alarmSound = false)
 					)
 				do 
 				{
-					sneakToRoom();
 					moveToRoom(rm);
+					stayInRoom();
 					conclude((current.visitedRoom2 = rm), bc:100, fc:100);
 				}
 			}
@@ -179,9 +192,9 @@ agent Thief1 memberof Thief {
 					)
 				do 
 				{
-					sneakToRoom();
-					moveToRoom(rm);
+					hearsAlarm();
 					conclude((current.wasDetectedInRoom2 = true), bc:100, fc:100);
+					conclude((SS.alarmSound = false), bc:100, fc:100);
 				}
 			}				
 
@@ -192,18 +205,25 @@ agent Thief1 memberof Thief {
 					forone(Building) bd;
 					forone(House) hs;
 					forone(Rooms) rm;
+				detectables:
+					detectable wasDetected{
+						when(whenever)
+							detect((SS.alarmSound = true), dc:100)
+							then complete;
+					}
 				when(
 					knownval(current.isAtHouse = true) and
 					knownval(rm.hasEntry = true) and
 					knownval(current.hasOrder = true) and
 					knownval(rm != current.visitedRoom1) and
 					knownval(rm != current.visitedRoom2) and
-					knownval(current.visitedRoom3 = unknown)
+					knownval(current.visitedRoom3 = unknown) and
+					knownval(SS.alarmSound = false)
 					)
 				do 
 				{
-					sneakToRoom();
 					moveToRoom(rm);
+					stayInRoom();
 					conclude((current.visitedRoom3 = rm), bc:100, fc:100);
 				}
 			}	
@@ -224,9 +244,9 @@ agent Thief1 memberof Thief {
 					)
 				do 
 				{
-					sneakToRoom();
-					moveToRoom(rm);
+					hearsAlarm();
 					conclude((current.wasDetectedInRoom3 = true), bc:100, fc:100);
+					conclude((SS.alarmSound = false), bc:100, fc:100);
 				}
 			}							
 			

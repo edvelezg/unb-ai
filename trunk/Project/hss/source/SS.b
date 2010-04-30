@@ -86,7 +86,7 @@ agent SS {
 								sendAlarm();
 								conclude((current.hasSignal = false), bc:100, fc:100);
 								conclude((snr.hasDetectedM = false), bc:100, fc:100);
-								conclude((current.alarmSound = true), bc:100, fc:100);
+								conclude((current.alarmSound = true), bc:100, fc:0);
 								// communicateAlarm(snr);
 								broacastAlarmSound();
 							}
