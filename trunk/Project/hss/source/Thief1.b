@@ -99,7 +99,7 @@ agent Thief1 memberof Thief {
 				variables:
 					forone(Building) bd;
 					forone(House) hs;
-					forone(Rooms) rm;
+					foreach(Rooms) rm;
 				detectables:
 					detectable wasDetected{
 						when(whenever)
