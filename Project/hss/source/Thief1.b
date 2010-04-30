@@ -10,19 +10,25 @@ agent Thief1 memberof Thief {
 		public Rooms visitedRoom3;
 		public boolean isAtHouse;			
 		public boolean hasOrder;			
+		public boolean wasDetectedInRoom1;			
+		public boolean wasDetectedInRoom2;			
+		public boolean wasDetectedInRoom3;			
 		
 		
 	initial_beliefs:
-		(H2.location          = House2);			
-		(H1.location          = House1);		
-		(Garage2.hasEntry     = true);
-		(OpenGround.hasEntry  = true);		
-		(Foyer.hasEntry       = true);		
-		(current.visitedRoom1 = unknown);
-		(current.visitedRoom2 = unknown);
-		(current.visitedRoom3 = unknown);		
-		(current.isAtHouse    = false);
-		(current.hasOrder     = false);
+		(H2.location                = House2);			
+		(H1.location                = House1);		
+		(Garage2.hasEntry           = true);
+		(OpenGround.hasEntry        = true);		
+		(Foyer.hasEntry             = true);		
+		(current.visitedRoom1       = unknown);
+		(current.visitedRoom2       = unknown);
+		(current.visitedRoom3       = unknown);		
+		(current.isAtHouse          = false);
+		(current.hasOrder           = false);
+		(current.wasDetectedInRoom3 = false);
+		(current.wasDetectedInRoom2 = false);
+		(current.wasDetectedInRoom1 = false);
 
 	activities:
 
@@ -35,7 +41,7 @@ agent Thief1 memberof Thief {
 			}
 
 			primitive_activity sneakToRoom() {
-				max_duration: 500;
+				max_duration: 1000;
 			}	
 			
 	
@@ -89,6 +95,13 @@ agent Thief1 memberof Thief {
 					forone(Building) bd;
 					forone(House) hs;
 					forone(Rooms) rm;
+				detectables:
+					detectable wasDetected{
+						when(whenever)
+							detect((SS.alarmSound = true), dc:100)
+							then complete;
+					}
+					
 				when(
 					knownval(current.isAtHouse = true) and
 					knownval(rm.hasEntry = true) and
@@ -102,7 +115,30 @@ agent Thief1 memberof Thief {
 					moveToRoom(rm);
 					conclude((current.visitedRoom1 = rm), bc:100, fc:100);
 				}
-			}			
+			}
+			
+			workframe wf_wasDetectedInRoom1
+			{
+				repeat: false;
+				variables:
+					forone(Building) bd;
+					forone(House) hs;
+					forone(Rooms) rm;			
+				when(
+					knownval(current.isAtHouse = true) and
+					knownval(rm.hasEntry = true) and
+					knownval(current.hasOrder = true) and
+					knownval(current.visitedRoom1 = rm) and
+					knownval(SS.alarmSound = true)
+					)
+				do 
+				{
+					sneakToRoom();
+					moveToRoom(rm);
+					conclude((current.wasDetectedInRoom1 = true), bc:100, fc:100);
+				}
+			}	
+					
 			workframe wf_movetoRoom2
 			{
 				repeat: false;
@@ -125,7 +161,29 @@ agent Thief1 memberof Thief {
 					moveToRoom(rm);
 					conclude((current.visitedRoom2 = rm), bc:100, fc:100);
 				}
-			}	
+			}
+			
+			workframe wf_wasDetectedInRoom2
+			{
+				repeat: false;
+				variables:
+					forone(Building) bd;
+					forone(House) hs;
+					forone(Rooms) rm;			
+				when(
+					knownval(current.isAtHouse = true) and
+					knownval(rm.hasEntry = true) and
+					knownval(current.hasOrder = true) and
+					knownval(current.visitedRoom2 = rm) and
+					knownval(SS.alarmSound = true)
+					)
+				do 
+				{
+					sneakToRoom();
+					moveToRoom(rm);
+					conclude((current.wasDetectedInRoom2 = true), bc:100, fc:100);
+				}
+			}				
 
 			workframe wf_movetoRoom3
 			{
@@ -148,6 +206,28 @@ agent Thief1 memberof Thief {
 					moveToRoom(rm);
 					conclude((current.visitedRoom3 = rm), bc:100, fc:100);
 				}
-			}					
+			}	
+
+			workframe wf_wasDetectedInRoom3
+			{
+				repeat: false;
+				variables:
+					forone(Building) bd;
+					forone(House) hs;
+					forone(Rooms) rm;			
+				when(
+					knownval(current.isAtHouse = true) and
+					knownval(rm.hasEntry = true) and
+					knownval(current.hasOrder = true) and
+					knownval(current.visitedRoom3 = rm) and
+					knownval(SS.alarmSound = true)
+					)
+				do 
+				{
+					sneakToRoom();
+					moveToRoom(rm);
+					conclude((current.wasDetectedInRoom3 = true), bc:100, fc:100);
+				}
+			}							
 			
 }

@@ -8,7 +8,7 @@ class Sensor extends BaseClass {
 		(current.hasDetectedM = false); 
 	
 	initial_facts:
-		(current.senseTime = unknown);
+		(current.senseTime    = unknown);
 		(current.hasDetectedM = false);
 			
 	activities:
